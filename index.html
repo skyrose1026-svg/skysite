@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Southern Oregon Angler Guide</title>
-  <meta name="description" content="Find the right water for your target species in Southern Oregon. Interactive map, species guide, and local fishing info.">
+  <meta name="description" content="Find the best fish species and most popular fishing waters in Southern Oregon, from the Rogue to the Umpqua and Applegate.">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -17,31 +17,218 @@
     </nav>
   </header>
 
-  <main>
-    <h1>Southern Oregon Angler Guide</h1>
-    <p>Find the right water for your target species.</p>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">Southern Oregon fishing guide</p>
+        <h1>Find the right water for your next Oregon catch.</h1>
+        <p class="hero__lede">From steelhead on the Rogue to bass on the lakes, this guide helps you match the species to the river, season, and gear.</p>
 
-    <section>
-      <h2>Species badges</h2>
-      <a class="badge badge--trout" href="./fish/rainbow-trout.html">Rainbow Trout</a>
-      <a class="badge badge--steelhead" href="./fish/steelhead.html">Steelhead</a>
-      <a class="badge badge--bass" href="./fish/smallmouth-bass.html">Smallmouth Bass</a>
-      <a class="badge badge--salmon" href="./fish/chinook-salmon.html">Chinook Salmon</a>
-      <p><a href="./fish/fish.html">Browse all 20 fish species &rarr;</a></p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="./waters/waters.html">Explore waters</a>
+          <a class="button button--secondary" href="./fish/fish.html">Target species</a>
+        </div>
+
+        <ul class="hero__stats" aria-label="Fishing guide stats">
+          <li>
+            <strong>20</strong>
+            <span>Fish profiles in this guide</span>
+          </li>
+          <li>
+            <strong>37</strong>
+            <span>Rivers and lakes covered</span>
+          </li>
+          <li>
+            <strong>4</strong>
+            <span>Best seasons</span>
+          </li>
+        </ul>
+      </div>
+
+      <figure class="hero__feature">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Applegate_River_%28Jackson_County%2C_Oregon_scenic_images%29_%28jacDA0029%29.jpg" alt="Applegate River in Jackson County, Oregon">
+        <figcaption class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Applegate_River_(Jackson_County,_Oregon_scenic_images)_(jacDA0029).jpg">Gary Halvorson, Oregon State Archives</a>.</figcaption>
+      </figure>
     </section>
 
-    <section>
-      <h2>Featured water body</h2>
-      <article class="card">
-        <h3>Rogue River</h3>
-        <p>Big water, big fish. Steelhead runs peak in fall.</p>
-        <div class="card__badges">
-          <span class="badge badge--trout">Rainbow Trout</span>
-          <span class="badge badge--salmon">Chinook Salmon</span>
+    <section class="section-block stats-strip" aria-label="Oregon fishing stats">
+      <div class="stat-card">
+        <span class="stat-card__label">Fish profiles in this guide</span>
+        <strong>20</strong>
+        <p>Species with dedicated identification and fishing pages.</p>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">River and lake profiles</span>
+        <strong>37</strong>
+        <p>Named waters with access, timing, and species notes.</p>
+      </div>
+      <div class="stat-card stat-card--feature">
+        <span class="stat-card__label">State fish</span>
+        <strong>Chinook Salmon</strong>
+        <p>Oregon’s official state fish.</p>
+      </div>
+    </section>
+
+    <section class="section-block fact-block">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Oregon fish facts</p>
+          <h2>Wild water, unique species</h2>
         </div>
-        <a href="./waters/rogue-river.html">View Rogue River details &rarr;</a>
-      </article>
-      <p><a href="./waters/waters.html">Explore all Southern Oregon waters &rarr;</a></p>
+      </div>
+
+      <div class="fact-grid">
+        <article class="fact-card">
+          <span class="fact-card__tag">State Fish</span>
+          <h3>Chinook Salmon</h3>
+          <p>Chinook salmon is Oregon’s official state fish and one of the state’s best-known native salmon.</p>
+          <a href="./fish/chinook-salmon.html">See Chinook details &rarr;</a>
+        </article>
+
+        <article class="fact-card">
+          <span class="fact-card__tag">Salmon Run</span>
+          <h3>Spring and fall runs</h3>
+          <p>Southern Oregon is famous for spring and fall salmon runs, especially in the Rogue, Chetco, and Illinois systems.</p>
+          <a href="./waters/rogue-river.html">Explore Rogue River &rarr;</a>
+        </article>
+
+        <article class="fact-card">
+          <span class="fact-card__tag">Native waters</span>
+          <h3>Cold-water heritage</h3>
+          <p>Many Oregon trout and salmon fisheries depend on clean, high-elevation water and healthy stream connectivity.</p>
+          <a href="./fish/fish.html">Browse Oregon species &rarr;</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Most targeted species</p>
+          <h2>Popular fish to chase in Oregon</h2>
+        </div>
+        <a href="./fish/fish.html" class="text-link">View all species &rarr;</a>
+      </div>
+
+      <div class="species-grid">
+        <a class="species-card" href="./fish/rainbow-trout.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg/500px-Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg" alt="Rainbow trout showing its pink lateral stripe">
+          <div class="species-card__content">
+            <span class="species-card__tag badge badge--trout">Trout</span>
+            <h3>Rainbow Trout</h3>
+            <p>Cold rivers, streams, and spring-fed water.</p>
+          </div>
+        </a>
+
+        <a class="species-card" href="./fish/steelhead.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Steelhead_trout_or_rainbow_trout_hanging_on_side_of_cabin.jpg/500px-Steelhead_trout_or_rainbow_trout_hanging_on_side_of_cabin.jpg" alt="Steelhead fish with its body and shape clearly visible">
+          <div class="species-card__content">
+            <span class="species-card__tag badge badge--steelhead">Steelhead</span>
+            <h3>Steelhead</h3>
+            <p>Prime river runs and fall swing patterns.</p>
+          </div>
+        </a>
+
+        <a class="species-card" href="./fish/chinook-salmon.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Chinook_Salmon_Adult_Male.jpg/500px-Chinook_Salmon_Adult_Male.jpg" alt="Chinook salmon with its hooked jaw and spawning coloration">
+          <div class="species-card__content">
+            <span class="species-card__tag badge badge--salmon">Salmon</span>
+            <h3>Chinook Salmon</h3>
+            <p>Big-water excitement on the Rogue and coast.</p>
+          </div>
+        </a>
+
+        <a class="species-card" href="./fish/smallmouth-bass.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Smallmouth_Bass_%2849561724026%29.jpg/500px-Smallmouth_Bass_%2849561724026%29.jpg" alt="Smallmouth bass with bronze sides and dark bars">
+          <div class="species-card__content">
+            <span class="species-card__tag badge badge--bass">Bass</span>
+            <h3>Smallmouth Bass</h3>
+            <p>Structure, current seams, and rocky banks.</p>
+          </div>
+        </a>
+
+        <a class="species-card" href="./fish/largemouth-bass.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Largemouth_Bass_%28Micropterus_salmoides%29_June_2023_%28cropped%29.jpg/500px-Largemouth_Bass_%28Micropterus_salmoides%29_June_2023_%28cropped%29.jpg" alt="Largemouth bass in clear water with an obvious large mouth">
+          <div class="species-card__content">
+            <span class="species-card__tag badge badge--bass">Bass</span>
+            <h3>Largemouth Bass</h3>
+            <p>Reservoirs, coves, and weed lines.</p>
+          </div>
+        </a>
+
+        <a class="species-card" href="./fish/coastal-cutthroat-trout.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Coastal_cutthroat_trout_Puget_Sound.jpg/500px-Coastal_cutthroat_trout_Puget_Sound.jpg" alt="Coastal cutthroat trout with its orange throat slash and speckles">
+          <div class="species-card__content">
+            <span class="species-card__tag badge badge--trout">Trout</span>
+            <h3>Cutthroat Trout</h3>
+            <p>Streams and tributaries with cooler water.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Top destinations</p>
+          <h2>Most popular Southern Oregon fishing spots</h2>
+        </div>
+        <a href="./waters/waters.html" class="text-link">Explore all waters &rarr;</a>
+      </div>
+
+      <div class="water-grid">
+        <a class="water-card" href="./waters/rogue-river.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Rogue_River_Oregon_USA.jpg/960px-Rogue_River_Oregon_USA.jpg" alt="Rogue River in Oregon">
+          <div class="water-card__body">
+            <span class="water-card__tag">Rogue River</span>
+            <h3>Rogue River</h3>
+            <p>Steelhead, salmon, and trout from Grants Pass to Gold Beach.</p>
+          </div>
+        </a>
+
+        <a class="water-card" href="./waters/applegate-river.html">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Applegate_River_%28Jackson_County%2C_Oregon_scenic_images%29_%28jacDA0132%29.jpg" alt="Applegate River in Jackson County, Oregon">
+          <div class="water-card__body">
+            <span class="water-card__tag">Applegate River</span>
+            <h3>Applegate River</h3>
+            <p>Classic trout water with seasonal steelhead and salmon movement.</p>
+          </div>
+        </a>
+
+        <a class="water-card" href="./waters/umpqua-river.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Umpqua_River_Pacific_Ocean.jpg/960px-Umpqua_River_Pacific_Ocean.jpg" alt="Umpqua River meeting the Pacific Ocean">
+          <div class="water-card__body">
+            <span class="water-card__tag">Umpqua River</span>
+            <h3>Umpqua River</h3>
+            <p>Big trout and salmon access with riverbank structure and current.</p>
+          </div>
+        </a>
+
+        <a class="water-card" href="./waters/illinois-river.html">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Illinois_River_State_Park_%28Josephine_County%2C_Oregon_scenic_images%29_%28josDA0086%29.jpg" alt="Illinois River at Illinois River State Park in Josephine County, Oregon">
+          <div class="water-card__body">
+            <span class="water-card__tag">Illinois River</span>
+            <h3>Illinois River</h3>
+            <p>Wild river feel, scenic runs, and productive salmon and trout pools.</p>
+          </div>
+        </a>
+      </div>
+      <p class="photo-credit image-credits">Photos: <a href="https://commons.wikimedia.org/wiki/File:Rogue_River_Oregon_USA.jpg">Rogue River, Hamad Darwish (CC BY 2.0)</a>; <a href="https://commons.wikimedia.org/wiki/File:Applegate_River_(Jackson_County,_Oregon_scenic_images)_(jacDA0132).jpg">Applegate River, Gary Halvorson / Oregon State Archives</a>; <a href="https://commons.wikimedia.org/wiki/File:Umpqua_River_Pacific_Ocean.jpg">Umpqua River, Bob Heims / U.S. Army Corps of Engineers (public domain)</a>; <a href="https://commons.wikimedia.org/wiki/File:Illinois_River_State_Park_(Josephine_County,_Oregon_scenic_images)_(josDA0086).jpg">Illinois River, Gary Halvorson / Oregon State Archives</a>.</p>
+    </section>
+
+    <section class="catch">
+      <figure class="catch__photo">
+        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/4803_white_sturgeon_swart_odfw_%284455050144%29.jpg/960px-4803_white_sturgeon_swart_odfw_%284455050144%29.jpg" alt="White sturgeon photographed by Oregon Department of Fish and Wildlife">
+        <div class="catch__badge">Fish of the month</div>
+        <figcaption class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:4803_white_sturgeon_swart_odfw_(4455050144).jpg">Oregon Department of Fish &amp; Wildlife</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>.</figcaption>
+      </figure>
+
+      <div class="catch__content">
+        <p class="eyebrow">Oregon river giant</p>
+        <h2>White Sturgeon</h2>
+        <p>White sturgeon are among Oregon’s largest freshwater fish. These ancient fish inhabit the Columbia River basin, including the Snake River along Oregon’s eastern border.</p>
+        <a class="button button--primary" href="./waters/snake-river.html">Explore Snake River</a>
+      </div>
     </section>
   </main>
 
