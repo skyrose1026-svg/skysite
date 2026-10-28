@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imnaha River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="A remote canyon river in the Wallowa Mountains with summer steelhead, rainbow trout, and a protected bull trout population. Big Sheep Creek is the mai">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Imnaha River</h1>
+    <p class="region">Eastern Oregon</p>
+    <p>A remote canyon river in the Wallowa Mountains with summer steelhead, rainbow trout, and a protected bull trout population. Big Sheep Creek is the main tributary.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Imnaha</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="45.55" data-lng="-116.85">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/steelhead.html">Steelhead</a>
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+        <a class="badge badge--fish" href="../fish/bull-trout.html">Bull Trout</a>
+        <a class="badge badge--fish" href="../fish/mountain-whitefish.html">Mountain Whitefish</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/steelhead.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Steelhead"><span>Steelhead</span></a>
+      <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      <a class="fish-card" href="../fish/bull-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Bull Trout"><span>Bull Trout</span></a>
+      <a class="fish-card" href="../fish/mountain-whitefish.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Mountain Whitefish"><span>Mountain Whitefish</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>Big Sheep Creek</strong> - joins near Imnaha; steelhead and trout</li>
+        <li><strong>Little Sheep Creek</strong> - joins near Imnaha; trout</li>
+        <li><strong>McCarty Creek</strong> - joins in the upper river; small stream</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Steelhead</td><td>Summer run June-Oct; check ODFW</td></tr>
+        <tr><td>Bull trout</td><td>Catch and release only - it is illegal to harvest bull trout</td></tr>
+        <tr><td>Trout</td><td>Open year-round in most sections</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Imnaha to the Snake for steelhead; the upper river for trout</td></tr>
+        <tr><td>Access</td><td>Imnaha, Cow Creek Bridge, forest roads</td></tr>
+        <tr><td>Hazards</td><td>Remote canyon; limited cell service; long drives</td></tr>
+        <tr><td>Seasons</td><td>Summer steelhead June-Oct, trout year-round</td></tr>
+        <tr><td>Gear note</td><td>Bait and bobber for steelhead; light gear for trout; know bull trout identification</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -116.85, "name": "Imnaha", "lat": 45.55 }, { "lng": -116.9, "name": "Cow Creek Bridge", "lat": 45.6 } ]});
+  </script>
+</body>
+</html>

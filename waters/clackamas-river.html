@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clackamas River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="A Portland-area river with winter steelhead, spring chinook, and coho. Milo McIver State Park and the lower river are the main access points.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Clackamas River</h1>
+    <p class="region">Willamette Valley</p>
+    <p>A Portland-area river with winter steelhead, spring chinook, and coho. Milo McIver State Park and the lower river are the main access points.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Estacada</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="45.3" data-lng="-122.33">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/steelhead.html">Steelhead</a>
+        <a class="badge badge--fish" href="../fish/chinook-salmon.html">Chinook Salmon</a>
+        <a class="badge badge--fish" href="../fish/coho-salmon.html">Coho Salmon</a>
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+        <a class="badge badge--fish" href="../fish/cutthroat-trout.html">Cutthroat Trout</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/steelhead.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Steelhead"><span>Steelhead</span></a>
+      <a class="fish-card" href="../fish/chinook-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Chinook Salmon"><span>Chinook Salmon</span></a>
+      <a class="fish-card" href="../fish/coho-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Coho Salmon"><span>Coho Salmon</span></a>
+      <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      <a class="fish-card" href="../fish/cutthroat-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Cutthroat Trout"><span>Cutthroat Trout</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>Oak Grove Fork</strong> - joins near Ripplebrook; wild trout</li>
+        <li><strong>Collawash River</strong> - joins near Ripplebrook; wild trout</li>
+        <li><strong>Hot Springs Fork</strong> - joins the Collawash; wild trout</li>
+        <li><strong>Roaring River</strong> - joins near Estacada; wild trout</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Steelhead</td><td>Winter season Dec-April; check ODFW</td></tr>
+        <tr><td>Spring chinook</td><td>Season typically May through July</td></tr>
+        <tr><td>Trout</td><td>Open late May through October in most sections</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Milo McIver and the lower river for steelhead and chinook</td></tr>
+        <tr><td>Access</td><td>Estacada, Milo McIver State Park, Carver, Barton Park</td></tr>
+        <tr><td>Hazards</td><td>Cold water; boat traffic in the lower river</td></tr>
+        <tr><td>Seasons</td><td>Winter steelhead Dec-April, spring chinook May-July, trout late May-Oct</td></tr>
+        <tr><td>Gear note</td><td>Bait and bobber for steelhead; light gear for trout</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -122.33, "name": "Estacada", "lat": 45.3 }, { "lng": -122.35, "name": "Milo McIver State Park", "lat": 45.28 }, { "lng": -122.42, "name": "Carver", "lat": 45.38 } ]});
+  </script>
+</body>
+</html>

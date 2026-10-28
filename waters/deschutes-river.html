@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deschutes River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="One of Oregon&#39;s most famous rivers - summer steelhead, redband trout, and a fall chinook run in the lower river. Maupin is the hub.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Deschutes River</h1>
+    <p class="region">Central Oregon</p>
+    <p>One of Oregon&#39;s most famous rivers - summer steelhead, redband trout, and a fall chinook run in the lower river. Maupin is the hub.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Maupin</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="45.17" data-lng="-120.82">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/steelhead.html">Steelhead</a>
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+        <a class="badge badge--fish" href="../fish/mountain-whitefish.html">Mountain Whitefish</a>
+        <a class="badge badge--fish" href="../fish/chinook-salmon.html">Chinook Salmon</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/steelhead.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Steelhead"><span>Steelhead</span></a>
+      <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      <a class="fish-card" href="../fish/mountain-whitefish.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Mountain Whitefish"><span>Mountain Whitefish</span></a>
+      <a class="fish-card" href="../fish/chinook-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Chinook Salmon"><span>Chinook Salmon</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>Metolius River</strong> - joins at Lake Billy Chinook; trout and bull trout</li>
+        <li><strong>Crooked River</strong> - joins at Lake Billy Chinook; redband trout</li>
+        <li><strong>Whychus Creek</strong> - joins near Sisters; wild trout</li>
+        <li><strong>Warm Springs River</strong> - joins on the reservation; closed to non-tribal fishing</li>
+        <li><strong>Fall River</strong> - joins near La Pine; trout</li>
+        <li><strong>Little Deschutes River</strong> - joins near Sunriver; trout</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Steelhead</td><td>Summer run June-Oct; check ODFW</td></tr>
+        <tr><td>Trout</td><td>Open year-round in most sections; check size and catch limits</td></tr>
+        <tr><td>Fall chinook</td><td>Lower river; check dates</td></tr>
+        <tr><td>In-season updates</td><td>Check ODFW before every trip</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Maupin to Warm Springs for steelhead and trout; the lower river for fall chinook</td></tr>
+        <tr><td>Access</td><td>Maupin, Warm Springs, Trout Creek, Mecca, Heritage Landing</td></tr>
+        <tr><td>Hazards</td><td>Hot summers, cold winters, strong current, rattlesnakes in the canyon</td></tr>
+        <tr><td>Seasons</td><td>Summer steelhead June-Oct, trout year-round, fall chinook Sept-Nov</td></tr>
+        <tr><td>Gear note</td><td>Fly rod for trout; bait and bobber for steelhead</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -120.82, "name": "Maupin", "lat": 45.17 }, { "lng": -121.13, "name": "Warm Springs", "lat": 44.98 }, { "lng": -121, "name": "Heritage Landing (mouth)", "lat": 45.63 } ]});
+  </script>
+</body>
+</html>

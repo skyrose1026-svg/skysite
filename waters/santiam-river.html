@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santiam River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="Two forks with strong spring chinook and winter steelhead runs. The North Santiam below Detroit Dam and the South Santiam below Foster Dam are the mai">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Santiam River</h1>
+    <p class="region">Willamette Valley</p>
+    <p>Two forks with strong spring chinook and winter steelhead runs. The North Santiam below Detroit Dam and the South Santiam below Foster Dam are the main fisheries.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Mill City</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="44.75" data-lng="-122.47">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/chinook-salmon.html">Chinook Salmon</a>
+        <a class="badge badge--fish" href="../fish/steelhead.html">Steelhead</a>
+        <a class="badge badge--fish" href="../fish/coho-salmon.html">Coho Salmon</a>
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+        <a class="badge badge--fish" href="../fish/cutthroat-trout.html">Cutthroat Trout</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/chinook-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Chinook Salmon"><span>Chinook Salmon</span></a>
+      <a class="fish-card" href="../fish/steelhead.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Steelhead"><span>Steelhead</span></a>
+      <a class="fish-card" href="../fish/coho-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Coho Salmon"><span>Coho Salmon</span></a>
+      <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      <a class="fish-card" href="../fish/cutthroat-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Cutthroat Trout"><span>Cutthroat Trout</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>Breitenbush River</strong> - joins the North Santiam; wild trout</li>
+        <li><strong>Little North Santiam</strong> - joins near Mehama; wild trout</li>
+        <li><strong>Thomas Creek</strong> - joins the South Santiam; small stream</li>
+        <li><strong>Crabtree Creek</strong> - joins the South Santiam; small stream</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Spring chinook</td><td>Season typically May through July; check dates</td></tr>
+        <tr><td>Steelhead</td><td>Winter season Dec-April</td></tr>
+        <tr><td>Trout</td><td>Open late May through October in most sections</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Mill City for spring chinook; Waterloo for the South Santiam</td></tr>
+        <tr><td>Access</td><td>Mill City, Detroit, Foster Park, Waterloo</td></tr>
+        <tr><td>Hazards</td><td>Cold water from the dams; slippery rocks</td></tr>
+        <tr><td>Seasons</td><td>Spring chinook May-July, winter steelhead Dec-April, trout late May-Oct</td></tr>
+        <tr><td>Gear note</td><td>Bait and bobber for chinook; light gear for trout</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -122.47, "name": "Mill City", "lat": 44.75 }, { "lng": -122.15, "name": "Detroit", "lat": 44.62 }, { "lng": -122.85, "name": "Waterloo (South Santiam)", "lat": 44.45 } ]});
+  </script>
+</body>
+</html>

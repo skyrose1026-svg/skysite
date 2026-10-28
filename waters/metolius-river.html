@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metolius River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="A spring-fed river famous for clear water, big trout, and a protected bull trout population. Some sections are fly-fishing only; bull trout are catch ">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Metolius River</h1>
+    <p class="region">Central Oregon</p>
+    <p>A spring-fed river famous for clear water, big trout, and a protected bull trout population. Some sections are fly-fishing only; bull trout are catch and release only.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Camp Sherman</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="44.49" data-lng="-121.63">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+        <a class="badge badge--fish" href="../fish/bull-trout.html">Bull Trout</a>
+        <a class="badge badge--fish" href="../fish/mountain-whitefish.html">Mountain Whitefish</a>
+        <a class="badge badge--fish" href="../fish/kokanee.html">Kokanee</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      <a class="fish-card" href="../fish/bull-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Bull Trout"><span>Bull Trout</span></a>
+      <a class="fish-card" href="../fish/mountain-whitefish.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Mountain Whitefish"><span>Mountain Whitefish</span></a>
+      <a class="fish-card" href="../fish/kokanee.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Kokanee"><span>Kokanee</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>Lake Creek</strong> - joins near Camp Sherman; wild trout</li>
+        <li><strong>Canyon Creek</strong> - joins near the headwaters; wild trout</li>
+        <li><strong>Jack Creek</strong> - joins near the headwaters; wild trout</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fly water</td><td>Some sections are artificial flies only - check the regulations</td></tr>
+        <tr><td>Bull trout</td><td>Catch and release only - it is illegal to harvest bull trout</td></tr>
+        <tr><td>Trout</td><td>Open year-round in most sections</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Camp Sherman to Bridge 99 for trout; the lower river for bull trout</td></tr>
+        <tr><td>Access</td><td>Camp Sherman, Allingham, Bridge 99, Wizard Falls</td></tr>
+        <tr><td>Hazards</td><td>Cold, clear water; slippery rocks</td></tr>
+        <tr><td>Seasons</td><td>Trout year-round; bull trout best in spring and fall</td></tr>
+        <tr><td>Gear note</td><td>Fly rod for the fly water; know bull trout identification</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -121.63, "name": "Camp Sherman", "lat": 44.49 }, { "lng": -121.68, "name": "Wizard Falls", "lat": 44.48 }, { "lng": -121.72, "name": "Bridge 99", "lat": 44.45 } ]});
+  </script>
+</body>
+</html>

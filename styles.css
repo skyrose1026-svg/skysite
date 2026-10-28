@@ -220,3 +220,76 @@ main {
   font-size: var(--text-sm);
   color: var(--color-ink-soft);
 }
+/* Map styles */
+.map {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-line);
+}
+
+.map--full {
+  height: 70vh;
+  min-height: 24rem;
+}
+
+.map--detail {
+  height: 20rem;
+}
+
+.main--wide {
+  max-width: 64rem;
+}
+
+/* Weather styles */
+.weather {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  padding: var(--space-md);
+}
+
+.weather-current {
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.weather-forecast {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: var(--space-sm);
+}
+
+.weather-day {
+  background-color: var(--color-paper);
+  border-radius: 0.25rem;
+  padding: var(--space-sm);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+/* Moon phase */
+.moon {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  padding: var(--space-md);
+}
+
+.moon-phase {
+  font-size: var(--text-xl);
+  margin: 0 0 var(--space-sm);
+}
+
+.region {
+  color: var(--color-ink-soft);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: calc(var(--space-sm) * -1);
+}
+
+.badge--fish {
+  background-color: #e0f2fe;
+  color: #0c4a6e;
+}

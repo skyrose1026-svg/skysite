@@ -1,11 +1,11 @@
-# Waters data for the Southern Oregon Angler Guide.
+﻿# Waters data for the Southern Oregon Angler Guide.
 # Sourced by tools\build-site.ps1. Edit data here, then re-run the builder.
 # Fish entries that match a species slug get a link; plain names render as text badges.
 
 $script:waters = @(
     @{
         slug = 'rogue-river'; name = 'Rogue River'; region = 'Southern Oregon'
-        blurb = 'The Rogue is Southern Oregon''s flagship river — a 215-mile system with spring and fall chinook, coho, summer and winter steelhead, trout, and a world-class smallmouth bass fishery below Grants Pass. If you learn one river well, make it this one.'
+        blurb = 'The Rogue is Southern Oregon''s flagship river - a 215-mile system with spring and fall chinook, coho, summer and winter steelhead, trout, and a world-class smallmouth bass fishery below Grants Pass. If you learn one river well, make it this one.'
         fish = @('chinook-salmon','coho-salmon','steelhead','rainbow-trout','cutthroat-trout','smallmouth-bass','mountain-whitefish','northern-pikeminnow')
         tributaries = @(
             @('Applegate River', 'joins at Grants Pass; winter steelhead and fall chinook spawning'),
@@ -28,17 +28,17 @@ $script:waters = @(
             @{ name = 'Lost Creek Dam / TouVelle'; lat = 42.73; lng = -122.53 }
         )
         regs = @(
-            @('Zones', 'The Rogue is managed in upper, middle, and lower zones with different seasons and limits — always check the zone you fish'),
+            @('Zones', 'The Rogue is managed in upper, middle, and lower zones with different seasons and limits - always check the zone you fish'),
             @('Salmon and steelhead', 'Combined Angling Tag required; hatchery fish have a clipped adipose fin, wild fish are usually released'),
             @('Trout', 'Upper Rogue trout water opens late May; check size and catch limits per section'),
             @('Smallmouth', 'Some Rogue sections encourage smallmouth harvest to protect salmon and steelhead'),
-            @('In-season updates', 'Run size can trigger mid-season changes — check ODFW before every trip')
+            @('In-season updates', 'Run size can trigger mid-season changes - check ODFW before every trip')
         )
         details = @(
             @('Best water', 'Upper: Shady Cove to Lost Creek (trout, summer steelhead). Middle: Galice to Agness (chinook, steelhead). Lower: Agness to Gold Beach (fall chinook, jet boat water)'),
             @('Access', 'Griffins and Riverside parks in Grants Pass, Galice Resort, Rainie Falls trail, Agness, Lobster Creek, Gold Beach'),
             @('Hazards', 'Drift boats and jet boats share the water; summer swimmers; cold water year-round'),
-            @('Seasons', 'Spring chinook May–July, fall chinook Sept–Nov, summer steelhead June–Oct, winter steelhead Dec–April, smallmouth June–Oct'),
+            @('Seasons', 'Spring chinook May-July, fall chinook Sept-Nov, summer steelhead June-Oct, winter steelhead Dec-April, smallmouth June-Oct'),
             @('Gear note', 'Drift boats dominate the middle river; bank anglers do well at Rainie Falls, Lobster Creek, and the Grants Pass parks')
         )
     },
@@ -62,7 +62,7 @@ $script:waters = @(
         )
         regs = @(
             @('Steelhead', 'Winter season, typically December through March; hatchery fish only in most sections'),
-            @('Chinook spawning', 'Sections close in fall to protect spawning chinook — check dates'),
+            @('Chinook spawning', 'Sections close in fall to protect spawning chinook - check dates'),
             @('Trout', 'Open late May through October in most sections'),
             @('Reservoir', 'Applegate Lake has its own trout and kokanee rules')
         )
@@ -70,13 +70,13 @@ $script:waters = @(
             @('Best water', 'Cantrall Buckley Park to McKee Bridge for steelhead; Applegate Lake for trout and kokanee'),
             @('Access', 'Cantrall Buckley Park, McKee Bridge, Applegate Lake ramps (Hart-tish, Copper), Applegate Park'),
             @('Hazards', 'Cold, clear water; slippery rocks; the river drops fast after storms'),
-            @('Seasons', 'Winter steelhead Dec–March, trout late May–Oct, kokanee year-round in the lake'),
+            @('Seasons', 'Winter steelhead Dec-March, trout late May-Oct, kokanee year-round in the lake'),
             @('Gear note', 'Light spinning gear or a 5-weight fly rod covers most of it')
         )
     },
     @{
         slug = 'illinois-river'; name = 'Illinois River'; region = 'Southern Oregon'
-        blurb = 'A wild and scenic river draining the Kalmiopsis wilderness, joining the Rogue at Agness. Wild winter steelhead, fall chinook, and cutthroat in a rugged canyon — this is Oregon''s wild-fish water.'
+        blurb = 'A wild and scenic river draining the Kalmiopsis wilderness, joining the Rogue at Agness. Wild winter steelhead, fall chinook, and cutthroat in a rugged canyon - this is Oregon''s wild-fish water.'
         fish = @('steelhead','chinook-salmon','coho-salmon','cutthroat-trout')
         tributaries = @(
             @('East Fork Illinois River', 'joins near Cave Junction; steelhead and cutthroat'),
@@ -91,7 +91,7 @@ $script:waters = @(
             @{ name = 'Agness confluence'; lat = 42.60; lng = -123.90 }
         )
         regs = @(
-            @('Wild fish', 'Most sections require releasing wild steelhead — look for the clipped adipose fin'),
+            @('Wild fish', 'Most sections require releasing wild steelhead - look for the clipped adipose fin'),
             @('Seasons', 'Winter steelhead season varies by section; check ODFW'),
             @('Trout', 'Open late May through October in most sections'),
             @('Wilderness water', 'The Illinois River Trail section is hike-in only')
@@ -100,8 +100,8 @@ $script:waters = @(
             @('Best water', 'Illinois River Forks State Park for easy access; the wilderness trail for solitude'),
             @('Access', 'Illinois River Forks State Park (Cave Junction), Holland Loop, Illinois River Trail (hike-in), Agness'),
             @('Hazards', 'Rugged canyon, limited cell service, long hikes; the river rises fast in storms'),
-            @('Seasons', 'Winter steelhead Dec–March, trout late May–Oct'),
-            @('Gear note', 'Wild fish are wary — light line and natural presentations')
+            @('Seasons', 'Winter steelhead Dec-March, trout late May-Oct'),
+            @('Gear note', 'Wild fish are wary - light line and natural presentations')
         )
     },
     @{
@@ -129,13 +129,13 @@ $script:waters = @(
             @('Best water', 'Loeb State Park and the lower river for chinook; the upper road for trout'),
             @('Access', 'Loeb State Park, Chetco River Road, Brookings waterfront'),
             @('Hazards', 'The river rises fast after rain; logjams in the lower river'),
-            @('Seasons', 'Fall chinook Sept–Nov, coho Oct–Dec, winter steelhead Dec–March'),
+            @('Seasons', 'Fall chinook Sept-Nov, coho Oct-Dec, winter steelhead Dec-March'),
             @('Gear note', 'Cured roe and bobber-dogging are the local standard for chinook')
         )
     },
     @{
         slug = 'elk-river'; name = 'Elk River'; region = 'South Coast'
-        blurb = 'A small, wild river near Cape Blanco with a hatchery-supported fall chinook run and sea-run cutthroat. Not the Rogue tributary Elk Creek — this one flows straight to the ocean.'
+        blurb = 'A small, wild river near Cape Blanco with a hatchery-supported fall chinook run and sea-run cutthroat. Not the Rogue tributary Elk Creek - this one flows straight to the ocean.'
         fish = @('chinook-salmon','coho-salmon','steelhead','cutthroat-trout')
         tributaries = @(
             @('North Fork Elk River', 'joins in the upper river; wild trout'),
@@ -153,8 +153,8 @@ $script:waters = @(
         details = @(
             @('Best water', 'The lower river near the hatchery; the upper road for trout'),
             @('Access', 'Elk River Hatchery, Elk River Road, Cape Blanco State Park'),
-            @('Hazards', 'Small river — fish are concentrated and easily spooked'),
-            @('Seasons', 'Fall chinook Sept–Nov, sea-run cutthroat Aug–Oct'),
+            @('Hazards', 'Small river - fish are concentrated and easily spooked'),
+            @('Seasons', 'Fall chinook Sept-Nov, sea-run cutthroat Aug-Oct'),
             @('Gear note', 'Light gear; the river is small and clear')
         )
     },
@@ -179,13 +179,13 @@ $script:waters = @(
             @('Best water', 'The lower river near Cape Blanco; the upper road for trout'),
             @('Access', 'Cape Blanco State Park, Sixes River Road, Edson Creek'),
             @('Hazards', 'Small river; fish move fast after rain'),
-            @('Seasons', 'Fall chinook Sept–Nov, winter steelhead Dec–March'),
+            @('Seasons', 'Fall chinook Sept-Nov, winter steelhead Dec-March'),
             @('Gear note', 'Light spinning gear or a 6-weight fly rod')
         )
     },
     @{
         slug = 'pistol-river'; name = 'Pistol River'; region = 'South Coast'
-        blurb = 'A small south coast stream with fall chinook, coho, and winter steelhead. Short and steep — fish it after rain.'
+        blurb = 'A small south coast stream with fall chinook, coho, and winter steelhead. Short and steep - fish it after rain.'
         fish = @('chinook-salmon','coho-salmon','steelhead','cutthroat-trout')
         tributaries = @(
             @('North Fork Pistol River', 'joins in the upper river; wild trout')
@@ -202,7 +202,7 @@ $script:waters = @(
             @('Best water', 'The lower river near the state park'),
             @('Access', 'Pistol River State Park, Pistol River Loop Road'),
             @('Hazards', 'Small river; fish move fast after rain'),
-            @('Seasons', 'Fall chinook Sept–Nov, winter steelhead Dec–March')
+            @('Seasons', 'Fall chinook Sept-Nov, winter steelhead Dec-March')
         )
     },
     @{
@@ -224,7 +224,7 @@ $script:waters = @(
             @('Best water', 'The lower river near the mouth'),
             @('Access', 'Winchuck River Road, the mouth near the California border'),
             @('Hazards', 'Small river; fish move fast after rain'),
-            @('Seasons', 'Fall chinook Sept–Nov, winter steelhead Dec–March')
+            @('Seasons', 'Fall chinook Sept-Nov, winter steelhead Dec-March')
         )
     },
     @{
@@ -253,7 +253,7 @@ $script:waters = @(
             @('Best water', 'Bandon for the lower river; Powers for the South Fork; Myrtle Point for the mainstem'),
             @('Access', 'Bandon waterfront, Myrtle Point, Powers, Coquille city'),
             @('Hazards', 'Tidal influence in the lower river; logjams'),
-            @('Seasons', 'Fall chinook Sept–Nov, coho Oct–Dec, winter steelhead Dec–March, smallmouth June–Oct'),
+            @('Seasons', 'Fall chinook Sept-Nov, coho Oct-Dec, winter steelhead Dec-March, smallmouth June-Oct'),
             @('Gear note', 'Bait and bobber for chinook; light gear for smallmouth')
         )
     },
@@ -279,7 +279,7 @@ $script:waters = @(
             @('Best water', 'The Millicoma for coho; the South Fork for steelhead'),
             @('Access', 'Coos Bay, Millicoma, Eel Lake'),
             @('Hazards', 'Tidal influence in the lower river'),
-            @('Seasons', 'Coho Oct–Dec, fall chinook Sept–Nov, winter steelhead Dec–March'),
+            @('Seasons', 'Coho Oct-Dec, fall chinook Sept-Nov, winter steelhead Dec-March'),
             @('Gear note', 'Spinners and spoons for coho; bait for chinook')
         )
     },
@@ -303,8 +303,8 @@ $script:waters = @(
             @{ name = 'Roseburg (South Umpqua)'; lat = 43.22; lng = -123.34 }
         )
         regs = @(
-            @('Zones', 'The Umpqua is managed in sections with different rules — check the zone you fish'),
-            @('Steelhead', 'North Umpqua summer run June–Oct; winter run Dec–April'),
+            @('Zones', 'The Umpqua is managed in sections with different rules - check the zone you fish'),
+            @('Steelhead', 'North Umpqua summer run June-Oct; winter run Dec-April'),
             @('Smallmouth', 'Generous limits in most sections'),
             @('Striped bass', 'Lower river fishery; check current rules'),
             @('In-season updates', 'Check ODFW before every trip')
@@ -313,7 +313,7 @@ $script:waters = @(
             @('Best water', 'Glide to Steamboat for summer steelhead; Roseburg to Tiller for smallmouth; Reedsport for striped bass'),
             @('Access', 'Reedsport, Scottsburg, Glide, Winchester Dam area, Roseburg, Tiller'),
             @('Hazards', 'Drift boats on the North Umpqua; summer heat on the South Umpqua'),
-            @('Seasons', 'Summer steelhead June–Oct, winter steelhead Dec–April, smallmouth June–Oct, fall chinook Sept–Nov'),
+            @('Seasons', 'Summer steelhead June-Oct, winter steelhead Dec-April, smallmouth June-Oct, fall chinook Sept-Nov'),
             @('Gear note', 'Fly water on the North Umpqua; bait and light gear on the South Umpqua')
         )
     },
@@ -341,13 +341,13 @@ $script:waters = @(
             @('Best water', 'Florence and Mapleton for chinook; the forks for steelhead'),
             @('Access', 'Florence, Mapleton, Cushman, Lake Creek'),
             @('Hazards', 'Tidal influence in the lower river'),
-            @('Seasons', 'Fall chinook Sept–Nov, coho Oct–Dec, winter steelhead Dec–March'),
+            @('Seasons', 'Fall chinook Sept-Nov, coho Oct-Dec, winter steelhead Dec-March'),
             @('Gear note', 'Bait and bobber for chinook; spinners for coho')
         )
     },
     @{
         slug = 'willamette-river'; name = 'Willamette River'; region = 'Willamette Valley'
-        blurb = 'Oregon''s biggest river system, draining the Willamette Valley. Spring chinook, winter steelhead, coho, shad, and sturgeon — plus smallmouth in the upper river and warmwater fish in the sloughs.'
+        blurb = 'Oregon''s biggest river system, draining the Willamette Valley. Spring chinook, winter steelhead, coho, shad, and sturgeon - plus smallmouth in the upper river and warmwater fish in the sloughs.'
         fish = @('chinook-salmon','coho-salmon','steelhead','smallmouth-bass','largemouth-bass','mountain-whitefish','white sturgeon','shad')
         tributaries = @(
             @('McKenzie River', 'joins at Eugene; spring chinook and trout'),
@@ -368,7 +368,7 @@ $script:waters = @(
             @{ name = 'Eugene'; lat = 44.05; lng = -123.09 }
         )
         regs = @(
-            @('Zones', 'The Willamette is managed in sections with different rules — check the zone you fish'),
+            @('Zones', 'The Willamette is managed in sections with different rules - check the zone you fish'),
             @('Spring chinook', 'Season typically April through August; check dates'),
             @('Sturgeon', 'Catch and release in most sections; check current rules'),
             @('Shad', 'Generous limits in summer'),
@@ -378,13 +378,13 @@ $script:waters = @(
             @('Best water', 'Oregon City falls for spring chinook; Corvallis and Albany for shad; the upper river for smallmouth'),
             @('Access', 'Portland, Oregon City, Corvallis, Albany, Eugene, Salem'),
             @('Hazards', 'Big water, boat traffic, strong current'),
-            @('Seasons', 'Spring chinook April–Aug, shad May–July, winter steelhead Dec–April, smallmouth June–Oct'),
+            @('Seasons', 'Spring chinook April-Aug, shad May-July, winter steelhead Dec-April, smallmouth June-Oct'),
             @('Gear note', 'Bait and bobber for chinook; light gear for shad and smallmouth')
         )
     },
     @{
         slug = 'mckenzie-river'; name = 'McKenzie River'; region = 'Willamette Valley'
-        blurb = 'A classic Oregon trout river with spring chinook and winter steelhead in the lower river. Some sections are fly-fishing only — check the regulations.'
+        blurb = 'A classic Oregon trout river with spring chinook and winter steelhead in the lower river. Some sections are fly-fishing only - check the regulations.'
         fish = @('rainbow-trout','cutthroat-trout','chinook-salmon','steelhead','mountain-whitefish')
         tributaries = @(
             @('South Fork McKenzie', 'joins near Rainbow; wild trout'),
@@ -398,7 +398,7 @@ $script:waters = @(
             @{ name = 'Blue River'; lat = 44.14; lng = -122.30 }
         )
         regs = @(
-            @('Fly water', 'Some sections are artificial flies only — check the regulations'),
+            @('Fly water', 'Some sections are artificial flies only - check the regulations'),
             @('Trout', 'Open late May through October in most sections'),
             @('Spring chinook', 'Lower river; check dates'),
             @('Steelhead', 'Winter season in the lower river')
@@ -407,7 +407,7 @@ $script:waters = @(
             @('Best water', 'Leaburg to Vida for trout; the lower river for spring chinook'),
             @('Access', 'Leaburg, Vida, Blue River, Finn Rock, McKenzie Bridge'),
             @('Hazards', 'Cold, clear water; slippery rocks'),
-            @('Seasons', 'Trout late May–Oct, spring chinook May–July, winter steelhead Dec–April'),
+            @('Seasons', 'Trout late May-Oct, spring chinook May-July, winter steelhead Dec-April'),
             @('Gear note', 'Fly rod for the fly water; light spinning gear elsewhere')
         )
     },
@@ -428,14 +428,14 @@ $script:waters = @(
         )
         regs = @(
             @('Spring chinook', 'Season typically May through July; check dates'),
-            @('Steelhead', 'Winter season Dec–April'),
+            @('Steelhead', 'Winter season Dec-April'),
             @('Trout', 'Open late May through October in most sections')
         )
         details = @(
             @('Best water', 'Mill City for spring chinook; Waterloo for the South Santiam'),
             @('Access', 'Mill City, Detroit, Foster Park, Waterloo'),
             @('Hazards', 'Cold water from the dams; slippery rocks'),
-            @('Seasons', 'Spring chinook May–July, winter steelhead Dec–April, trout late May–Oct'),
+            @('Seasons', 'Spring chinook May-July, winter steelhead Dec-April, trout late May-Oct'),
             @('Gear note', 'Bait and bobber for chinook; light gear for trout')
         )
     },
@@ -455,7 +455,7 @@ $script:waters = @(
             @{ name = 'Carver'; lat = 45.38; lng = -122.42 }
         )
         regs = @(
-            @('Steelhead', 'Winter season Dec–April; check ODFW'),
+            @('Steelhead', 'Winter season Dec-April; check ODFW'),
             @('Spring chinook', 'Season typically May through July'),
             @('Trout', 'Open late May through October in most sections')
         )
@@ -463,7 +463,7 @@ $script:waters = @(
             @('Best water', 'Milo McIver and the lower river for steelhead and chinook'),
             @('Access', 'Estacada, Milo McIver State Park, Carver, Barton Park'),
             @('Hazards', 'Cold water; boat traffic in the lower river'),
-            @('Seasons', 'Winter steelhead Dec–April, spring chinook May–July, trout late May–Oct'),
+            @('Seasons', 'Winter steelhead Dec-April, spring chinook May-July, trout late May-Oct'),
             @('Gear note', 'Bait and bobber for steelhead; light gear for trout')
         )
     },
@@ -483,7 +483,7 @@ $script:waters = @(
             @{ name = 'Dodge Park'; lat = 45.42; lng = -122.30 }
         )
         regs = @(
-            @('Steelhead', 'Winter season Dec–April; summer run June–Oct'),
+            @('Steelhead', 'Winter season Dec-April; summer run June-Oct'),
             @('Spring chinook', 'Season typically May through July'),
             @('Trout', 'Open late May through October in most sections')
         )
@@ -491,13 +491,13 @@ $script:waters = @(
             @('Best water', 'Oxbow Park and Glenn Otto for steelhead and chinook'),
             @('Access', 'Oxbow Park, Glenn Otto Park, Dodge Park, Marmot'),
             @('Hazards', 'Cold water; the river rises fast after rain'),
-            @('Seasons', 'Winter steelhead Dec–April, summer steelhead June–Oct, spring chinook May–July'),
+            @('Seasons', 'Winter steelhead Dec-April, summer steelhead June-Oct, spring chinook May-July'),
             @('Gear note', 'Bait and bobber for steelhead; light gear for trout')
         )
     },
     @{
         slug = 'deschutes-river'; name = 'Deschutes River'; region = 'Central Oregon'
-        blurb = 'One of Oregon''s most famous rivers — summer steelhead, redband trout, and a fall chinook run in the lower river. Maupin is the hub.'
+        blurb = 'One of Oregon''s most famous rivers - summer steelhead, redband trout, and a fall chinook run in the lower river. Maupin is the hub.'
         fish = @('steelhead','rainbow-trout','mountain-whitefish','chinook-salmon')
         tributaries = @(
             @('Metolius River', 'joins at Lake Billy Chinook; trout and bull trout'),
@@ -513,7 +513,7 @@ $script:waters = @(
             @{ name = 'Heritage Landing (mouth)'; lat = 45.63; lng = -121.00 }
         )
         regs = @(
-            @('Steelhead', 'Summer run June–Oct; check ODFW'),
+            @('Steelhead', 'Summer run June-Oct; check ODFW'),
             @('Trout', 'Open year-round in most sections; check size and catch limits'),
             @('Fall chinook', 'Lower river; check dates'),
             @('In-season updates', 'Check ODFW before every trip')
@@ -522,7 +522,7 @@ $script:waters = @(
             @('Best water', 'Maupin to Warm Springs for steelhead and trout; the lower river for fall chinook'),
             @('Access', 'Maupin, Warm Springs, Trout Creek, Mecca, Heritage Landing'),
             @('Hazards', 'Hot summers, cold winters, strong current, rattlesnakes in the canyon'),
-            @('Seasons', 'Summer steelhead June–Oct, trout year-round, fall chinook Sept–Nov'),
+            @('Seasons', 'Summer steelhead June-Oct, trout year-round, fall chinook Sept-Nov'),
             @('Gear note', 'Fly rod for trout; bait and bobber for steelhead')
         )
     },
@@ -541,8 +541,8 @@ $script:waters = @(
             @{ name = 'Bridge 99'; lat = 44.45; lng = -121.72 }
         )
         regs = @(
-            @('Fly water', 'Some sections are artificial flies only — check the regulations'),
-            @('Bull trout', 'Catch and release only — it is illegal to harvest bull trout'),
+            @('Fly water', 'Some sections are artificial flies only - check the regulations'),
+            @('Bull trout', 'Catch and release only - it is illegal to harvest bull trout'),
             @('Trout', 'Open year-round in most sections')
         )
         details = @(
@@ -596,7 +596,7 @@ $script:waters = @(
         details = @(
             @('Best water', 'The whole river is fishable; the falls area is a classic spot'),
             @('Access', 'Fall River Hatchery, Fall River Falls, forest roads'),
-            @('Hazards', 'Cold, clear water; small stream — fish are easily spooked'),
+            @('Hazards', 'Cold, clear water; small stream - fish are easily spooked'),
             @('Seasons', 'Trout year-round; best in spring and fall'),
             @('Gear note', 'Light spinning gear or a 3-weight fly rod')
         )
@@ -615,7 +615,7 @@ $script:waters = @(
             @{ name = 'Modoc Point'; lat = 42.50; lng = -121.90 }
         )
         regs = @(
-            @('Bull trout', 'Catch and release only — it is illegal to harvest bull trout'),
+            @('Bull trout', 'Catch and release only - it is illegal to harvest bull trout'),
             @('Trout', 'Open year-round in most sections; check size and catch limits')
         )
         details = @(
@@ -647,7 +647,7 @@ $script:waters = @(
         details = @(
             @('Best water', 'Fort Klamath to the wetland for redband trout; the headwaters for brook trout'),
             @('Access', 'Fort Klamath, Kimball State Park, Wood River Wetland'),
-            @('Hazards', 'Cold, clear water; small stream — fish are easily spooked'),
+            @('Hazards', 'Cold, clear water; small stream - fish are easily spooked'),
             @('Seasons', 'Trout year-round; best in spring and fall'),
             @('Gear note', 'Light spinning gear or a 3-weight fly rod')
         )
@@ -678,7 +678,7 @@ $script:waters = @(
             @('Best water', 'Cottonwood Canyon to Service Creek for smallmouth; the upper river for steelhead'),
             @('Access', 'Cottonwood Canyon, Service Creek, Twickenham, Kimberly, Picture Gorge'),
             @('Hazards', 'Hot summers, remote water, limited cell service'),
-            @('Seasons', 'Smallmouth June–Oct, summer steelhead June–Oct, trout year-round'),
+            @('Seasons', 'Smallmouth June-Oct, summer steelhead June-Oct, trout year-round'),
             @('Gear note', 'Light spinning gear or a 6-weight fly rod for smallmouth')
         )
     },
@@ -699,15 +699,15 @@ $script:waters = @(
             @{ name = 'Boggan''s Oasis'; lat = 46.05; lng = -117.05 }
         )
         regs = @(
-            @('Steelhead', 'Summer run June–Oct; check ODFW'),
-            @('Bull trout', 'Catch and release only — it is illegal to harvest bull trout'),
+            @('Steelhead', 'Summer run June-Oct; check ODFW'),
+            @('Bull trout', 'Catch and release only - it is illegal to harvest bull trout'),
             @('Trout', 'Open year-round in most sections')
         )
         details = @(
             @('Best water', 'Troy to Boggan''s Oasis for steelhead; the upper river for trout'),
             @('Access', 'La Grande, Elgin, Troy, Boggan''s Oasis'),
             @('Hazards', 'Remote canyon; limited cell service; cold water'),
-            @('Seasons', 'Summer steelhead June–Oct, trout year-round'),
+            @('Seasons', 'Summer steelhead June-Oct, trout year-round'),
             @('Gear note', 'Bait and bobber for steelhead; light gear for trout; know bull trout identification')
         )
     },
@@ -726,15 +726,15 @@ $script:waters = @(
             @{ name = 'Joseph (Wallowa Lake)'; lat = 45.25; lng = -117.23 }
         )
         regs = @(
-            @('Steelhead', 'Summer run June–Oct; check ODFW'),
-            @('Bull trout', 'Catch and release only — it is illegal to harvest bull trout'),
+            @('Steelhead', 'Summer run June-Oct; check ODFW'),
+            @('Bull trout', 'Catch and release only - it is illegal to harvest bull trout'),
             @('Wallowa Lake', 'Kokanee and lake trout rules; check ODFW')
         )
         details = @(
             @('Best water', 'Minam to Wallowa for steelhead; Wallowa Lake for kokanee and lake trout'),
             @('Access', 'Minam, Wallowa, Joseph, Wallowa Lake'),
             @('Hazards', 'Remote water; cold, clear streams'),
-            @('Seasons', 'Summer steelhead June–Oct, kokanee year-round in the lake'),
+            @('Seasons', 'Summer steelhead June-Oct, kokanee year-round in the lake'),
             @('Gear note', 'Bait and bobber for steelhead; downriggers for the lake')
         )
     },
@@ -752,15 +752,15 @@ $script:waters = @(
             @{ name = 'Cow Creek Bridge'; lat = 45.60; lng = -116.90 }
         )
         regs = @(
-            @('Steelhead', 'Summer run June–Oct; check ODFW'),
-            @('Bull trout', 'Catch and release only — it is illegal to harvest bull trout'),
+            @('Steelhead', 'Summer run June-Oct; check ODFW'),
+            @('Bull trout', 'Catch and release only - it is illegal to harvest bull trout'),
             @('Trout', 'Open year-round in most sections')
         )
         details = @(
             @('Best water', 'Imnaha to the Snake for steelhead; the upper river for trout'),
             @('Access', 'Imnaha, Cow Creek Bridge, forest roads'),
             @('Hazards', 'Remote canyon; limited cell service; long drives'),
-            @('Seasons', 'Summer steelhead June–Oct, trout year-round'),
+            @('Seasons', 'Summer steelhead June-Oct, trout year-round'),
             @('Gear note', 'Bait and bobber for steelhead; light gear for trout; know bull trout identification')
         )
     },
@@ -786,7 +786,7 @@ $script:waters = @(
             @('Best water', 'Below Owyhee Dam for brown trout; the lower canyon for smallmouth'),
             @('Access', 'Snively Hot Springs, Rome, Owyhee Dam'),
             @('Hazards', 'Remote desert; limited cell service; hot summers'),
-            @('Seasons', 'Brown trout year-round; smallmouth June–Oct'),
+            @('Seasons', 'Brown trout year-round; smallmouth June-Oct'),
             @('Gear note', 'Fly rod for brown trout; light gear for smallmouth')
         )
     },
@@ -857,7 +857,7 @@ $script:waters = @(
             @{ name = 'Copperfield'; lat = 44.93; lng = -116.88 }
         )
         regs = @(
-            @('Sturgeon', 'Catch and release only — check current rules'),
+            @('Sturgeon', 'Catch and release only - check current rules'),
             @('Smallmouth', 'Generous limits in most sections'),
             @('Steelhead', 'Check ODFW for seasons')
         )
@@ -865,7 +865,7 @@ $script:waters = @(
             @('Best water', 'Hells Canyon Dam to Oxbow for smallmouth and sturgeon'),
             @('Access', 'Hells Canyon Dam, Oxbow, Copperfield'),
             @('Hazards', 'Remote canyon; limited cell service; big water'),
-            @('Seasons', 'Smallmouth June–Oct, sturgeon year-round'),
+            @('Seasons', 'Smallmouth June-Oct, sturgeon year-round'),
             @('Gear note', 'Heavy gear for sturgeon; light gear for smallmouth')
         )
     },
@@ -884,7 +884,7 @@ $script:waters = @(
             @{ name = 'Highway 26 bridge'; lat = 45.75; lng = -123.70 }
         )
         regs = @(
-            @('Steelhead', 'Winter season Dec–April; check ODFW'),
+            @('Steelhead', 'Winter season Dec-April; check ODFW'),
             @('Fall chinook', 'Season typically opens in fall'),
             @('Coho', 'Hatchery coho fishery; wild fish must be released')
         )
@@ -892,7 +892,7 @@ $script:waters = @(
             @('Best water', 'The lower river for chinook and steelhead; the forks for trout'),
             @('Access', 'Nehalem, Foss Road, Highway 26 bridges'),
             @('Hazards', 'Tidal influence in the lower river; logjams'),
-            @('Seasons', 'Winter steelhead Dec–April, fall chinook Sept–Nov, coho Oct–Dec'),
+            @('Seasons', 'Winter steelhead Dec-April, fall chinook Sept-Nov, coho Oct-Dec'),
             @('Gear note', 'Bait and bobber for steelhead; spinners for coho')
         )
     },
@@ -914,13 +914,13 @@ $script:waters = @(
         regs = @(
             @('Fall chinook', 'Season typically opens in fall; check dates'),
             @('Coho', 'Hatchery coho fishery; wild fish must be released'),
-            @('Steelhead', 'Winter season Dec–April')
+            @('Steelhead', 'Winter season Dec-April')
         )
         details = @(
             @('Best water', 'The lower river for chinook; the forks for steelhead and trout'),
             @('Access', 'Tillamook, Trask, Highway 6 pullouts'),
             @('Hazards', 'Tidal influence in the lower river'),
-            @('Seasons', 'Fall chinook Sept–Nov, coho Oct–Dec, winter steelhead Dec–April'),
+            @('Seasons', 'Fall chinook Sept-Nov, coho Oct-Dec, winter steelhead Dec-April'),
             @('Gear note', 'Bait and bobber for chinook; spinners for coho')
         )
     },
@@ -940,7 +940,7 @@ $script:waters = @(
             @{ name = 'Highway 6 pullouts'; lat = 45.50; lng = -123.55 }
         )
         regs = @(
-            @('Steelhead', 'Winter season Dec–April; check ODFW'),
+            @('Steelhead', 'Winter season Dec-April; check ODFW'),
             @('Fall chinook', 'Season typically opens in fall'),
             @('Coho', 'Hatchery coho fishery; wild fish must be released')
         )
@@ -948,7 +948,7 @@ $script:waters = @(
             @('Best water', 'The lower river for chinook and steelhead; Highway 6 pullouts for easy access'),
             @('Access', 'Tillamook, Lee''s Camp, Highway 6 pullouts'),
             @('Hazards', 'Tidal influence in the lower river'),
-            @('Seasons', 'Winter steelhead Dec–April, fall chinook Sept–Nov, coho Oct–Dec'),
+            @('Seasons', 'Winter steelhead Dec-April, fall chinook Sept-Nov, coho Oct-Dec'),
             @('Gear note', 'Bait and bobber for steelhead; spinners for coho')
         )
     },
@@ -966,7 +966,7 @@ $script:waters = @(
             @{ name = 'Hebo'; lat = 45.22; lng = -123.90 }
         )
         regs = @(
-            @('Steelhead', 'Winter season Dec–April; check ODFW'),
+            @('Steelhead', 'Winter season Dec-April; check ODFW'),
             @('Fall chinook', 'Season typically opens in fall'),
             @('Coho', 'Hatchery coho fishery; wild fish must be released')
         )
@@ -974,7 +974,7 @@ $script:waters = @(
             @('Best water', 'The lower river for chinook and steelhead; the Little Nestucca for trout'),
             @('Access', 'Pacific City, Blaine, Hebo'),
             @('Hazards', 'Tidal influence in the lower river'),
-            @('Seasons', 'Winter steelhead Dec–April, fall chinook Sept–Nov, coho Oct–Dec'),
+            @('Seasons', 'Winter steelhead Dec-April, fall chinook Sept-Nov, coho Oct-Dec'),
             @('Gear note', 'Bait and bobber for steelhead; spinners for coho')
         )
     },
@@ -994,7 +994,7 @@ $script:waters = @(
             @{ name = 'Ojalla'; lat = 44.78; lng = -123.85 }
         )
         regs = @(
-            @('Steelhead', 'Winter season Dec–April; check ODFW'),
+            @('Steelhead', 'Winter season Dec-April; check ODFW'),
             @('Fall chinook', 'Season typically opens in fall'),
             @('Coho', 'Hatchery coho fishery; wild fish must be released')
         )
@@ -1002,7 +1002,7 @@ $script:waters = @(
             @('Best water', 'The lower river for chinook and steelhead; the forks for trout'),
             @('Access', 'Siletz, Logsden, Ojalla'),
             @('Hazards', 'Tidal influence in the lower river'),
-            @('Seasons', 'Winter steelhead Dec–April, fall chinook Sept–Nov, coho Oct–Dec'),
+            @('Seasons', 'Winter steelhead Dec-April, fall chinook Sept-Nov, coho Oct-Dec'),
             @('Gear note', 'Bait and bobber for steelhead; spinners for coho')
         )
     },
@@ -1022,7 +1022,7 @@ $script:waters = @(
             @{ name = 'Black Rock'; lat = 44.45; lng = -123.75 }
         )
         regs = @(
-            @('Steelhead', 'Winter season Dec–April; check ODFW'),
+            @('Steelhead', 'Winter season Dec-April; check ODFW'),
             @('Fall chinook', 'Season typically opens in fall'),
             @('Coho', 'Hatchery coho fishery; wild fish must be released')
         )
@@ -1030,7 +1030,7 @@ $script:waters = @(
             @('Best water', 'The lower river for chinook and steelhead; the forks for trout'),
             @('Access', 'Tidewater, Alsea, Black Rock'),
             @('Hazards', 'Tidal influence in the lower river'),
-            @('Seasons', 'Winter steelhead Dec–April, fall chinook Sept–Nov, coho Oct–Dec'),
+            @('Seasons', 'Winter steelhead Dec-April, fall chinook Sept-Nov, coho Oct-Dec'),
             @('Gear note', 'Bait and bobber for steelhead; spinners for coho')
         )
     }

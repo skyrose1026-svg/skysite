@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trask River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="A Tillamook-area river with fall chinook, coho, and winter steelhead. The North, South, and East forks are the main tributaries.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Trask River</h1>
+    <p class="region">North Coast</p>
+    <p>A Tillamook-area river with fall chinook, coho, and winter steelhead. The North, South, and East forks are the main tributaries.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Tillamook</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="45.47" data-lng="-123.85">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/chinook-salmon.html">Chinook Salmon</a>
+        <a class="badge badge--fish" href="../fish/coho-salmon.html">Coho Salmon</a>
+        <a class="badge badge--fish" href="../fish/steelhead.html">Steelhead</a>
+        <a class="badge badge--fish" href="../fish/cutthroat-trout.html">Cutthroat Trout</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/chinook-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Chinook Salmon"><span>Chinook Salmon</span></a>
+      <a class="fish-card" href="../fish/coho-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Coho Salmon"><span>Coho Salmon</span></a>
+      <a class="fish-card" href="../fish/steelhead.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Steelhead"><span>Steelhead</span></a>
+      <a class="fish-card" href="../fish/cutthroat-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Cutthroat Trout"><span>Cutthroat Trout</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>North Fork Trask</strong> - joins near Tillamook; steelhead and cutthroat</li>
+        <li><strong>South Fork Trask</strong> - joins near Trask; steelhead and cutthroat</li>
+        <li><strong>East Fork Trask</strong> - joins near Trask; small stream</li>
+        <li><strong>Cedar Creek</strong> - joins near Tillamook; small stream</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fall chinook</td><td>Season typically opens in fall; check dates</td></tr>
+        <tr><td>Coho</td><td>Hatchery coho fishery; wild fish must be released</td></tr>
+        <tr><td>Steelhead</td><td>Winter season Dec-April</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>The lower river for chinook; the forks for steelhead and trout</td></tr>
+        <tr><td>Access</td><td>Tillamook, Trask, Highway 6 pullouts</td></tr>
+        <tr><td>Hazards</td><td>Tidal influence in the lower river</td></tr>
+        <tr><td>Seasons</td><td>Fall chinook Sept-Nov, coho Oct-Dec, winter steelhead Dec-April</td></tr>
+        <tr><td>Gear note</td><td>Bait and bobber for chinook; spinners for coho</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -123.85, "name": "Tillamook", "lat": 45.47 }, { "lng": -123.75, "name": "Trask", "lat": 45.45 }, { "lng": -123.65, "name": "Highway 6", "lat": 45.5 } ]});
+  </script>
+</body>
+</html>

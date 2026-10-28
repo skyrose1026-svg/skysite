@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Williamson River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="A Klamath basin river with redband trout and a protected bull trout population in the upper river. The Sprague River is its main tributary.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Williamson River</h1>
+    <p class="region">Klamath Basin</p>
+    <p>A Klamath basin river with redband trout and a protected bull trout population in the upper river. The Sprague River is its main tributary.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Chiloquin</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="42.57" data-lng="-121.87">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+        <a class="badge badge--fish" href="../fish/bull-trout.html">Bull Trout</a>
+        <a class="badge badge--fish" href="../fish/brook-trout.html">Brook Trout</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      <a class="fish-card" href="../fish/bull-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Bull Trout"><span>Bull Trout</span></a>
+      <a class="fish-card" href="../fish/brook-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Brook Trout"><span>Brook Trout</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>Sprague River</strong> - joins near Chiloquin; redband trout</li>
+        <li><strong>Upper Williamson tributaries</strong> - headwater streams above Klamath Marsh; bull trout</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bull trout</td><td>Catch and release only - it is illegal to harvest bull trout</td></tr>
+        <tr><td>Trout</td><td>Open year-round in most sections; check size and catch limits</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Chiloquin to Modoc Point for redband trout; the upper river for bull trout</td></tr>
+        <tr><td>Access</td><td>Chiloquin, Collier Memorial State Park, Modoc Point</td></tr>
+        <tr><td>Hazards</td><td>Cold, clear water; the river can be murky after storms</td></tr>
+        <tr><td>Seasons</td><td>Trout year-round; best in spring and fall</td></tr>
+        <tr><td>Gear note</td><td>Light spinning gear or a 4-weight fly rod; know bull trout identification</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -121.87, "name": "Chiloquin", "lat": 42.57 }, { "lng": -121.85, "name": "Collier Memorial State Park", "lat": 42.6 }, { "lng": -121.9, "name": "Modoc Point", "lat": 42.5 } ]});
+  </script>
+</body>
+</html>

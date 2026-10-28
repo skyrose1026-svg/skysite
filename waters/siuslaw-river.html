@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siuslaw River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="A central coast river with a strong fall chinook run and hatchery coho. Florence and Mapleton are the main access points.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Siuslaw River</h1>
+    <p class="region">Central Coast</p>
+    <p>A central coast river with a strong fall chinook run and hatchery coho. Florence and Mapleton are the main access points.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Florence</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="43.97" data-lng="-124.1">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/chinook-salmon.html">Chinook Salmon</a>
+        <a class="badge badge--fish" href="../fish/coho-salmon.html">Coho Salmon</a>
+        <a class="badge badge--fish" href="../fish/steelhead.html">Steelhead</a>
+        <a class="badge badge--fish" href="../fish/cutthroat-trout.html">Cutthroat Trout</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/chinook-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Chinook Salmon"><span>Chinook Salmon</span></a>
+      <a class="fish-card" href="../fish/coho-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Coho Salmon"><span>Coho Salmon</span></a>
+      <a class="fish-card" href="../fish/steelhead.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Steelhead"><span>Steelhead</span></a>
+      <a class="fish-card" href="../fish/cutthroat-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Cutthroat Trout"><span>Cutthroat Trout</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>North Fork Siuslaw</strong> - joins near Mapleton; steelhead and cutthroat</li>
+        <li><strong>Lake Creek</strong> - joins near Triangle Lake; steelhead and cutthroat</li>
+        <li><strong>Knowles Creek</strong> - joins near Mapleton; small stream</li>
+        <li><strong>Wildcat Creek</strong> - joins near Mapleton; small stream</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fall chinook</td><td>Season typically opens in fall; check dates</td></tr>
+        <tr><td>Coho</td><td>Hatchery coho fishery; wild fish must be released</td></tr>
+        <tr><td>Steelhead</td><td>Winter season; check ODFW</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Florence and Mapleton for chinook; the forks for steelhead</td></tr>
+        <tr><td>Access</td><td>Florence, Mapleton, Cushman, Lake Creek</td></tr>
+        <tr><td>Hazards</td><td>Tidal influence in the lower river</td></tr>
+        <tr><td>Seasons</td><td>Fall chinook Sept-Nov, coho Oct-Dec, winter steelhead Dec-March</td></tr>
+        <tr><td>Gear note</td><td>Bait and bobber for chinook; spinners for coho</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -124.1, "name": "Florence", "lat": 43.97 }, { "lng": -123.9, "name": "Mapleton", "lat": 43.95 }, { "lng": -123.95, "name": "Cushman", "lat": 43.95 } ]});
+  </script>
+</body>
+</html>

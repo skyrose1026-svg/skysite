@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Willamette River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="Oregon&#39;s biggest river system, draining the Willamette Valley. Spring chinook, winter steelhead, coho, shad, and sturgeon - plus smallmouth in the upp">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Willamette River</h1>
+    <p class="region">Willamette Valley</p>
+    <p>Oregon&#39;s biggest river system, draining the Willamette Valley. Spring chinook, winter steelhead, coho, shad, and sturgeon - plus smallmouth in the upper river and warmwater fish in the sloughs.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Portland</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="45.5" data-lng="-122.67">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/chinook-salmon.html">Chinook Salmon</a>
+        <a class="badge badge--fish" href="../fish/coho-salmon.html">Coho Salmon</a>
+        <a class="badge badge--fish" href="../fish/steelhead.html">Steelhead</a>
+        <a class="badge badge--fish" href="../fish/smallmouth-bass.html">Smallmouth Bass</a>
+        <a class="badge badge--fish" href="../fish/largemouth-bass.html">Largemouth Bass</a>
+        <a class="badge badge--fish" href="../fish/mountain-whitefish.html">Mountain Whitefish</a>
+        <a class="badge badge--fish" href="#">White Sturgeon</a>
+        <a class="badge badge--fish" href="#">Shad</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/chinook-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Chinook Salmon"><span>Chinook Salmon</span></a>
+      <a class="fish-card" href="../fish/coho-salmon.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Coho Salmon"><span>Coho Salmon</span></a>
+      <a class="fish-card" href="../fish/steelhead.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Steelhead"><span>Steelhead</span></a>
+      <a class="fish-card" href="../fish/smallmouth-bass.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Smallmouth Bass"><span>Smallmouth Bass</span></a>
+      <a class="fish-card" href="../fish/largemouth-bass.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Largemouth Bass"><span>Largemouth Bass</span></a>
+      <a class="fish-card" href="../fish/mountain-whitefish.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Mountain Whitefish"><span>Mountain Whitefish</span></a>
+      <a class="fish-card" href="#"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="White Sturgeon"><span>White Sturgeon</span></a>
+      <a class="fish-card" href="#"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Shad"><span>Shad</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>McKenzie River</strong> - joins at Eugene; spring chinook and trout</li>
+        <li><strong>Santiam River</strong> - joins at Albany; spring chinook and steelhead</li>
+        <li><strong>Clackamas River</strong> - joins at Gladstone; winter steelhead and spring chinook</li>
+        <li><strong>Molalla River</strong> - joins near Canby; steelhead and spring chinook</li>
+        <li><strong>Tualatin River</strong> - joins near West Linn; warmwater fish</li>
+        <li><strong>Long Tom River</strong> - joins near Monroe; warmwater fish</li>
+        <li><strong>Luckiamute River</strong> - joins near Independence; small stream</li>
+        <li><strong>Calapooia River</strong> - joins near Albany; small stream</li>
+        <li><strong>Coast Fork Willamette</strong> - joins near Eugene; headwater trout</li>
+        <li><strong>Middle Fork Willamette</strong> - joins near Springfield; trout and spring chinook</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zones</td><td>The Willamette is managed in sections with different rules - check the zone you fish</td></tr>
+        <tr><td>Spring chinook</td><td>Season typically April through August; check dates</td></tr>
+        <tr><td>Sturgeon</td><td>Catch and release in most sections; check current rules</td></tr>
+        <tr><td>Shad</td><td>Generous limits in summer</td></tr>
+        <tr><td>In-season updates</td><td>Check ODFW before every trip</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Oregon City falls for spring chinook; Corvallis and Albany for shad; the upper river for smallmouth</td></tr>
+        <tr><td>Access</td><td>Portland, Oregon City, Corvallis, Albany, Eugene, Salem</td></tr>
+        <tr><td>Hazards</td><td>Big water, boat traffic, strong current</td></tr>
+        <tr><td>Seasons</td><td>Spring chinook April-Aug, shad May-July, winter steelhead Dec-April, smallmouth June-Oct</td></tr>
+        <tr><td>Gear note</td><td>Bait and bobber for chinook; light gear for shad and smallmouth</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -122.67, "name": "Portland", "lat": 45.5 }, { "lng": -122.61, "name": "Oregon City", "lat": 45.36 }, { "lng": -123.1, "name": "Corvallis", "lat": 44.65 }, { "lng": -123.09, "name": "Eugene", "lat": 44.05 } ]});
+  </script>
+</body>
+</html>

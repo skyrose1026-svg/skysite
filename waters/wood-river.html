@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wood River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="A spring-fed river near Fort Klamath with redband trout, some brown trout, and brook trout in the headwaters. Clear, cold, and technical.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Wood River</h1>
+    <p class="region">Klamath Basin</p>
+    <p>A spring-fed river near Fort Klamath with redband trout, some brown trout, and brook trout in the headwaters. Clear, cold, and technical.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Fort Klamath</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="42.88" data-lng="-121.99">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+        <a class="badge badge--fish" href="#">Brown Trout</a>
+        <a class="badge badge--fish" href="../fish/brook-trout.html">Brook Trout</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      <a class="fish-card" href="#"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Brown Trout"><span>Brown Trout</span></a>
+      <a class="fish-card" href="../fish/brook-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Brook Trout"><span>Brook Trout</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>Fort Creek</strong> - joins near Fort Klamath; small stream</li>
+        <li><strong>Crooked Creek</strong> - joins near Fort Klamath; small stream</li>
+        <li><strong>Sevenmile Creek</strong> - joins near the lower river; small stream</li>
+        <li><strong>Annie Creek</strong> - joins near Fort Klamath; small stream</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>T</td><td>r</td></tr>
+        <tr><td>O</td><td>p</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Fort Klamath to the wetland for redband trout; the headwaters for brook trout</td></tr>
+        <tr><td>Access</td><td>Fort Klamath, Kimball State Park, Wood River Wetland</td></tr>
+        <tr><td>Hazards</td><td>Cold, clear water; small stream - fish are easily spooked</td></tr>
+        <tr><td>Seasons</td><td>Trout year-round; best in spring and fall</td></tr>
+        <tr><td>Gear note</td><td>Light spinning gear or a 3-weight fly rod</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -121.99, "name": "Fort Klamath", "lat": 42.88 }, { "lng": -122.05, "name": "Kimball State Park", "lat": 42.95 }, { "lng": -121.95, "name": "Wood River Wetland", "lat": 42.85 } ]});
+  </script>
+</body>
+</html>

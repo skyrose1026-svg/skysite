@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malheur River - Southern Oregon Angler Guide</title>
+  <meta name="description" content="A high desert river with rainbow trout, some brown trout, and warmwater fish in the lower river. Vale and Ontario are the main access points.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Malheur River</h1>
+    <p class="region">Eastern Oregon</p>
+    <p>A high desert river with rainbow trout, some brown trout, and warmwater fish in the lower river. Vale and Ontario are the main access points.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Vale</p>
+    </section>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="44" data-lng="-117.23">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+        <a class="badge badge--fish" href="#">Brown Trout</a>
+        <a class="badge badge--fish" href="../fish/channel-catfish.html">Channel Catfish</a>
+        <a class="badge badge--fish" href="../fish/common-carp.html">Common Carp</a>
+      </div>
+      <div class="fish-grid">
+        <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://images.unsplash.com/photo-1516970739312-08b075784b71?w=400&q=80" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      <a class="fish-card" href="#"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Brown Trout"><span>Brown Trout</span></a>
+      <a class="fish-card" href="../fish/channel-catfish.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Channel Catfish"><span>Channel Catfish</span></a>
+      <a class="fish-card" href="../fish/common-carp.html"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Common Carp"><span>Common Carp</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Tributaries & Nearby Waters</h2>
+      <ul>
+        <li><strong>North Fork Malheur</strong> - joins near Vale; trout</li>
+        <li><strong>Middle Fork Malheur</strong> - joins near Riverside; trout</li>
+        <li><strong>South Fork Malheur</strong> - joins near Riverside; trout</li>
+        <li><strong>Bully Creek</strong> - joins near Vale; small stream</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Trout</td><td>Open year-round in most sections; check size and catch limits</td></tr>
+        <tr><td>Warmwater</td><td>Generous limits on catfish and carp</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Best water</td><td>Vale to Riverside for trout; the lower river for catfish and carp</td></tr>
+        <tr><td>Access</td><td>Vale, Ontario, Riverside</td></tr>
+        <tr><td>Hazards</td><td>Remote desert; hot summers; the river can be murky</td></tr>
+        <tr><td>Seasons</td><td>Trout year-round; catfish and carp in summer</td></tr>
+        <tr><td>Gear note</td><td>Light spinning gear for trout; bait for catfish</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins: [ { "lng": -117.23, "name": "Vale", "lat": 44 }, { "lng": -116.98, "name": "Ontario", "lat": 44.02 }, { "lng": -117.5, "name": "Riverside", "lat": 44.05 } ]});
+  </script>
+</body>
+</html>
