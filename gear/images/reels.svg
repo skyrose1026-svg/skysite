@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Spinning, baitcasting, and fly reels</title>
+  <desc id="desc">Illustrations of a spinning reel with an open spool, a low-profile baitcaster, and a large-arbor fly reel.</desc>
+  <rect width="640" height="360" rx="28" fill="#eaf5f2"/>
+  <g stroke="#155e75" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M86 90h124M280 90h118M470 90h90"/>
+  </g>
+  <g stroke="#155e75" stroke-width="8" fill="#fff">
+    <circle cx="150" cy="190" r="65"/>
+    <path d="M150 125v130M85 190h130" fill="none" stroke="#0e7490" stroke-width="5"/>
+    <path d="M150 255l-24 45h56l-24-45" fill="#dff5f3"/>
+    <path d="M300 150c20-30 70-32 94-5v70c-24 27-74 25-94-5z"/>
+    <path d="M320 163h54v34h-54z" fill="#dff5f3" stroke-width="5"/>
+    <circle cx="515" cy="190" r="66"/>
+    <circle cx="515" cy="190" r="34" fill="#dff5f3" stroke-width="5"/>
+    <path d="M515 124v132M449 190h132" fill="none" stroke="#0e7490" stroke-width="5"/>
+  </g>
+  <g fill="#1c1917" font-family="system-ui,sans-serif" font-size="16" font-weight="700" text-anchor="middle">
+    <text x="150" y="330">SPINNING</text><text x="347" y="330">BAITCASTER</text><text x="515" y="330">FLY</text>
+  </g>
+</svg>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fishing Calendar | Southern Oregon Angler Guide</title>
+  <meta name="description" content="Browse a month-by-month Southern Oregon fishing calendar with typical activity windows, run timing, and a local National Weather Service forecast.">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./fishing-calendar.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav" aria-label="Main">
+      <a href="./index.html">Angler Guide</a>
+      <a href="./fish/fish.html">Fish</a>
+      <a href="./waters/waters.html">Waters</a>
+      <a href="./gear/gear.html">Gear</a>
+      <a href="./setup-builder.html">Setup Builder</a>
+      <a href="./trip-planning.html">Trip Planning</a>
+      <a href="./fishing-calendar.html" aria-current="page">Fishing Calendar</a>
+      <a href="./fishing-log.html">Fishing Log</a>
+      <a href="./newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="./site-search-index.json" data-root="./">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </header>
+  <main>
+    <p class="eyebrow">Plan around the season</p>
+    <h1>Southern Oregon fishing calendar</h1>
+    <p>Use the calendar to see typical activity periods and run timing. Window boundaries are month-level estimates, not exact arrival or departure dates, run predictions, or legal seasons. Actual timing depends on the water, weather, fish returns, and current management decisions.</p>
+
+    <section class="calendar-controls" aria-label="Choose a calendar month">
+      <button class="shop-reset" type="button" data-month-previous aria-label="Previous month">Previous</button>
+      <h2 id="calendar-heading" data-calendar-heading aria-live="polite"></h2>
+      <button class="shop-reset" type="button" data-month-next aria-label="Next month">Next</button>
+    </section>
+    <div class="calendar-legend" aria-label="Calendar key">
+      <span><i class="calendar-legend__mark calendar-legend__mark--active"></i> Typical activity window</span>
+      <span><i class="calendar-legend__mark calendar-legend__mark--peak"></i> Peak activity</span>
+      <span><i class="calendar-legend__mark calendar-legend__mark--turn"></i> Window start or end</span>
+      <span><i class="calendar-legend__mark calendar-legend__mark--weather"></i> Forecast available (next 7 days only)</span>
+    </div>
+    <div class="calendar-table-wrap" role="region" tabindex="0" aria-label="Scrollable monthly fishing calendar">
+      <table class="fishing-calendar" aria-labelledby="calendar-heading">
+        <caption class="visually-hidden" data-calendar-caption></caption>
+        <thead>
+          <tr>
+            <th scope="col">Sunday</th><th scope="col">Monday</th><th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th><th scope="col">Thursday</th><th scope="col">Friday</th>
+            <th scope="col">Saturday</th>
+          </tr>
+        </thead>
+        <tbody data-calendar-grid></tbody>
+      </table>
+    </div>
+    <p class="form-status" data-calendar-status role="status" aria-live="polite"></p>
+    <section class="calendar-selected" data-calendar-selected aria-live="polite" aria-label="Selected fishing date"></section>
+
+    <section class="calendar-weather" aria-labelledby="calendar-weather-heading">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Short-range forecast</p>
+          <h2 id="calendar-weather-heading">Weather near a fishing area</h2>
+        </div>
+        <div class="shop-field">
+          <label for="calendar-location">Forecast area</label>
+          <select id="calendar-location" data-calendar-location>
+            <option value="42.439,-123.328">Grants Pass / Rogue Valley</option>
+            <option value="42.326,-122.876">Medford</option>
+            <option value="42.053,-124.284">Brookings / South Coast</option>
+            <option value="43.217,-123.341">Roseburg / Umpqua</option>
+          </select>
+        </div>
+      </div>
+      <p class="calendar-weather__note">The National Weather Service forecast covers about the next 7 days, not the entire month. Choose a representative area near your trip; conditions can differ by elevation, coast, and water.</p>
+      <p class="form-status" data-weather-status role="status" aria-live="polite"></p>
+      <div class="calendar-weather-grid" data-weather-results aria-live="polite"></div>
+    </section>
+
+    <section class="calendar-periods" aria-labelledby="calendar-periods-heading">
+      <h2 id="calendar-periods-heading">Typical activity windows this month</h2>
+      <p>Highlighted periods describe expected fish activity, migration timing, or common seasonal access—not whether a fishery is open. Dates outside a highlighted period are generally less active for that seasonal pattern; most fish do not become biologically dormant.</p>
+      <div class="calendar-period-list" data-calendar-periods></div>
+    </section>
+
+    <aside class="gear-note">
+      <strong>Before you go:</strong> Fish presence does not mean harvest is allowed. Check current <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">ODFW regulations</a> for the exact water, dates, species, and retention rules. Offshore seasons and quotas can change during the year.
+      <strong>Bull trout are intentionally not listed as a target.</strong> They have strict protections; check current rules and avoid harming or retaining them.
+    </aside>
+    <p><a class="button button--secondary" href="./fishing-log.html">Keep a personal fishing log</a></p>
+  </main>
+  <footer class="site-footer">
+    <p>Seasonal notes are general planning guidance. Confirm current conditions, access, and regulations before fishing.</p>
+  </footer>
+  <script src="./site-search.js" defer></script>
+</body>
+</html>

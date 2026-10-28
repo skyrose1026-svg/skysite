@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Fishing tackle box</title>
+  <desc id="desc">An open tackle box with divided trays for lures, hooks, and small fishing accessories.</desc>
+  <rect width="640" height="360" rx="28" fill="#eaf5f2"/>
+  <path d="M153 169h334l-18 126H171z" fill="#dff5f3" stroke="#155e75" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M180 169v-55h280v55" fill="#fff" stroke="#155e75" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M215 115v52m64-52v52m64-52v52m64-52v52" stroke="#0e7490" stroke-width="6"/>
+  <path d="M245 170v123m90-123v123m90-123v123" stroke="#155e75" stroke-width="7"/>
+  <path d="M275 88q0-30 30-30h50q30 0 30 30v27H275z" fill="none" stroke="#155e75" stroke-width="9"/>
+  <path d="M173 207h294m-279 43h264" stroke="#0e7490" stroke-width="4" opacity=".55"/>
+  <g fill="#d7824c" stroke="#155e75" stroke-width="4">
+    <path d="M196 131l20-13 18 13-18 13z"/>
+    <path d="M302 131l20-13 18 13-18 13z"/>
+    <path d="M392 131l20-13 18 13-18 13z"/>
+  </g>
+  <g fill="#1c1917" font-family="system-ui,sans-serif" font-size="18" font-weight="700" text-anchor="middle">
+    <text x="320" y="337">TACKLE ORGANIZER</text>
+  </g>
+</svg>

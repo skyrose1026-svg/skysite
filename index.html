@@ -9,12 +9,26 @@
 </head>
 <body>
   <header class="site-header">
-    <nav class="site-nav">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav">
       <a href="./index.html">Angler Guide</a>
       <a href="./fish/fish.html">Fish</a>
       <a href="./waters/waters.html">Waters</a>
+      <a href="./gear/gear.html">Gear</a>
+      <a href="./setup-builder.html">Setup Builder</a>
+      <a href="./trip-planning.html">Trip Planning</a>
+      <a href="./fishing-calendar.html">Fishing Calendar</a>
+      <a href="./fishing-log.html">Fishing Log</a>
+      <a href="./newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
-    </nav>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="./site-search-index.json" data-root="./">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
   </header>
 
   <main class="page-shell">
@@ -27,11 +41,14 @@
         <div class="hero__actions">
           <a class="button button--primary" href="./waters/waters.html">Explore waters</a>
           <a class="button button--secondary" href="./fish/fish.html">Target species</a>
+          <a class="button button--secondary" href="./gear/gear.html">Choose your gear</a>
+          <a class="button button--secondary" href="./setup-builder.html">Build a setup</a>
+          <a class="button button--secondary" href="./trip-planning.html">Plan a trip</a>
         </div>
 
         <ul class="hero__stats" aria-label="Fishing guide stats">
           <li>
-            <strong>20</strong>
+            <strong>26</strong>
             <span>Fish profiles in this guide</span>
           </li>
           <li>
@@ -51,10 +68,31 @@
       </figure>
     </section>
 
+    <section class="section-block">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Plan and remember</p>
+          <h2>Tools for your next fishing day</h2>
+        </div>
+      </div>
+      <div class="newsletter-grid">
+        <article class="newsletter-card">
+          <h2>Fishing Calendar</h2>
+          <p>Browse typical seasonal opportunities for each month and open the fish guides for more details.</p>
+          <a href="./fishing-calendar.html">See what to target by month &rarr;</a>
+        </article>
+        <article class="newsletter-card">
+          <h2>Personal Fishing Log</h2>
+          <p>Keep catch, gear, and trip notes privately in this browser. Export your entries whenever you like.</p>
+          <a href="./fishing-log.html">Start a personal log &rarr;</a>
+        </article>
+      </div>
+    </section>
+
     <section class="section-block stats-strip" aria-label="Oregon fishing stats">
       <div class="stat-card">
         <span class="stat-card__label">Fish profiles in this guide</span>
-        <strong>20</strong>
+        <strong>26</strong>
         <p>Species with dedicated identification and fishing pages.</p>
       </div>
       <div class="stat-card">
@@ -66,38 +104,6 @@
         <span class="stat-card__label">State fish</span>
         <strong>Chinook Salmon</strong>
         <p>Oregon’s official state fish.</p>
-      </div>
-    </section>
-
-    <section class="section-block fact-block">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Oregon fish facts</p>
-          <h2>Wild water, unique species</h2>
-        </div>
-      </div>
-
-      <div class="fact-grid">
-        <article class="fact-card">
-          <span class="fact-card__tag">State Fish</span>
-          <h3>Chinook Salmon</h3>
-          <p>Chinook salmon is Oregon’s official state fish and one of the state’s best-known native salmon.</p>
-          <a href="./fish/chinook-salmon.html">See Chinook details &rarr;</a>
-        </article>
-
-        <article class="fact-card">
-          <span class="fact-card__tag">Salmon Run</span>
-          <h3>Spring and fall runs</h3>
-          <p>Southern Oregon is famous for spring and fall salmon runs, especially in the Rogue, Chetco, and Illinois systems.</p>
-          <a href="./waters/rogue-river.html">Explore Rogue River &rarr;</a>
-        </article>
-
-        <article class="fact-card">
-          <span class="fact-card__tag">Native waters</span>
-          <h3>Cold-water heritage</h3>
-          <p>Many Oregon trout and salmon fisheries depend on clean, high-elevation water and healthy stream connectivity.</p>
-          <a href="./fish/fish.html">Browse Oregon species &rarr;</a>
-        </article>
       </div>
     </section>
 
@@ -230,10 +236,43 @@
         <a class="button button--primary" href="./waters/snake-river.html">Explore Snake River</a>
       </div>
     </section>
+
+    <section class="section-block fact-block">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Oregon fish facts</p>
+          <h2>Wild water, unique species</h2>
+        </div>
+      </div>
+
+      <div class="fact-grid">
+        <article class="fact-card">
+          <span class="fact-card__tag">State Fish</span>
+          <h3>Chinook Salmon</h3>
+          <p>Chinook salmon is Oregon’s official state fish and one of the state’s best-known native salmon.</p>
+          <a href="./fish/chinook-salmon.html">See Chinook details &rarr;</a>
+        </article>
+
+        <article class="fact-card">
+          <span class="fact-card__tag">Salmon Run</span>
+          <h3>Spring and fall runs</h3>
+          <p>Southern Oregon is famous for spring and fall salmon runs, especially in the Rogue, Chetco, and Illinois systems.</p>
+          <a href="./waters/rogue-river.html">Explore Rogue River &rarr;</a>
+        </article>
+
+        <article class="fact-card">
+          <span class="fact-card__tag">Native waters</span>
+          <h3>Cold-water heritage</h3>
+          <p>Many Oregon trout and salmon fisheries depend on clean, high-elevation water and healthy stream connectivity.</p>
+          <a href="./fish/fish.html">Browse Oregon species &rarr;</a>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <p>Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
   </footer>
+  <script src="./site-search.js" defer></script>
 </body>
 </html>

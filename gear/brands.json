@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Abu Garcia",
+    "url": "https://www.purefishing.com/collections/abu-garcia",
+    "description": "Reels and fishing equipment"
+  },
+  {
+    "name": "Berkley",
+    "url": "https://www.berkley-fishing.com/",
+    "description": "Baits, line, and terminal tackle"
+  },
+  {
+    "name": "Daiwa",
+    "url": "https://www.daiwa.us/collections/spinning-reels",
+    "description": "Spinning reels and tackle"
+  },
+  {
+    "name": "Orvis",
+    "url": "https://www.orvis.com/product/clearwater-fly-rod/3ASN.html",
+    "description": "Fly rods and fly-fishing gear"
+  },
+  {
+    "name": "Owner",
+    "url": "https://ownerhooks.com/",
+    "description": "Hooks and terminal tackle"
+  },
+  {
+    "name": "PENN",
+    "url": "https://www.pennfishing.com/products/battle-iv-spinning-reel",
+    "description": "Spinning reels and saltwater tackle"
+  },
+  {
+    "name": "Plano",
+    "url": "https://www.planooutdoors.com/products/guide-series",
+    "description": "Tackle storage and gear cases"
+  },
+  {
+    "name": "Pflueger",
+    "url": "https://www.pfluegerfishing.com/products/president-spinning-reel",
+    "description": "Spinning reels"
+  },
+  {
+    "name": "Rapala",
+    "url": "https://www.rapala.com/us_en/x-rap",
+    "description": "Hard baits, lures, and fishing tools"
+  },
+  {
+    "name": "Ugly Stik",
+    "url": "https://www.uglystik.com/products/gx2-spinning-rod",
+    "description": "Spinning and casting rods"
+  }
+]

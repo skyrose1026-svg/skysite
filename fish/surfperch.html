@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surfperch | Southern Oregon Angler Guide</title>
+  <meta name="description" content="Explore Oregon surfperch species, beach and estuary locations, surf-fishing tackle, and current regulations.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav" aria-label="Main">
+      <a href="../index.html">Angler Guide</a>
+      <a href="./fish.html" aria-current="page">Fish</a>
+      <a href="../waters/waters.html">Waters</a>
+      <a href="../gear/gear.html">Gear</a>
+      <a href="../setup-builder.html">Setup Builder</a>
+      <a href="../trip-planning.html">Trip Planning</a>
+      <a href="../fishing-calendar.html">Fishing Calendar</a>
+      <a href="../fishing-log.html">Fishing Log</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </header>
+  <main>
+    <h1>Surfperch</h1>
+    <img class="fish-photo" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Rainbow_surfperch%2C_Kelp_Forest%2C_Baltimore_aquarium.jpg/500px-Rainbow_surfperch%2C_Kelp_Forest%2C_Baltimore_aquarium.jpg" alt="Rainbow surfperch, a member of the Pacific surfperch family">
+    <p class="photo-credit"><a href="https://commons.wikimedia.org/wiki/File:Rainbow_surfperch,_Kelp_Forest,_Baltimore_aquarium.jpg" rel="noopener noreferrer">Photo: Wikimedia Commons</a> (rainbow surfperch shown; Oregon beaches also hold other surfperch species)</p>
+    <p class="lede">Surfperch is a family of nearshore fish that includes redtail and silver surfperch. They offer accessible beach and jetty fishing along the Oregon coast; identify the species and check local rules.</p>
+
+    <section>
+      <h2>How to identify</h2>
+      <ul>
+        <li>Deep, laterally compressed body with a small mouth.</li>
+        <li>Color and markings vary by species; redtail surfperch have a reddish tail.</li>
+        <li>Surfperch are live-bearing fish: females give birth to developed young.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Where to find them</h2>
+      <p>Approximate locations only. Check local access and current regulations before fishing.</p>
+      <div id="map-surfperch" class="map map--detail" data-fish-map data-pins='[{&quot;name&quot;:&quot;Brookings coastal access region&quot;,&quot;lat&quot;:42.052,&quot;lng&quot;:-124.282},{&quot;name&quot;:&quot;Gold Beach / Rogue estuary region&quot;,&quot;lat&quot;:42.417,&quot;lng&quot;:-124.421},{&quot;name&quot;:&quot;Bandon coastal access region&quot;,&quot;lat&quot;:43.119,&quot;lng&quot;:-124.414},{&quot;name&quot;:&quot;Charleston / Coos Bay region&quot;,&quot;lat&quot;:43.345,&quot;lng&quot;:-124.322}]' role="application" aria-label="Map of locations for surfperch"></div>
+      <ul>
+        <li><strong>Brookings beaches and harbor:</strong> look for safe surf conditions and public access.</li>
+        <li><strong>Gold Beach and Bandon:</strong> sandy beaches and estuary edges can hold surfperch.</li>
+        <li><strong>Coos Bay area:</strong> public shoreline access varies by location.</li>
+      </ul>
+      <p>See the <a href="../waters/waters.html#saltwater-access-heading">coastal access map</a> for approximate regions. Markers are not precise fishing locations.</p>
+    </section>
+
+    <section>
+      <h2>What they eat and what to use</h2>
+      <table class="table">
+        <thead><tr><th>Food</th><th>Where</th><th>Common presentation</th></tr></thead>
+        <tbody>
+          <tr><td>Sand crabs, worms, and small crustaceans</td><td>In the surf zone</td><td>Small bait hooks with legal bait</td></tr>
+          <tr><td>Small fish and invertebrates</td><td>Along beaches and jetties</td><td>Small soft plastics or light jigs</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>When they feed</h2>
+      <p>Moving water can stir up prey in the surf zone. Check tide and surf forecasts, fish in daylight when possible, and never enter dangerous surf to reach a spot.</p>
+    </section>
+
+    <section>
+      <h2>Regulations</h2>
+      <div class="alert"><p><strong>Always verify before you go.</strong> Identify the surfperch species and check current marine bag limits. Use public access points and respect closures and private property.</p></div>
+      <p><a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Check current ODFW regulations</a>.</p>
+    </section>
+
+    <section>
+      <h2>Stocking</h2>
+      <p>Surfperch are wild marine fish and are not stocked.</p>
+    </section>
+
+    <section>
+      <h2>Gear basics</h2>
+      <ul>
+        <li>Light to medium spinning rod, 9 to 11 feet for beach casting.</li>
+        <li>Spinning reel with braided line and a leader.</li>
+        <li>Small surfperch rig or jigs, following current hook rules.</li>
+        <li>Watch for sneaker waves and strong currents; wear suitable safety gear.</li>
+      </ul>
+      <p><a class="button button--primary" href="../gear/shop.html?category=all&amp;q=surfperch">Browse surfperch gear</a></p>
+      <p><a class="button button--secondary" href="../setup-builder.html?fish=surfperch">Build a setup for this fish</a></p>
+    </section>
+
+    <section id="fun-facts">
+      <h2>Fun facts</h2>
+      <ul>
+        <li>Surfperch give birth to live young, which is uncommon among fish.</li>
+        <li>Many surfperch feed in nearshore water where waves stir up small prey.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Fish photos via Wikimedia Commons. Fishing information is a guide, not the law; always check current ODFW rules.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./fish-map.js" defer></script>
+  <script src="../site-search.js" defer></script>
+</body>
+</html>

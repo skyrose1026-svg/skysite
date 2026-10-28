@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Terminal tackle basics</title>
+  <desc id="desc">Hooks, a bobber, a sinker, and a swivel represent small terminal tackle items.</desc>
+  <rect width="640" height="360" rx="28" fill="#eaf5f2"/>
+  <path d="M145 83v96q0 53 48 53t48-53v-16" fill="none" stroke="#155e75" stroke-width="10" stroke-linecap="round"/>
+  <path d="M300 84v113" stroke="#155e75" stroke-width="8"/>
+  <ellipse cx="300" cy="86" rx="30" ry="44" fill="#d66b55" stroke="#155e75" stroke-width="6"/>
+  <path d="M300 130v68" stroke="#fff" stroke-width="5"/>
+  <path d="M430 105l40 40-40 40-40-40z" fill="#a8b8b8" stroke="#155e75" stroke-width="6"/>
+  <circle cx="535" cy="144" r="20" fill="#dff5f3" stroke="#155e75" stroke-width="7"/>
+  <path d="M515 144h-24m64 0h24" stroke="#155e75" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#1c1917" font-family="system-ui,sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    <text x="195" y="300">HOOK</text><text x="300" y="300">BOBBER</text><text x="430" y="300">SINKER</text><text x="535" y="300">SWIVEL</text>
+  </g>
+</svg>

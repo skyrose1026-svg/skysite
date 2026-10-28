@@ -3,18 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yellow Perch  Southern Oregon Angler Guide</title>
+  <title>Yellow Perch | Southern Oregon Angler Guide</title>
   <meta name="description" content="Where to catch yellow perch in Southern Oregon, what they eat, the lures that match, when they're active, and current regulations.">
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
   <header class="site-header">
-    <nav class="site-nav">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav">
       <a href="../index.html">Angler Guide</a>
       <a href="./fish.html">Fish</a>
       <a href="../waters/waters.html">Waters</a>
+      <a href="../gear/gear.html">Gear</a>
+      <a href="../setup-builder.html">Setup Builder</a>
+      <a href="../trip-planning.html">Trip Planning</a>
+      <a href="../fishing-calendar.html">Fishing Calendar</a>
+      <a href="../fishing-log.html">Fishing Log</a>
+      <a href="../newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
-    </nav>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
   </header>
 
   <main>
@@ -25,6 +40,8 @@
 
     <section>
       <h2>Where to find them</h2>
+      <p>Approximate locations only. Check local access and current regulations before fishing.</p>
+      <div id="map-yellow-perch" class="map map--detail" data-fish-map data-pins='[{&quot;name&quot;:&quot;Emigrant Reservoir&quot;,&quot;lat&quot;:42.18,&quot;lng&quot;:-122.66},{&quot;name&quot;:&quot;Agate Lake&quot;,&quot;lat&quot;:42.44,&quot;lng&quot;:-122.83},{&quot;name&quot;:&quot;Lake of the Woods&quot;,&quot;lat&quot;:42.096,&quot;lng&quot;:-122.113}]' role="application" aria-label="Map of locations for yellow perch"></div>
       <ul>
         <li><strong>Emigrant Reservoir</strong>  perch schools around structure</li>
         <li><strong>Agate Lake</strong>  good numbers</li>
@@ -127,11 +144,23 @@
         <li>Worms and maggots</li>
         <li>A bucket  you'll likely fill it</li>
       </ul>
+      <p><a class="button button--primary" href="../gear/shop.html?category=all&amp;q=panfish">Browse shop recommendations for Yellow Perch</a></p>
+      <p><a class="button button--secondary" href="../setup-builder.html?fish=yellow-perch">Build a setup for this fish</a></p>
+    </section>
+    <section id="fun-facts">
+      <h2>Fun facts</h2>
+      <ul>
+        <li>Yellow perch are known for their golden sides and dark vertical bars.</li>
+        <li>They often travel in schools, so one catch can reveal a group.</li>
+      </ul>
     </section>
   </main>
 
   <footer class="site-footer">
     <p>Fish photos via Wikimedia Commons  click any photo for its source and license. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
   </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./fish-map.js" defer></script>
+  <script src="../site-search.js" defer></script>
 </body>
 </html>

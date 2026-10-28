@@ -26,28 +26,50 @@
   function fetchNwsForecast(lat, lng) {
     var pointsUrl = "https://api.weather.gov/points/" + lat + "," + lng;
     return fetch(pointsUrl, { headers: { "User-Agent": "SouthernOregonAnglerGuide (student project)" } })
-      .then(function (res) { return res.json(); })
+      .then(function (res) {
+        if (!res.ok) throw new Error("National Weather Service location lookup failed (" + res.status + ").");
+        return res.json();
+      })
       .then(function (points) {
-        return fetch(points.properties.forecast, { headers: { "User-Agent": "SouthernOregonAnglerGuide (student project)" } })
-          .then(function (res) { return res.json(); });
+        var forecastUrl = points.properties && points.properties.forecast;
+        if (!forecastUrl) throw new Error("National Weather Service did not provide a forecast for this location.");
+        return fetch(forecastUrl, { headers: { "User-Agent": "SouthernOregonAnglerGuide (student project)" } })
+          .then(function (res) {
+            if (!res.ok) throw new Error("National Weather Service forecast request failed (" + res.status + ").");
+            return res.json();
+          });
       });
   }
 
   function renderWeather(container, data) {
-    var periods = data.properties.periods;
+    var periods = data.properties && data.properties.periods;
     if (!periods || periods.length === 0) {
-      container.innerHTML = "<p>Weather forecast unavailable.</p>";
+      container.textContent = "Weather forecast unavailable.";
       return;
     }
-    var current = periods[0];
-    var html = '<div class="weather-current">';
-    html += '<div class="weather-day"><strong>Now</strong><br>' + nwsIconToEmoji(current.shortForecast) + '<br>' + current.temperature + '°F<br>' + current.shortForecast + '<br>Wind ' + current.windSpeed + '<br></div>';
-    for (var i = 1; i < 8 && i < periods.length; i++) {
-      var p = periods[i];
-      html += '<div class="weather-day"><strong>' + p.name + '</strong><br>' + nwsIconToEmoji(p.shortForecast) + '<br>' + p.temperature + '°F<br>' + p.shortForecast + '<br>Wind ' + p.windSpeed + '<br>Rain ' + (p.probabilityOfPrecipitation && p.probabilityOfPrecipitation.value !== null ? p.probabilityOfPrecipitation.value : 0) + '%</div>';
-    }
-    html += '</div>';
-    container.innerHTML = html;
+    var forecast = document.createElement("div");
+    forecast.className = "weather-current";
+    periods.slice(0, 8).forEach(function (period, index) {
+      var day = document.createElement("div");
+      day.className = "weather-day";
+      var heading = document.createElement("strong");
+      heading.textContent = period.name || (index === 0 ? "Current forecast" : "Forecast");
+      var summary = document.createElement("p");
+      summary.textContent = nwsIconToEmoji(period.shortForecast || "") + " " + (period.temperature === undefined ? "Temperature unavailable" : period.temperature + "°F");
+      var conditions = document.createElement("p");
+      conditions.textContent = period.shortForecast || "Forecast unavailable";
+      var wind = document.createElement("p");
+      wind.textContent = "Wind " + (period.windSpeed || "unavailable");
+      day.append(heading, summary, conditions, wind);
+      if (index > 0) {
+        var chance = period.probabilityOfPrecipitation && period.probabilityOfPrecipitation.value;
+        var rain = document.createElement("p");
+        rain.textContent = "Rain " + (chance === null || chance === undefined ? "unavailable" : chance + "%");
+        day.append(rain);
+      }
+      forecast.append(day);
+    });
+    container.replaceChildren(forecast);
   }
 
   function moonPhase(date) {

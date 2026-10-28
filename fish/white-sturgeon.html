@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Sturgeon | Southern Oregon Angler Guide</title>
+  <meta name="description" content="Identify Oregon white sturgeon, explore Columbia River locations, learn common tackle, and verify current sturgeon regulations.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav" aria-label="Main">
+      <a href="../index.html">Angler Guide</a>
+      <a href="./fish.html" aria-current="page">Fish</a>
+      <a href="../waters/waters.html">Waters</a>
+      <a href="../gear/gear.html">Gear</a>
+      <a href="../setup-builder.html">Setup Builder</a>
+      <a href="../trip-planning.html">Trip Planning</a>
+      <a href="../fishing-calendar.html">Fishing Calendar</a>
+      <a href="../fishing-log.html">Fishing Log</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </header>
+  <main>
+    <h1>White Sturgeon</h1>
+    <img class="fish-photo" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/White_Sturgeon_2508.jpg/500px-White_Sturgeon_2508.jpg" alt="White sturgeon showing its long body and bony scutes">
+    <p class="photo-credit"><a href="https://commons.wikimedia.org/wiki/File:White_Sturgeon_2508.jpg" rel="noopener noreferrer">Photo: Wikimedia Commons</a></p>
+    <p class="lede">A long-lived native fish of Oregon rivers and estuaries. White sturgeon are found mainly in the Columbia River system; check the current rules for the exact area before fishing.</p>
+
+    <section>
+      <h2>How to identify</h2>
+      <ul>
+        <li>Long, shark-like body with five rows of hard bony scutes.</li>
+        <li>Four barbels sit in front of the underslung mouth.</li>
+        <li>The upper lobe of the tail is longer than the lower lobe.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Where to find them</h2>
+      <p>White sturgeon are associated with large rivers and estuaries. These markers show broad river regions, not exact fishing spots.</p>
+      <div id="sturgeon-map" class="map map--detail" data-fish-map data-pins='[{"name":"Columbia River near Astoria","lat":46.187,"lng":-123.831},{"name":"Lower Willamette River","lat":45.613,"lng":-122.679}]' role="application" aria-label="Map of white sturgeon river regions"></div>
+      <ul>
+        <li><strong>Columbia River:</strong> the main Oregon sturgeon fishery, with rules that differ by river section.</li>
+        <li><strong>Lower Willamette River:</strong> sturgeon occur in the lower river; check local regulations and access.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What they eat and what to use</h2>
+      <table class="table">
+        <thead><tr><th>Food</th><th>Where</th><th>Common presentation</th></tr></thead>
+        <tbody>
+          <tr><td>Bottom-dwelling invertebrates and fish</td><td>Near the riverbed</td><td>Legal bait rigs fished close to bottom</td></tr>
+          <tr><td>Smelt and other small fish</td><td>Seasonal migrations</td><td>Fresh bait on a legal bottom rig</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>When they feed</h2>
+      <p>Sturgeon may feed throughout the year, but water level, current, and seasonal movement affect where they hold. Match the rig to the current and fish only where conditions are safe.</p>
+    </section>
+
+    <section>
+      <h2>Regulations</h2>
+      <div class="alert"><p><strong>Always verify before you go.</strong> Sturgeon seasons, size rules, and retention allowances vary by river section and can change. Do not keep a fish unless current rules explicitly allow it.</p></div>
+      <p><a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Check current ODFW regulations</a>.</p>
+    </section>
+
+    <section>
+      <h2>Stocking</h2>
+      <p>White sturgeon are native and naturally reproduce; they are not a routine hatchery-stocked sport fish.</p>
+    </section>
+
+    <section>
+      <h2>Gear basics</h2>
+      <ul>
+        <li>Heavy conventional rod and reel matched to the current and fish size.</li>
+        <li>Strong main line and an abrasion-resistant leader.</li>
+        <li>Use legal tackle and bait for the exact river section.</li>
+        <li>Plan for quick release and keep fish in the water when possible.</li>
+      </ul>
+      <p><a class="button button--primary" href="../gear/shop.html?category=all&amp;q=sturgeon">Browse sturgeon gear</a></p>
+      <p><a class="button button--secondary" href="../setup-builder.html?fish=white-sturgeon">Build a setup for this fish</a></p>
+    </section>
+
+    <section id="fun-facts">
+      <h2>Fun facts</h2>
+      <ul>
+        <li>White sturgeon are among the largest freshwater fish in North America.</li>
+        <li>Their skeleton is mostly cartilage, and rows of bony scutes protect their body.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Fish photos via Wikimedia Commons. Fishing information is a guide, not the law; always check current ODFW rules.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./fish-map.js" defer></script>
+  <script src="../site-search.js" defer></script>
+</body>
+</html>

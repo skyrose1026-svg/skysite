@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gear Shop | Southern Oregon Angler Guide</title>
+  <meta name="description" content="Browse placeholder fishing gear with category-specific filters, illustrations, example specifications, and estimated price ranges.">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="./cart-store.js" defer></script>
+  <script src="./shop.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav" aria-label="Main">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="../waters/waters.html">Waters</a>
+      <a href="./gear.html" aria-current="page">Gear</a>
+      <a href="../setup-builder.html">Setup Builder</a>
+      <a href="../trip-planning.html">Trip Planning</a>
+      <a href="../fishing-calendar.html">Fishing Calendar</a>
+      <a href="../fishing-log.html">Fishing Log</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form></header>
+  <main>
+    <p><a href="./gear.html">&larr; Gear guide</a></p>
+    <h1>Gear Shop</h1>
+    <p>Browse a broad catalog of fishing gear and narrow the options with practical filters. Listings include placeholders and real brand/model examples; this is not a store and checkout is not connected.</p>
+    <p class="shop-cart-link"><a class="button button--primary" href="./cart.html">View planning cart <span data-cart-count>(0 items)</span></a></p>
+    <p class="gear-note"><strong>Important:</strong> planning price ranges and availability are estimates, not live offers. Brand names and links identify example products only; this site is not affiliated with or endorsed by those companies.</p>
+    <section aria-labelledby="shop-brands-heading">
+      <h2 id="shop-brands-heading">Shop by brand</h2>
+      <p>Choose a brand to browse its example products, or use the official-site link to check current product details.</p>
+      <div class="shop-brand-grid" data-shop-brands></div>
+    </section>
+    <section aria-labelledby="shop-categories-heading">
+      <h2 id="shop-categories-heading">Choose a category</h2>
+      <div class="shop-categories" data-shop-categories role="group" aria-label="Gear categories"></div>
+    </section>
+    <section aria-labelledby="shop-category-title">
+      <h2 id="shop-category-title" data-category-title>Gear</h2>
+      <div class="shop-controls">
+        <div class="shop-field">
+          <label for="product-search">Search products</label>
+          <input type="search" id="product-search" placeholder="Try “7 ft medium-heavy rod”">
+        </div>
+        <div class="shop-filter-grid" data-shop-filters role="group" aria-label="Filter products"></div>
+        <button class="shop-reset" type="button" data-shop-reset>Clear filters</button>
+      </div>
+      <p class="shop-results-summary" data-shop-summary aria-live="polite"></p>
+      <div class="shop-product-grid" data-product-grid aria-live="polite"></div>
+    </section>
+  </main>
+  <footer class="site-footer"><p>Photos are credited to their creators and linked to license/source pages; some are representative and not exact branded models. Brand links lead to official manufacturer pages. This guide is not affiliated with or endorsed by those companies. Check current <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">ODFW regulations</a> before selecting tackle. Planning cart selections are saved only in this browser; checkout is not connected.</p></footer>
+  <script src="../site-search.js" defer></script>
+</body>
+</html>

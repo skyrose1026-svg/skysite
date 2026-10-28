@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Fishing lure assortment</title>
+  <desc id="desc">A spinner, spoon, crankbait, soft plastic grub, and fly represent common lure styles.</desc>
+  <rect width="640" height="360" rx="28" fill="#eaf5f2"/>
+  <g fill="none" stroke="#155e75" stroke-width="7" stroke-linecap="round">
+    <path d="M85 85v95q0 25 25 25t25-25v-25"/>
+    <path d="M330 80v80q0 25 25 25t25-25"/>
+    <path d="M545 85v85q0 25 25 25"/>
+  </g>
+  <path d="M124 112l55-26-8 61z" fill="#f3bd55" stroke="#155e75" stroke-width="5"/>
+  <path d="M280 115q50-45 100 0-50 85-100 0" fill="#60a5a8" stroke="#155e75" stroke-width="5"/>
+  <path d="M441 126q30-45 72 0v42q-42 45-72 0z" fill="#d7824c" stroke="#155e75" stroke-width="5"/>
+  <circle cx="457" cy="139" r="4" fill="#fff"/>
+  <path d="M100 260c20-25 55-25 75 0-20 25-55 25-75 0zM265 260q25-35 50 0t50 0" fill="#72a67a" stroke="#166534" stroke-width="5"/>
+  <path d="M498 252l22-18m-22 18l-22-18m22 18l18 40m-18-40l-18 40" fill="none" stroke="#b45309" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#1c1917" font-family="system-ui,sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    <text x="145" y="330">SPINNER</text><text x="330" y="330">SPOON</text><text x="475" y="330">HARD BAIT</text>
+  </g>
+</svg>

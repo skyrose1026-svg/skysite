@@ -3,18 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Northern Pikeminnow  Southern Oregon Angler Guide</title>
+  <title>Northern Pikeminnow | Southern Oregon Angler Guide</title>
   <meta name="description" content="Where to catch northern pikeminnow in Southern Oregon, what they eat, the lures that match, when they're active, and current regulations.">
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
   <header class="site-header">
-    <nav class="site-nav">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav">
       <a href="../index.html">Angler Guide</a>
       <a href="./fish.html">Fish</a>
       <a href="../waters/waters.html">Waters</a>
+      <a href="../gear/gear.html">Gear</a>
+      <a href="../setup-builder.html">Setup Builder</a>
+      <a href="../trip-planning.html">Trip Planning</a>
+      <a href="../fishing-calendar.html">Fishing Calendar</a>
+      <a href="../fishing-log.html">Fishing Log</a>
+      <a href="../newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
-    </nav>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
   </header>
 
   <main>
@@ -25,6 +40,8 @@
 
     <section>
       <h2>Where to find them</h2>
+      <p>Approximate locations only. Check local access and current regulations before fishing.</p>
+      <div id="map-northern-pikeminnow" class="map map--detail" data-fish-map data-pins='[{&quot;name&quot;:&quot;Rogue River (mainstem)&quot;,&quot;lat&quot;:42.44,&quot;lng&quot;:-123.32},{&quot;name&quot;:&quot;Applegate Reservoir&quot;,&quot;lat&quot;:42.1,&quot;lng&quot;:-123.35}]' role="application" aria-label="Map of locations for northern pikeminnow"></div>
       <ul>
         <li><strong>Rogue River (mainstem)</strong>  common throughout; often caught while trout fishing</li>
         <li><strong>Applegate Reservoir</strong>  pikeminnow in the shallows</li>
@@ -120,9 +137,19 @@
     <section>
       <h2>Gear basics</h2>
       <ul>
-        <li>Light spinning rod</li>
+        <li>Light or ultralight spinning rod, about 5.5 to 7 feet, with a 1000 to 2500 size spinning reel</li>
+        <li>6 to 10 lb monofilament main line; match the rod rating and use a soft drag</li>
         <li>Worms and small spinners</li>
         <li>A soft touch  their mouths tear free easily</li>
+      </ul>
+      <p><a class="button button--primary" href="../gear/shop.html?category=all&amp;q=all-around">Browse shop recommendations for Northern Pikeminnow</a></p>
+      <p><a class="button button--secondary" href="../setup-builder.html?fish=northern-pikeminnow">Build a setup for this fish</a></p>
+    </section>
+    <section id="fun-facts">
+      <h2>Fun facts</h2>
+      <ul>
+        <li>Northern pikeminnow are native to Pacific Northwest rivers.</li>
+        <li>They have no barbels and no adipose fin, unlike many salmonids.</li>
       </ul>
     </section>
   </main>
@@ -130,5 +157,8 @@
   <footer class="site-footer">
     <p>Fish photos via Wikimedia Commons  click any photo for its source and license. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
   </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./fish-map.js" defer></script>
+  <script src="../site-search.js" defer></script>
 </body>
 </html>

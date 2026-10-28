@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your Catch | Southern Oregon Angler Guide</title>
+  <meta name="description" content="Send a catch story with the fish, fishing location, rod, reel, and lure details for editorial review.">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./catch-submission-config.js" defer></script>
+  <script src="./catch-submission.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav" aria-label="Main">
+      <a href="./index.html">Angler Guide</a>
+      <a href="./fish/fish.html">Fish</a>
+      <a href="./waters/waters.html">Waters</a>
+      <a href="./gear/gear.html">Gear</a>
+      <a href="./setup-builder.html">Setup Builder</a>
+      <a href="./trip-planning.html">Trip Planning</a>
+      <a href="./fishing-calendar.html">Fishing Calendar</a>
+      <a href="./fishing-log.html">Fishing Log</a>
+      <a href="./newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="./site-search-index.json" data-root="./">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </header>
+  <main>
+    <p class="eyebrow">From the water to Field Notes</p>
+    <h1>Share your catch</h1>
+    <p class="hero__lede">Tell us what you caught, where you fished, and which rod, reel, and lure worked. Submissions are reviewed before we consider featuring them on the site.</p>
+    <p class="gear-note"><strong>Privacy:</strong> use a broad location such as a river, lake, or coastal region—never send exact coordinates, private-property details, or sensitive species locations. Your email is for follow-up only and will not be published. Nothing is sent until the form receiver is configured.</p>
+
+    <section class="newsletter-signup catch-submission" aria-labelledby="catch-form-heading">
+      <h2 id="catch-form-heading">Catch details</h2>
+      <p data-catch-submission-status class="form-status" aria-live="polite">Catch submissions are not connected yet. This site does not collect or store catch details. A secure form endpoint with image-upload support must be configured first.</p>
+      <form class="catch-submission-form" data-catch-submission-form method="post" enctype="multipart/form-data" hidden>
+        <input type="hidden" name="_subject" value="New fishing catch submission">
+        <div class="catch-submission-form__grid">
+          <label>
+            Fish species
+            <input name="species" type="text" maxlength="100" required>
+          </label>
+          <label>
+            Date caught
+            <input name="catch_date" type="date" required>
+          </label>
+          <label>
+            Broad location (river, lake, or coastal region)
+            <input name="location" type="text" maxlength="120" required>
+          </label>
+          <label>
+            Rod and model
+            <input name="rod" type="text" maxlength="160" required>
+          </label>
+          <label>
+            Reel and model
+            <input name="reel" type="text" maxlength="160" required>
+          </label>
+          <label>
+            Lure or bait that worked
+            <input name="lure_or_bait" type="text" maxlength="160" required>
+          </label>
+          <label>
+            Display name (optional)
+            <input name="display_name" type="text" maxlength="80" autocomplete="nickname">
+          </label>
+          <label>
+            Email for follow-up (optional; not published)
+            <input name="email" type="email" maxlength="254" autocomplete="email">
+          </label>
+          <label class="catch-submission-form__wide">
+            Catch story or extra details (optional)
+            <textarea name="story" rows="5" maxlength="1500"></textarea>
+          </label>
+          <label class="catch-submission-form__wide">
+            Catch photo (optional, image up to 8 MB)
+            <input name="photo" type="file" accept="image/*">
+          </label>
+        </div>
+        <label class="catch-submission-form__consent">
+          <input name="publication_consent" type="checkbox" value="yes" required>
+          I confirm I have permission to share this photo and story. I give the site permission to review them and, if selected, publish the photo, story, my chosen display name, and broad location. I understand publication is not guaranteed.
+        </label>
+        <button class="button button--primary" type="submit">Send catch for review</button>
+      </form>
+    </section>
+    <p><a href="./newsletter.html">Back to Field Notes</a></p>
+  </main>
+  <footer class="site-footer">
+    <p>Submissions are for editorial review, not live fishing reports. Always confirm current access and regulations before fishing.</p>
+  </footer>
+  <script src="./site-search.js" defer></script>
+</body>
+</html>

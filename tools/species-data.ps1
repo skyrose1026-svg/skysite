@@ -274,6 +274,78 @@ $script:artRecipes = @{
         markColor = '#4a5a3a'
         marks = @()
     }
+    sturgeon = @{
+        body = 'M 16 60 Q 55 42 130 44 Q 200 44 235 55 Q 200 67 130 69 Q 55 72 16 60 Z'
+        tail = 'M 235 55 L 266 38 L 258 56 L 266 73 Z'
+        dorsal = 'M 150 45 Q 160 36 171 45 L 150 45 Z'
+        pectoral = 'M 62 61 Q 54 74 68 80 Q 76 70 62 61 Z'
+        adipose = $null
+        base = '#687b78'
+        belly = '#d9d4c8'
+        markColor = '#354b49'
+        marks = @()
+    }
+    flatfish = @{
+        body = 'M 20 60 Q 55 30 130 31 Q 205 32 240 57 Q 205 80 130 79 Q 55 82 20 60 Z'
+        tail = 'M 240 57 L 267 42 L 262 58 L 267 73 Z'
+        dorsal = 'M 85 34 Q 125 23 160 32 L 85 34 Z'
+        pectoral = 'M 75 62 Q 68 74 82 80 Q 88 71 75 62 Z'
+        adipose = $null
+        base = '#8b8064'
+        belly = '#ded8cc'
+        markColor = '#4b463c'
+        marks = @(
+            @{ type = 'speckles'; count = 18; color = '#5c5140' }
+        )
+    }
+    lingcod = @{
+        body = 'M 18 60 Q 55 31 130 32 Q 195 33 230 55 Q 195 78 130 79 Q 55 80 18 60 Z'
+        tail = 'M 230 55 L 266 34 L 259 56 L 266 77 Z'
+        dorsal = 'M 60 39 Q 130 17 194 37 L 60 39 Z'
+        pectoral = 'M 65 62 Q 54 78 70 84 Q 78 72 65 62 Z'
+        adipose = $null
+        base = '#56776a'
+        belly = '#e0d9c8'
+        markColor = '#354b43'
+        marks = @(
+            @{ type = 'speckles'; count = 16; color = '#354b43' }
+        )
+    }
+    rockfish = @{
+        body = 'M 25 60 Q 61 28 130 30 Q 190 34 220 56 Q 190 78 130 80 Q 61 82 25 60 Z'
+        tail = 'M 220 56 L 255 37 L 249 57 L 255 75 Z'
+        dorsal = 'M 70 36 Q 112 18 158 30 L 70 36 Z'
+        pectoral = 'M 70 63 Q 61 77 75 83 Q 84 73 70 63 Z'
+        adipose = $null
+        base = '#7a493d'
+        belly = '#d8b49a'
+        markColor = '#4a302a'
+        marks = @()
+    }
+    cabezon = @{
+        body = 'M 18 60 Q 54 28 128 30 Q 192 33 228 56 Q 192 79 128 80 Q 54 83 18 60 Z'
+        tail = 'M 228 56 L 264 36 L 257 57 L 264 76 Z'
+        dorsal = 'M 53 37 Q 115 15 178 34 L 53 37 Z'
+        pectoral = 'M 66 64 Q 56 80 74 86 Q 82 73 66 64 Z'
+        adipose = $null
+        base = '#8c7953'
+        belly = '#d8cbb1'
+        markColor = '#4e4938'
+        marks = @(
+            @{ type = 'speckles'; count = 22; color = '#4e4938' }
+        )
+    }
+    surfperch = @{
+        body = 'M 28 60 Q 64 31 128 32 Q 185 34 215 56 Q 185 78 128 79 Q 64 81 28 60 Z'
+        tail = 'M 215 56 L 249 39 L 243 57 L 249 74 Z'
+        dorsal = 'M 85 35 Q 117 18 151 33 L 85 35 Z'
+        pectoral = 'M 72 63 Q 62 78 77 83 Q 86 73 72 63 Z'
+        adipose = $null
+        base = '#a86d55'
+        belly = '#e6d3bd'
+        markColor = '#573f37'
+        marks = @()
+    }
 }
 
 # One entry per species. tags drive the homepage badge row.
@@ -478,6 +550,7 @@ $script:species = @(
         )
         stocking = 'ODFW stocks kokanee in some reservoirs and lakes; Applegate Reservoir receives periodic plants.'
         gear = @(
+            'For light spinning or casting: 6 to 7 foot light rod, 1000 to 2500 size reel, and 4 to 8 lb monofilament',
             'Downrigger or leaded line for summer depth',
             'Small spoons and wedding-ring lures, size 6 to 10 hooks',
             'Dodger or small flasher ahead of the lure',
@@ -1188,9 +1261,303 @@ $script:species = @(
         )
         stocking = 'Wild native fish — not stocked.'
         gear = @(
-            'Light spinning rod',
+            'Light or ultralight spinning rod, about 5.5 to 7 feet, with a 1000 to 2500 size spinning reel',
+            '6 to 10 lb monofilament main line; match the rod rating and use a soft drag',
             'Worms and small spinners',
             'A soft touch — their mouths tear free easily'
         )
+    },
+    @{
+        slug = 'white-sturgeon'; name = 'White Sturgeon'; group = 'Sturgeon'
+        tags = @('sturgeon', 'freshwater', 'big-fish')
+        art = 'sturgeon'
+        img = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/White_Sturgeon_2508.jpg/500px-White_Sturgeon_2508.jpg'
+        imgPage = 'https://commons.wikimedia.org/wiki/File:White_Sturgeon_2508.jpg'
+        alt = 'White sturgeon showing its long body and bony scutes'
+        blurb = 'A long-lived native fish of Oregon rivers and estuaries. White sturgeon are found mainly in the Columbia River system and require careful handling and current-rule checks.'
+        idMarks = @(
+            'Long, shark-like body with five rows of hard bony scutes',
+            'Four barbels sit in front of the mouth; the mouth is underneath the head',
+            'Heterocercal tail, with the upper lobe longer than the lower'
+        )
+        waters = @(
+            @('Columbia River', 'the principal Oregon sturgeon fishery; seasons and retention rules change'),
+            @('Lower Willamette River', 'sturgeon occur in the lower river; check current access and regulations')
+        )
+        mapPins = @(
+            @{ name = 'Columbia River near Astoria'; lat = 46.187; lng = -123.831 },
+            @{ name = 'Lower Willamette River'; lat = 45.613; lng = -122.679 }
+        )
+        prey = @(
+            @('Bottom-dwelling invertebrates and fish', 'Year-round, near the river bottom', 'Legal bait rigs with fresh bait; check current water-specific rules'),
+            @('Smelt and other small fish', 'Seasonal migrations', 'Fresh bait fished close to bottom')
+        )
+        activity = @(
+            @('Spring and summer', 'Tides and changing flows', 'Fish shift between feeding and migration areas'),
+            @('Cool weather', 'Daylight can be productive', 'Use safe, legal anchor and boat practices in strong currents')
+        )
+        regs = @(
+            @('License', 'A valid Oregon fishing license is required for anglers 12 and older'),
+            @('Retention', 'Keep only when the season, size rules, and retention allowance for that exact area permit it'),
+            @('Handling', 'Use tackle appropriate to land fish quickly; keep fish in the water when releasing'),
+            @('Current rules', 'Sturgeon regulations vary by river section and can change; confirm with ODFW before fishing')
+        )
+        stocking = 'White sturgeon in Oregon are native and naturally reproduce; they are not a routine hatchery-stocked sport fish.'
+        gear = @(
+            'Heavy conventional rod and reel matched to the current and fish size',
+            'Strong main line and abrasion-resistant leader',
+            'A legal bottom rig and fresh bait; check hook and bait rules for the specific reach',
+            'Use a net or release tools that reduce handling time'
+        )
+    },
+    @{
+        slug = 'pacific-halibut'; name = 'Pacific Halibut'; group = 'Saltwater Fish'
+        tags = @('saltwater', 'bottom-fishing', 'seasonal')
+        art = 'flatfish'
+        img = 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Large_Pacific_halibut.jpg'
+        imgPage = 'https://commons.wikimedia.org/wiki/File:Large_Pacific_halibut.jpg'
+        alt = 'Large Pacific halibut, a flatfish caught in the North Pacific'
+        blurb = 'A powerful flatfish sought offshore from Oregon ports. Halibut seasons, quotas, and open areas vary by year, so check both ODFW and NOAA before booking a trip.'
+        idMarks = @(
+            'A flattened, oval body with both eyes on the dark upper side',
+            'Mottled brown upper side and pale underside',
+            'Large mouth and a crescent-shaped tail'
+        )
+        waters = @(
+            @('Charleston / Coos Bay', 'ocean trips depart when the season and conditions allow'),
+            @('Port Orford and Brookings', 'southern coast ports serving offshore grounds')
+        )
+        mapPins = @(
+            @{ name = 'Charleston / Coos Bay port region'; lat = 43.345; lng = -124.322 },
+            @{ name = 'Port Orford port region'; lat = 42.744; lng = -124.498 },
+            @{ name = 'Brookings Harbor region'; lat = 42.052; lng = -124.282 }
+        )
+        prey = @(
+            @('Herring, squid, and other fish', 'Offshore feeding', 'Large bait rigs and suitable jigs fished near bottom'),
+            @('Bottom-dwelling prey', 'On or near sandy and mixed seafloor', 'Heavy jigs or bait on a legal bottom rig')
+        )
+        activity = @(
+            @('Open season', 'Plan around the published opening and safe weather windows', 'Season dates and quotas are set and adjusted by management'),
+            @('Tide changes', 'Often productive when current allows controlled bottom presentation', 'Use only safe, legal anchoring and boating practices')
+        )
+        regs = @(
+            @('Season and quota', 'Open dates, areas, and limits change by year; verify before departure'),
+            @('Federal and state rules', 'Follow current ODFW and NOAA Fisheries requirements for the area and vessel'),
+            @('License and endorsements', 'Carry required Oregon license and any applicable tags or validations')
+        )
+        stocking = 'Pacific halibut are a wild marine species and are not stocked.'
+        gear = @(
+            'Heavy conventional rod and high-capacity reel',
+            'Braided main line with an abrasion-resistant leader',
+            'Heavy lead or jigs sized for depth and current',
+            'A large net or gaff only where legal and appropriate; plan safe fish handling'
+        )
+    },
+    @{
+        slug = 'lingcod'; name = 'Lingcod'; group = 'Saltwater Fish'
+        tags = @('saltwater', 'reef-fishing', 'predator')
+        art = 'lingcod'
+        img = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Lingcod3.JPG/500px-Lingcod3.JPG'
+        imgPage = 'https://commons.wikimedia.org/wiki/File:Lingcod3.JPG'
+        alt = 'Lingcod with its large mouth and mottled coloring'
+        blurb = 'A large-mouthed reef predator found along Oregon''s rocky coast. Lingcod fishing is usually from a boat near rocky structure; seasons, depth rules, and retention limits change.'
+        idMarks = @(
+            'Long body, broad head, and a large mouth with prominent teeth',
+            'Mottled green, brown, or gray coloring that blends with rocky reefs',
+            'A long dorsal fin running much of the back'
+        )
+        waters = @(
+            @('Port Orford Reef region', 'rocky offshore habitat; access is weather- and season-dependent'),
+            @('Brookings and Charleston', 'ocean ports serving nearshore reef grounds')
+        )
+        mapPins = @(
+            @{ name = 'Port Orford port region'; lat = 42.744; lng = -124.498 },
+            @{ name = 'Brookings Harbor region'; lat = 42.052; lng = -124.282 },
+            @{ name = 'Charleston / Coos Bay port region'; lat = 43.345; lng = -124.322 }
+        )
+        prey = @(
+            @('Rockfish and other small fish', 'Near rocky reefs', 'Large swimbaits, metal jigs, and fish-pattern lures'),
+            @('Squid and other forage', 'When feeding near structure', 'Scented plastics or bait on legal hooks')
+        )
+        activity = @(
+            @('Season openings', 'Check the current marine fishing calendar', 'Open seasons and depth restrictions can change'),
+            @('Nearshore days', 'Fish only when swell, wind, and bar conditions are safe', 'Reef habitat is often exposed to strong currents and rough seas')
+        )
+        regs = @(
+            @('Season and depth', 'Verify current open dates, depth limits, and area rules with ODFW'),
+            @('Retention and size', 'Bag and size rules change; identify fish before keeping'),
+            @('Marine reserves', 'Do not fish in closed areas or marine reserves')
+        )
+        stocking = 'Lingcod are a wild marine species and are not stocked.'
+        gear = @(
+            'Medium-heavy to heavy saltwater rod and a corrosion-resistant reel',
+            'Braided line with a strong leader for rocky structure',
+            'Large swimbaits, metal jigs, and hooks matched to current rules',
+            'PFD and ocean-safety equipment for all boat trips'
+        )
+    },
+    @{
+        slug = 'black-rockfish'; name = 'Black Rockfish'; group = 'Saltwater Fish'
+        tags = @('saltwater', 'rockfish', 'nearshore')
+        art = 'rockfish'
+        img = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Black_Rockfish_Sea_Bass_closeup.JPG/500px-Black_Rockfish_Sea_Bass_closeup.JPG'
+        imgPage = 'https://commons.wikimedia.org/wiki/File:Black_Rockfish_Sea_Bass_closeup.JPG'
+        alt = 'Black rockfish, also called black sea bass, with dark scales and spiny fins'
+        blurb = 'A common nearshore rockfish of Oregon''s rocky reefs and kelp habitat. "Rockfish" covers many species; identify each fish and check current depth, season, and bag rules.'
+        idMarks = @(
+            'Dark charcoal to black body, often lighter underneath',
+            'Spiny dorsal fin and a large eye adapted to dim reef habitat',
+            'A rockfish rather than a true bass; similar-looking species require careful identification'
+        )
+        waters = @(
+            @('Brookings and Port Orford', 'nearshore rocky habitat reached from coastal ports'),
+            @('Charleston / Coos Bay', 'ocean access to nearshore reef areas when conditions permit')
+        )
+        mapPins = @(
+            @{ name = 'Brookings Harbor region'; lat = 42.052; lng = -124.282 },
+            @{ name = 'Port Orford port region'; lat = 42.744; lng = -124.498 },
+            @{ name = 'Charleston / Coos Bay port region'; lat = 43.345; lng = -124.322 }
+        )
+        prey = @(
+            @('Small fish and krill', 'Around rocky reefs and kelp', 'Small metal jigs, shrimp imitations, and bait rigs'),
+            @('Crustaceans', 'Near bottom structure', 'Small scented plastics or bait on legal hooks')
+        )
+        activity = @(
+            @('Spring through fall', 'During safe nearshore weather windows', 'Fish hold around reef structure and kelp'),
+            @('Changing current', 'When gear can be presented safely near bottom', 'Use only the weight needed to stay in contact')
+        )
+        regs = @(
+            @('Species identification', 'Rockfish species can have different limits; identify before retaining'),
+            @('Depth and barotrauma', 'Follow current depth restrictions and descending-device rules'),
+            @('Closures and reserves', 'Check current ODFW rules and avoid closed areas')
+        )
+        stocking = 'Black rockfish are wild marine fish and are not stocked.'
+        gear = @(
+            'Medium saltwater rod with a fast-action tip',
+            'Corrosion-resistant spinning or conventional reel',
+            'Small metal jigs or bait rigs with weight matched to current',
+            'Carry and know how to use a descending device where required'
+        )
+    },
+    @{
+        slug = 'cabezon'; name = 'Cabezon'; group = 'Saltwater Fish'
+        tags = @('saltwater', 'reef-fishing', 'bottom-fishing')
+        art = 'cabezon'
+        img = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Medium_sized_Cabezon_%28Scorpaenichthys_marmoratus%29.jpg/500px-Medium_sized_Cabezon_%28Scorpaenichthys_marmoratus%29.jpg'
+        imgPage = 'https://commons.wikimedia.org/wiki/File:Medium_sized_Cabezon_(Scorpaenichthys_marmoratus).jpg'
+        alt = 'Cabezon with a broad head and mottled coloration among rocky habitat'
+        blurb = 'A large-headed bottom fish that blends into rocky Oregon reef habitat. Cabezon are often caught while targeting rockfish, but their seasons and rules are distinct.'
+        idMarks = @(
+            'Broad, heavy head with fleshy cirri above the eyes',
+            'Mottled coloring varies from green and brown to red',
+            'Spiny dorsal fin and a bottom-dwelling body shape'
+        )
+        waters = @(
+            @('Port Orford and Brookings', 'rocky nearshore habitat accessed from local ports'),
+            @('Charleston / Coos Bay', 'reef grounds are reached by boat when ocean conditions allow')
+        )
+        mapPins = @(
+            @{ name = 'Port Orford port region'; lat = 42.744; lng = -124.498 },
+            @{ name = 'Brookings Harbor region'; lat = 42.052; lng = -124.282 },
+            @{ name = 'Charleston / Coos Bay port region'; lat = 43.345; lng = -124.322 }
+        )
+        prey = @(
+            @('Crabs, urchins, and other invertebrates', 'Around rocky structure', 'Crab imitations or bait rigs near bottom'),
+            @('Small fish', 'Near reef habitat', 'Small jigs and soft-plastic fish imitations')
+        )
+        activity = @(
+            @('Open nearshore season', 'During safe ocean conditions', 'Fish close to rocky bottom structure'),
+            @('Changing tide', 'When current allows controlled presentation', 'Avoid snag-prone or hazardous areas')
+        )
+        regs = @(
+            @('Season and limits', 'Cabezon rules are species-specific; check the current ODFW marine regulations'),
+            @('Identification', 'Confirm identification before retention; do not assume rockfish rules apply'),
+            @('Marine reserves', 'Fishing is prohibited in closed areas and marine reserves')
+        )
+        stocking = 'Cabezon are wild marine fish and are not stocked.'
+        gear = @(
+            'Medium saltwater rod and a corrosion-resistant reel',
+            'Braided line and a strong leader for reef structure',
+            'Crab imitations, small jigs, or legal bait rigs',
+            'Use ocean-safety equipment and check bar conditions before launching'
+        )
+    },
+    @{
+        slug = 'surfperch'; name = 'Surfperch'; group = 'Saltwater Fish'
+        tags = @('saltwater', 'surf-fishing', 'shore-access')
+        art = 'surfperch'
+        img = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Rainbow_surfperch%2C_Kelp_Forest%2C_Baltimore_aquarium.jpg/500px-Rainbow_surfperch%2C_Kelp_Forest%2C_Baltimore_aquarium.jpg'
+        imgPage = 'https://commons.wikimedia.org/wiki/File:Rainbow_surfperch,_Kelp_Forest,_Baltimore_aquarium.jpg'
+        alt = 'Rainbow surfperch, a member of the surfperch family found along the Pacific coast'
+        blurb = 'Surfperch is a family of nearshore fish, including redtail and silver surfperch. They offer accessible beach and jetty fishing along the Oregon coast; identify the species and check local rules.'
+        idMarks = @(
+            'Deep, laterally compressed body with a small mouth',
+            'Color and markings vary by surfperch species; redtail surfperch have a reddish tail',
+            'Live-bearing family: females give birth to developed young rather than laying eggs'
+        )
+        waters = @(
+            @('Brookings beaches and harbor', 'look for safe surf conditions and public access'),
+            @('Gold Beach and Bandon', 'sandy beaches and estuary edges can hold surfperch'),
+            @('Coos Bay area', 'public shoreline access varies by location')
+        )
+        mapPins = @(
+            @{ name = 'Brookings coastal access region'; lat = 42.052; lng = -124.282 },
+            @{ name = 'Gold Beach / Rogue estuary region'; lat = 42.417; lng = -124.421 },
+            @{ name = 'Bandon coastal access region'; lat = 43.119; lng = -124.414 },
+            @{ name = 'Charleston / Coos Bay region'; lat = 43.345; lng = -124.322 }
+        )
+        prey = @(
+            @('Sand crabs, worms, and small crustaceans', 'In the surf zone', 'Small bait hooks with sand shrimp, clam, or legal bait'),
+            @('Small fish and invertebrates', 'Along beaches and jetties', 'Small soft plastics or light jigs')
+        )
+        activity = @(
+            @('Spring through fall', 'Moving water and active surf', 'Look for troughs and safe, fishable beach structure'),
+            @('Changing tides', 'Check forecasts and daylight', 'Never enter dangerous surf to reach a spot')
+        )
+        regs = @(
+            @('Species and limits', 'Identify the surfperch species and check current marine bag limits'),
+            @('Access', 'Use public access points and respect closures and private property'),
+            @('Safety', 'Check surf, tides, and weather; wear a properly fitted life jacket near jetties')
+        )
+        stocking = 'Surfperch are wild marine fish and are not stocked.'
+        gear = @(
+            'Light to medium spinning rod, 9 to 11 feet for beach casting',
+            'Spinning reel with 10 to 20 lb braided line and a leader',
+            'Two-hook surfperch rig or small jigs, following current hook rules',
+            'Waders or boots only when safe; watch for sneaker waves and strong currents'
+        )
     }
 )
+
+$script:funFacts = @{
+    'rainbow-trout' = @('A rainbow trout can become a steelhead if it migrates to the ocean and returns to freshwater.', 'The pink lateral stripe is especially vivid during spawning season.')
+    'steelhead' = @('Steelhead and rainbow trout are the same species with different life histories.', 'Some steelhead travel hundreds of miles between freshwater and the Pacific.')
+    'coastal-cutthroat-trout' = @('The orange-red marks beneath the jaw give cutthroat trout their name.', 'Some coastal cutthroat stay in freshwater, while others migrate to estuaries or the ocean.')
+    'kokanee' = @('Kokanee are landlocked sockeye salmon.', 'Their brilliant red spawning color develops as adults prepare to reproduce and die.')
+    'chinook-salmon' = @('Chinook are the largest Pacific salmon species.', 'Their dark gums help distinguish them from some other salmon.')
+    'coho-salmon' = @('Coho salmon are also called silver salmon for their bright ocean-phase sides.', 'Mature coho develop hooked jaws and darker coloring as they enter freshwater.')
+    'mountain-whitefish' = @('Mountain whitefish are native salmonids, despite their resemblance to minnows.', 'They often feed close to the riverbed on aquatic insects.')
+    'brook-trout' = @('Brook trout are char, not true trout.', 'Their fins have distinctive white front edges, often followed by a dark line.')
+    'bull-trout' = @('Bull trout are char and need cold, clean water to thrive.', 'They are protected in many Oregon waters; check local rules before fishing.')
+    'lake-trout' = @('Lake trout are char that can live for decades in cold, deep lakes.', 'Their light spots on a dark body help distinguish them from many other trout.')
+    'largemouth-bass' = @('A largemouth bass can open its mouth wide enough to engulf surprisingly large prey.', 'Its upper jaw extends past the rear edge of the eye.')
+    'smallmouth-bass' = @('Smallmouth bass often use current and rocky structure rather than dense weeds.', 'Their bronze sides and vertical bars become more pronounced in some conditions.')
+    'bluegill' = @('Male bluegill often build and guard circular nests in shallow water.', 'Their dark ear flap is a useful field mark.')
+    'black-crappie' = @('Black crappie have irregular dark spots, rather than the more vertical bars of white crappie.', 'They often suspend around submerged branches and other cover.')
+    'white-crappie' = @('White crappie usually show vertical bars and have fewer dorsal-fin spines than black crappie.', 'They often school near brush, docks, and submerged cover.')
+    'yellow-perch' = @('Yellow perch are known for their golden sides and dark vertical bars.', 'They often travel in schools, so one catch can reveal a group.')
+    'channel-catfish' = @('Channel catfish use taste and smell to find food in murky water.', 'Their forked tail helps distinguish them from bullheads.')
+    'brown-bullhead' = @('Brown bullheads can tolerate warm, low-oxygen water better than many fish.', 'The sharp pectoral and dorsal spines can prick anglers, so handle carefully.')
+    'common-carp' = @('Carp use barbels near the mouth to sense food along the bottom.', 'They can grow large and are a challenging target on light tackle.')
+    'northern-pikeminnow' = @('Northern pikeminnow are native to Pacific Northwest rivers.', 'They have no barbels and no adipose fin, unlike many salmonids.')
+    'white-sturgeon' = @('White sturgeon are among the largest freshwater fish in North America.', 'Their skeleton is mostly cartilage, and their body is protected by rows of bony scutes.')
+    'pacific-halibut' = @('Young Pacific halibut have an eye on each side; as they grow, one eye migrates to the other side.', 'Halibut can change their upper-side coloring to better match the seafloor.')
+    'lingcod' = @('Lingcod are not true cod; they belong to the greenling family.', 'A lingcod''s flesh can be blue-green before cooking, then turns white.')
+    'black-rockfish' = @('Black rockfish can live for several decades.', 'Like many rockfish, they give birth to live young rather than laying eggs.')
+    'cabezon' = @('Cabezon can lay bright blue-green eggs.', 'Despite their large heads and camouflage, cabezon are ambush predators.')
+    'surfperch' = @('Surfperch give birth to live young, a rare trait among fish.', 'Many surfperch feed in the turbulent nearshore zone where waves stir up small prey.')
+}
+
+foreach ($speciesEntry in $script:species) {
+    $speciesEntry.funFacts = $script:funFacts[$speciesEntry.slug]
+}

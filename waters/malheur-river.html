@@ -10,12 +10,26 @@
 </head>
 <body>
   <header class="site-header">
-    <nav class="site-nav">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav">
       <a href="../index.html">Angler Guide</a>
       <a href="../fish/fish.html">Fish</a>
       <a href="./waters.html">Waters</a>
+      <a href="../gear/gear.html">Gear</a>
+      <a href="../setup-builder.html">Setup Builder</a>
+      <a href="../trip-planning.html">Trip Planning</a>
+      <a href="../fishing-calendar.html">Fishing Calendar</a>
+      <a href="../fishing-log.html">Fishing Log</a>
+      <a href="../newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
-    </nav>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
   </header>
   <main>
     <h1>Malheur River</h1>
@@ -26,6 +40,7 @@
       <div id="map" class="map map--detail"></div>
       <p><strong>Primary access:</strong> Vale</p>
     </section>
+    <p><a class="button button--primary" href="../trip-planning.html?water=malheur-river">Plan a trip to this water</a></p>
     <section>
       <h2>7-Day Weather Forecast</h2>
       <div class="weather" id="weather" data-lat="44" data-lng="-117.23">
@@ -96,5 +111,6 @@
   <script>
     initDetailMap({pins: [ { "lng": -117.23, "name": "Vale", "lat": 44 }, { "lng": -116.98, "name": "Ontario", "lat": 44.02 }, { "lng": -117.5, "name": "Riverside", "lat": 44.05 } ]});
   </script>
+  <script src="../site-search.js" defer></script>
 </body>
 </html>

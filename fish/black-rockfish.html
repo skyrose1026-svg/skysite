@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Rockfish | Southern Oregon Angler Guide</title>
+  <meta name="description" content="Learn to identify black rockfish, explore southern Oregon coastal port regions, and check current marine depth and retention rules.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav" aria-label="Main">
+      <a href="../index.html">Angler Guide</a>
+      <a href="./fish.html" aria-current="page">Fish</a>
+      <a href="../waters/waters.html">Waters</a>
+      <a href="../gear/gear.html">Gear</a>
+      <a href="../setup-builder.html">Setup Builder</a>
+      <a href="../trip-planning.html">Trip Planning</a>
+      <a href="../fishing-calendar.html">Fishing Calendar</a>
+      <a href="../fishing-log.html">Fishing Log</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </header>
+  <main>
+    <h1>Black Rockfish</h1>
+    <img class="fish-photo" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Black_Rockfish_Sea_Bass_closeup.JPG/500px-Black_Rockfish_Sea_Bass_closeup.JPG" alt="Black rockfish with dark scales and spiny fins">
+    <p class="photo-credit"><a href="https://commons.wikimedia.org/wiki/File:Black_Rockfish_Sea_Bass_closeup.JPG" rel="noopener noreferrer">Photo: Wikimedia Commons</a></p>
+    <p class="lede">A common nearshore rockfish of Oregon's rocky reefs and kelp habitat. Rockfish includes many species; identify each fish and check current depth, season, and bag rules.</p>
+
+    <section>
+      <h2>How to identify</h2>
+      <ul>
+        <li>Dark charcoal to black body, often lighter underneath.</li>
+        <li>Spiny dorsal fin and large eye.</li>
+        <li>Black rockfish are rockfish, not true bass; similar-looking species need careful identification.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Where to find them</h2>
+      <p>Approximate locations only. Check local access and current regulations before fishing.</p>
+      <div id="map-black-rockfish" class="map map--detail" data-fish-map data-pins='[{&quot;name&quot;:&quot;Brookings Harbor region&quot;,&quot;lat&quot;:42.052,&quot;lng&quot;:-124.282},{&quot;name&quot;:&quot;Port Orford port region&quot;,&quot;lat&quot;:42.744,&quot;lng&quot;:-124.498},{&quot;name&quot;:&quot;Charleston / Coos Bay port region&quot;,&quot;lat&quot;:43.345,&quot;lng&quot;:-124.322}]' role="application" aria-label="Map of locations for black rockfish"></div>
+      <ul>
+        <li><strong>Brookings and Port Orford:</strong> nearshore rocky habitat reached from coastal ports.</li>
+        <li><strong>Charleston / Coos Bay:</strong> access to nearshore reef areas when conditions permit.</li>
+      </ul>
+      <p>See the <a href="../waters/waters.html#saltwater-access-heading">coastal access map</a> for approximate port regions, not specific fishing marks.</p>
+    </section>
+
+    <section>
+      <h2>What they eat and what to use</h2>
+      <table class="table">
+        <thead><tr><th>Food</th><th>Where</th><th>Common presentation</th></tr></thead>
+        <tbody>
+          <tr><td>Small fish and krill</td><td>Around rocky reefs and kelp</td><td>Small metal jigs, shrimp imitations, and bait rigs</td></tr>
+          <tr><td>Crustaceans</td><td>Near bottom structure</td><td>Small scented plastics or legal bait</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>When they feed</h2>
+      <p>Black rockfish are caught around reef structure during safe nearshore weather windows. Use only enough weight to present gear safely near the bottom.</p>
+    </section>
+
+    <section>
+      <h2>Regulations</h2>
+      <div class="alert"><p><strong>Always verify before you go.</strong> Rockfish species can have different limits. Follow current depth restrictions and descending-device rules, and avoid marine reserves and closed areas.</p></div>
+      <p><a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Check current ODFW regulations</a>.</p>
+    </section>
+
+    <section>
+      <h2>Stocking</h2>
+      <p>Black rockfish are wild marine fish and are not stocked.</p>
+    </section>
+
+    <section>
+      <h2>Gear basics</h2>
+      <ul>
+        <li>Medium saltwater rod with a fast-action tip.</li>
+        <li>Corrosion-resistant spinning or conventional reel.</li>
+        <li>Small metal jigs or bait rigs with weight matched to current.</li>
+        <li>Carry and know how to use a descending device where required.</li>
+      </ul>
+      <p><a class="button button--primary" href="../gear/shop.html?category=all&amp;q=rockfish">Browse rockfish gear</a></p>
+      <p><a class="button button--secondary" href="../setup-builder.html?fish=black-rockfish">Build a setup for this fish</a></p>
+    </section>
+
+    <section id="fun-facts">
+      <h2>Fun facts</h2>
+      <ul>
+        <li>Black rockfish can live for several decades.</li>
+        <li>Like many rockfish, they give birth to live young rather than laying eggs.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Fish photos via Wikimedia Commons. Fishing information is a guide, not the law; always check current ODFW rules.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./fish-map.js" defer></script>
+  <script src="../site-search.js" defer></script>
+</body>
+</html>

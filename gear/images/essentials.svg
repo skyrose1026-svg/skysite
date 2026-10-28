@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Fishing trip essentials</title>
+  <desc id="desc">A landing net, pliers, and a tackle box represent useful fishing accessories.</desc>
+  <rect width="640" height="360" rx="28" fill="#eaf5f2"/>
+  <path d="M115 110h138l-8 105q-61 84-122 0z" fill="none" stroke="#155e75" stroke-width="8"/>
+  <path d="M184 214v85" stroke="#155e75" stroke-width="10" stroke-linecap="round"/>
+  <path d="M330 93l-25 60 41 25 40-25-25-60m-15 80l-15 113m15-113l15 113" fill="none" stroke="#b45309" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M440 163h130v105H440z" fill="#dff5f3" stroke="#155e75" stroke-width="8"/>
+  <path d="M425 163l30-47h100l30 47" fill="#fff" stroke="#155e75" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M490 193h30" stroke="#0e7490" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#1c1917" font-family="system-ui,sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    <text x="184" y="330">LANDING NET</text><text x="345" y="330">PLIERS</text><text x="505" y="330">TACKLE BOX</text>
+  </g>
+</svg>
