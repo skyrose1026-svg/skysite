@@ -1,0 +1,222 @@
+/* ============================================================
+   Design tokens — Southern Oregon Angler Guide
+   The raw ingredients every other style builds from.
+   Change a value here and the whole site updates.
+   ============================================================ */
+
+:root {
+  /* Brand colors */
+  --color-primary: #0e7490;       /* river teal — links, buttons */
+  --color-primary-dark: #155e75;  /* hover states, headings */
+  --color-forest: #166534;        /* success — "stocked recently" */
+  --color-clay: #b45309;          /* caution — "license required" */
+  --color-alert: #b91c1c;         /* danger — regulation warnings */
+
+  /* Neutrals — text and surfaces */
+  --color-ink: #1c1917;           /* main text */
+  --color-ink-soft: #57534e;      /* secondary text */
+  --color-paper: #faf9f7;         /* page background */
+  --color-card: #ffffff;          /* card backgrounds */
+  --color-line: #e7e5e4;          /* borders, dividers */
+
+  /* Typography */
+  --font-body: system-ui, sans-serif;
+  --font-heading: Georgia, serif;
+  --text-sm: 0.875rem;   /* small labels, badges */
+  --text-base: 1rem;     /* body text */
+  --text-lg: 1.25rem;    /* card titles */
+  --text-xl: 1.5rem;     /* section headings */
+  --text-2xl: 2rem;      /* page titles */
+
+  /* Spacing scale */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+}
+
+/* Base styles — defaults that apply everywhere */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--color-primary-dark);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  color: var(--color-primary-dark);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+
+/* Components — species badge */
+.badge {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: var(--color-line);
+  color: var(--color-ink);
+  font-size: var(--text-sm);
+}
+
+.badge--trout     { background-color: #fce7f3; color: #9d174d; }  /* pink lateral stripe */
+.badge--steelhead { background-color: #e0f2fe; color: #0c4a6e; }  /* chrome-blue, sea-run */
+.badge--bass      { background-color: #ecfccb; color: #3f6212; }  /* bronze-olive flank */
+.badge--salmon    { background-color: #ffedd5; color: #9a3412; }  /* spawning orange */
+
+.badge:hover {
+  opacity: 0.8;
+}
+
+/* Components — water body card */
+.card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  padding: var(--space-lg);
+  max-width: 24rem;
+}
+
+.card h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  margin: 0 0 var(--space-sm);
+}
+
+.card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: var(--space-sm) 0;
+}
+/* Layout — site header */
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-card);
+  border-bottom: 1px solid var(--color-line);
+  padding: var(--space-sm) var(--space-lg);
+}
+
+.site-nav {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.site-nav a {
+  color: var(--color-ink);
+  text-decoration: none;
+  font-size: var(--text-sm);
+}
+
+.site-nav a:hover {
+  color: var(--color-primary);
+}
+
+/* Layout — page column */
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+/* Components — data table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: var(--space-sm);
+  border-bottom: 1px solid var(--color-line);
+  text-align: left;
+}
+
+.table th {
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Components — alert box */
+.alert {
+  background-color: #fef2f2;
+  border-left: 4px solid var(--color-alert);
+  border-radius: 0.25rem;
+  padding: var(--space-md);
+}
+
+.alert p {
+  margin: 0;
+}
+
+/* Components — fish photo */
+.fish-photo {
+  width: 100%;
+  max-width: 30rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-line);
+}
+
+.photo-credit {
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+}
+
+/* Components — fish catalog card */
+.fish-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  padding: var(--space-md);
+  text-decoration: none;
+  color: var(--color-ink);
+  font-size: var(--text-sm);
+}
+
+.fish-card img {
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.fish-card:hover {
+  border-color: var(--color-primary);
+}
+
+/* Layout — fish grid */
+.fish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: var(--space-md);
+}
+
+/* Layout — site footer */
+.site-footer {
+  border-top: 1px solid var(--color-line);
+  padding: var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+}
