@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Southern Oregon Angler Guide</title>
   <meta name="description" content="Find the best fish species and most popular fishing waters in Southern Oregon, from the Rogue to the Umpqua and Applegate.">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
   <header class="site-header">
@@ -21,7 +21,7 @@
       <a href="./newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
     </nav></details>
-    <form class="site-search" role="search" data-site-search data-index="./site-search-index.json" data-root="./">
+    <form class="site-search" role="search" data-site-search data-index="./data/site-search-index.json" data-root="./">
       <label for="site-search-input">Search the whole site</label>
       <div class="site-search__controls">
         <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
@@ -63,8 +63,8 @@
       </div>
 
       <figure class="hero__feature">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Applegate_River_%28Jackson_County%2C_Oregon_scenic_images%29_%28jacDA0029%29.jpg" alt="Applegate River in Jackson County, Oregon">
-        <figcaption class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Applegate_River_(Jackson_County,_Oregon_scenic_images)_(jacDA0029).jpg">Gary Halvorson, Oregon State Archives</a>.</figcaption>
+        <img src="./assets/images/applegate-river.jpg" alt="Applegate River south of Ruch, Oregon" fetchpriority="high" decoding="async">
+        <figcaption class="photo-credit">Photo: Gary Halvorson, Oregon State Archives. <a href="https://commons.wikimedia.org/wiki/File:Applegate_River_(Jackson_County,_Oregon_scenic_images)_(jacDA0029).jpg" rel="noopener noreferrer">Source and reuse terms</a>; resized for web.</figcaption>
       </figure>
     </section>
 
@@ -271,8 +271,8 @@
   </main>
 
   <footer class="site-footer">
-    <p>Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+    <p>Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>. <a href="./feedback.html">Suggest a guide correction</a>.</p>
   </footer>
-  <script src="./site-search.js" defer></script>
+  <script src="./scripts/site-search.js" defer></script>
 </body>
 </html>

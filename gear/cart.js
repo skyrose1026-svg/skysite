@@ -4,7 +4,7 @@ const cartTotal = document.querySelector("[data-cart-total]");
 const clearCartButton = document.querySelector("[data-clear-cart]");
 
 function showCartError(error) {
-  cartStatus.textContent = error.message || "The cart could not be updated.";
+  cartStatus.textContent = error.message || "The planning checklist could not be updated.";
   cartStatus.className = "form-status form-status--error";
 }
 
@@ -23,7 +23,7 @@ function renderCart(products) {
   let highTotal = 0;
 
   if (!items.length) {
-    cartItems.append(createCartElement("p", "shop-empty", "Your cart is empty. Add example gear from the shop or setup builder."));
+    cartItems.append(createCartElement("p", "shop-empty", "Your checklist is empty. Add example gear from the shop or setup builder."));
     cartTotal.textContent = "$0–$0";
     return;
   }
@@ -40,7 +40,7 @@ function renderCart(products) {
         try {
           window.GearStore.removeFromCart(item.productId);
           renderCart(products);
-          cartStatus.textContent = "Unavailable item removed from your cart.";
+          cartStatus.textContent = "Unavailable item removed from your checklist.";
           cartStatus.className = "form-status";
         } catch (error) {
           showCartError(error);
@@ -72,7 +72,7 @@ function renderCart(products) {
         const quantity = Number(input.value);
         window.GearStore.setQuantity(product.id, quantity);
         renderCart(products);
-        cartStatus.textContent = "Cart quantity updated in this browser.";
+        cartStatus.textContent = "Checklist quantity updated in this browser.";
         cartStatus.className = "form-status";
       } catch (error) {
         showCartError(error);
@@ -85,7 +85,7 @@ function renderCart(products) {
       try {
         window.GearStore.removeFromCart(product.id);
         renderCart(products);
-        cartStatus.textContent = `${product.name} removed from your cart.`;
+        cartStatus.textContent = `${product.name} removed from your checklist.`;
         cartStatus.className = "form-status";
       } catch (error) {
         showCartError(error);
@@ -109,7 +109,7 @@ async function initializeCart() {
     renderCart(catalogs.flat());
   } catch (error) {
     showCartError(error);
-    cartItems.replaceChildren(createCartElement("p", "shop-empty", "The cart could not be loaded. Please reload and try again."));
+    cartItems.replaceChildren(createCartElement("p", "shop-empty", "The checklist could not be loaded. Please reload and try again."));
     cartTotal.textContent = "Unavailable";
   }
 }
@@ -118,7 +118,7 @@ clearCartButton.addEventListener("click", () => {
   try {
     window.GearStore.clearCart();
     initializeCart();
-    cartStatus.textContent = "Cart cleared from this browser.";
+    cartStatus.textContent = "Checklist cleared from this browser.";
     cartStatus.className = "form-status";
   } catch (error) {
     showCartError(error);

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fishing Calendar | Southern Oregon Angler Guide</title>
   <meta name="description" content="Browse a month-by-month Southern Oregon fishing calendar with typical activity windows, run timing, and a local National Weather Service forecast.">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./fishing-calendar.js" defer></script>
+  <link rel="stylesheet" href="./styles/styles.css">
+  <script src="./scripts/fishing-calendar.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -22,7 +22,7 @@
       <a href="./newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
     </nav></details>
-    <form class="site-search" role="search" data-site-search data-index="./site-search-index.json" data-root="./">
+    <form class="site-search" role="search" data-site-search data-index="./data/site-search-index.json" data-root="./">
       <label for="site-search-input">Search the whole site</label>
       <div class="site-search__controls">
         <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
@@ -99,6 +99,6 @@
   <footer class="site-footer">
     <p>Seasonal notes are general planning guidance. Confirm current conditions, access, and regulations before fishing.</p>
   </footer>
-  <script src="./site-search.js" defer></script>
+  <script src="./scripts/site-search.js" defer></script>
 </body>
 </html>

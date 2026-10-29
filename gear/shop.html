@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gear Shop | Southern Oregon Angler Guide</title>
   <meta name="description" content="Browse placeholder fishing gear with category-specific filters, illustrations, example specifications, and estimated price ranges.">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles/styles.css">
   <script src="./cart-store.js" defer></script>
   <script src="./shop.js" defer></script>
 </head>
@@ -22,7 +22,7 @@
       <a href="../newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
     </nav></details>
-    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+    <form class="site-search" role="search" data-site-search data-index="../data/site-search-index.json" data-root="../">
       <label for="site-search-input">Search the whole site</label>
       <div class="site-search__controls">
         <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
@@ -33,8 +33,8 @@
   <main>
     <p><a href="./gear.html">&larr; Gear guide</a></p>
     <h1>Gear Shop</h1>
-    <p>Browse a broad catalog of fishing gear and narrow the options with practical filters. Listings include placeholders and real brand/model examples; this is not a store and checkout is not connected.</p>
-    <p class="shop-cart-link"><a class="button button--primary" href="./cart.html">View planning cart <span data-cart-count>(0 items)</span></a></p>
+    <p>Browse a broad catalog of fishing gear and narrow the options with practical filters. Listings include placeholders and real brand/model examples; this is a planning guide, not a store. Purchases, live prices, and checkout are unavailable.</p>
+    <p class="shop-cart-link"><a class="button button--primary" href="./cart.html">View gear checklist <span data-cart-count>(0 items)</span></a></p>
     <p class="gear-note"><strong>Important:</strong> planning price ranges and availability are estimates, not live offers. Brand names and links identify example products only; this site is not affiliated with or endorsed by those companies.</p>
     <section aria-labelledby="shop-brands-heading">
       <h2 id="shop-brands-heading">Shop by brand</h2>
@@ -60,6 +60,6 @@
     </section>
   </main>
   <footer class="site-footer"><p>Photos are credited to their creators and linked to license/source pages; some are representative and not exact branded models. Brand links lead to official manufacturer pages. This guide is not affiliated with or endorsed by those companies. Check current <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">ODFW regulations</a> before selecting tackle. Planning cart selections are saved only in this browser; checkout is not connected.</p></footer>
-  <script src="../site-search.js" defer></script>
+  <script src="../scripts/site-search.js" defer></script>
 </body>
 </html>

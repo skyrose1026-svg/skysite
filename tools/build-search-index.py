@@ -92,7 +92,7 @@ def main():
                 }
             )
 
-    output = ROOT / "site-search-index.json"
+    output = ROOT / "data" / "site-search-index.json"
     output.write_text(json.dumps(documents, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     print(f"Wrote {len(documents)} search documents to {output.relative_to(ROOT)}")
 

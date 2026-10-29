@@ -121,8 +121,8 @@ Enforce these consistently. When you see a student violating one, correct it and
 
 ### File Structure and Paths
 - All file names: lowercase, hyphens for spaces, no special characters (`about-us.html`, not `About Us.html`)
-- Always use relative paths (`./styles.css`, not `/styles.css`) — absolute paths break on GitHub Pages
-- File names are case-sensitive on GitHub: `styles.css` ≠ `Styles.css`
+- Always use relative paths (`./styles/styles.css`, not `/styles/styles.css`) — absolute paths break on GitHub Pages
+- File names are case-sensitive on GitHub: `styles/styles.css` ≠ `Styles/Styles.css`
 - Keep `index.html` at the root of the project
 
 ### Performance (the basics)

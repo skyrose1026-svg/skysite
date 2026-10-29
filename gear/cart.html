@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saved Cart | Southern Oregon Angler Guide</title>
-  <meta name="description" content="Review and save estimated fishing gear selections in this browser. Checkout is not connected.">
-  <link rel="stylesheet" href="../styles.css">
+  <title>Gear Planning Checklist | Southern Oregon Angler Guide</title>
+  <meta name="description" content="Review and save example fishing gear selections in this browser. This checklist has no checkout or purchases.">
+  <link rel="stylesheet" href="../styles/styles.css">
   <script src="./cart-store.js" defer></script>
   <script src="./cart.js" defer></script>
 </head>
@@ -23,7 +23,7 @@
       <a href="../newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
     </nav></details>
-    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+    <form class="site-search" role="search" data-site-search data-index="../data/site-search-index.json" data-root="../">
       <label for="site-search-input">Search the whole site</label>
       <div class="site-search__controls">
         <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
@@ -33,22 +33,21 @@
     </form>
   </header>
   <main>
-    <h1>Your saved cart</h1>
-    <p class="gear-note"><strong>Planning cart only:</strong> products and price ranges are examples, saved only in this browser. Checkout, inventory, and purchases are not connected.</p>
+    <h1>Your gear planning checklist</h1>
+    <p class="gear-note"><strong>Planning tool only:</strong> selections and estimated price ranges are examples saved only in this browser. This is not a store; it has no checkout, live inventory, orders, or purchases.</p>
     <p data-cart-status role="status" aria-live="polite"></p>
     <div class="cart-items" data-cart-items></div>
     <section class="cart-summary" aria-labelledby="cart-total-heading">
-      <h2 id="cart-total-heading">Estimated total</h2>
+      <h2 id="cart-total-heading">Estimated gear total</h2>
       <p data-cart-total>Loading cart…</p>
       <p>Range uses the catalog’s low and high planning estimates; tax, shipping, and live pricing are not included.</p>
-      <button class="shop-buy-button" type="button" disabled>Checkout is not connected</button>
       <button class="shop-reset" type="button" data-clear-cart>Clear cart</button>
     </section>
     <p><a class="button button--primary" href="./shop.html">Continue browsing gear</a></p>
   </main>
   <footer class="site-footer">
-    <p>Cart contents remain in this browser. They are not sent to the site owner and will not sync to another device.</p>
+    <p>Checklist contents remain in this browser. They are not sent to the site owner and will not sync to another device.</p>
   </footer>
-  <script src="../site-search.js" defer></script>
+  <script src="../scripts/site-search.js" defer></script>
 </body>
 </html>

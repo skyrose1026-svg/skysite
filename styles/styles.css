@@ -673,6 +673,24 @@ textarea {
   text-underline-offset: 0.15em;
 }
 
+.guide-review-note {
+  max-width: 72ch;
+  margin: 0 0 1.5rem;
+  padding: 0.8rem 1rem;
+  border-inline-start: 3px solid var(--color-clay);
+  background: #eeece4;
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+}
+
+.guide-review-note p {
+  margin: 0;
+}
+
+.guide-review-note p + p {
+  margin-top: 0.35rem;
+}
+
 .fish-card {
   display: flex;
   flex-direction: column;
@@ -722,6 +740,40 @@ textarea {
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-line);
   background: var(--color-accent);
+}
+
+.map:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.map-status {
+  margin: 0.45rem 0 0;
+  color: var(--color-ink-soft);
+  font-size: var(--text-sm);
+}
+
+.map-water-guide-list {
+  margin: 1.25rem 0 2rem;
+}
+
+.map-water-guide-list h2 {
+  font-size: 1.35rem;
+}
+
+.map-water-guide-list ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 0.4rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.map-water-guide-list a {
+  display: block;
+  padding: 0.35rem 0;
+  font-weight: 650;
 }
 
 .map--full {
@@ -1724,6 +1776,24 @@ textarea {
   width: 1.15rem;
   min-height: 1.15rem;
   margin: 0.2rem 0 0;
+}
+
+.feedback-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.feedback-form textarea {
+  min-height: 10rem;
+}
+
+.feedback-form button {
+  justify-self: start;
+}
+
+[data-feedback-link-container][hidden] {
+  display: none;
 }
 
 .shop-add-button {

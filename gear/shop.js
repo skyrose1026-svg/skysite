@@ -216,10 +216,6 @@ function renderProduct(product) {
     body.append(manufacturer);
   }
 
-  const buyButton = createElement('button', 'shop-buy-button', 'Checkout not connected');
-  buyButton.type = 'button';
-  buyButton.disabled = true;
-  buyButton.setAttribute('aria-label', `Purchases unavailable for ${product.name}`);
   const addButton = createElement('button', 'shop-add-button', 'Add to planning cart');
   addButton.type = 'button';
   addButton.addEventListener('click', () => {
@@ -232,7 +228,7 @@ function renderProduct(product) {
       summary.textContent = error.message || 'The item could not be added to your cart.';
     }
   });
-  body.append(addButton, buyButton);
+  body.append(addButton);
   card.append(imageFrame, body);
   return card;
 }
@@ -269,7 +265,7 @@ function updateCartCount() {
     cartCount.textContent = `(${count} ${count === 1 ? 'item' : 'items'})`;
   } catch (error) {
     cartCount.textContent = '(cart unavailable)';
-    summary.textContent = error.message || 'The saved cart could not be read.';
+    summary.textContent = error.message || 'The saved planning list could not be read.';
   }
 }
 

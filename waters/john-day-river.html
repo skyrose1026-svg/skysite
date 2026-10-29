@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>John Day River - Southern Oregon Angler Guide</title>
   <meta name="description" content="Oregon&#39;s longest free-flowing river, famous for smallmouth bass and summer steelhead in the upper river. Cottonwood Canyon and Service Creek are the m">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles/styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -22,7 +22,7 @@
       <a href="../newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
     </nav></details>
-    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+    <form class="site-search" role="search" data-site-search data-index="../data/site-search-index.json" data-root="../">
       <label for="site-search-input">Search the whole site</label>
       <div class="site-search__controls">
         <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
@@ -115,6 +115,6 @@
   <script>
     initDetailMap({pins: [ { "lng": -120.6, "name": "Cottonwood Canyon", "lat": 44.75 }, { "lng": -120.4, "name": "Service Creek", "lat": 44.72 }, { "lng": -120.2, "name": "Kimberly", "lat": 44.8 }, { "lng": -119.9, "name": "Picture Gorge", "lat": 44.55 } ]});
   </script>
-  <script src="../site-search.js" defer></script>
+  <script src="../scripts/site-search.js" defer></script>
 </body>
 </html>

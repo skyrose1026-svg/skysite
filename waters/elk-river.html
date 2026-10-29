@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elk River - Southern Oregon Angler Guide</title>
   <meta name="description" content="A small, wild river near Cape Blanco with a hatchery-supported fall chinook run and sea-run cutthroat. Not the Rogue tributary Elk Creek - this one fl">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles/styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -22,7 +22,7 @@
       <a href="../newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
     </nav></details>
-    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+    <form class="site-search" role="search" data-site-search data-index="../data/site-search-index.json" data-root="../">
       <label for="site-search-input">Search the whole site</label>
       <div class="site-search__controls">
         <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
@@ -110,6 +110,6 @@
   <script>
     initDetailMap({pins: [ { "lng": -124.45, "name": "Elk River Hatchery", "lat": 42.75 }, { "lng": -124.56, "name": "Cape Blanco (mouth)", "lat": 42.83 } ]});
   </script>
-  <script src="../site-search.js" defer></script>
+  <script src="../scripts/site-search.js" defer></script>
 </body>
 </html>

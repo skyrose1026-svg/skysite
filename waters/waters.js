@@ -1,12 +1,48 @@
 ﻿(function () {
+  function showMapFallback(element, message) {
+    if (!element) return;
+    element.setAttribute("role", "region");
+    element.setAttribute("tabindex", "0");
+    element.textContent = message;
+  }
+
+  function showMapStatus(element, message) {
+    if (!element || element.nextElementSibling?.classList.contains("map-status")) return;
+    var status = document.createElement("p");
+    status.className = "map-status";
+    status.setAttribute("role", "status");
+    status.textContent = message;
+    element.insertAdjacentElement("afterend", status);
+  }
+
   function initMap(elementId, options) {
+    var element = document.getElementById(elementId);
+    if (!element) {
+      console.error("Could not initialize map: missing map container", elementId);
+      return null;
+    }
+    element.setAttribute("role", "region");
+    element.setAttribute("tabindex", "0");
+    element.setAttribute(
+      "aria-label",
+      "Map of " + (document.querySelector("h1")?.textContent || "fishing waters")
+    );
+    if (typeof L === "undefined") {
+      showMapFallback(element, "The interactive map is unavailable. Use the water and access information on this page.");
+      console.error("Leaflet did not load; map is unavailable.", elementId);
+      return null;
+    }
     var center = options.center || [43.8, -120.5];
     var zoom = options.zoom || 7;
-    var map = L.map(elementId).setView(center, zoom);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    var map = L.map(element).setView(center, zoom);
+    var tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
       maxZoom: 18
-    }).addTo(map);
+    });
+    tiles.once("tileerror", function () {
+      showMapStatus(element, "Map imagery is unavailable. The written location and access notes remain available on this page.");
+    });
+    tiles.addTo(map);
     return map;
   }
 
@@ -115,20 +151,54 @@
   }
 
   window.initWatersMap = function (options) {
+    var container = document.getElementById("map");
+    var listedWaters = new Set();
+    var guideNavigation = document.createElement("nav");
+    guideNavigation.className = "map-water-guide-list";
+    guideNavigation.setAttribute("aria-labelledby", "map-water-guide-heading");
+    var heading = document.createElement("h2");
+    heading.id = "map-water-guide-heading";
+    heading.textContent = "Browse water guides";
+    guideNavigation.appendChild(heading);
+    var guideList = document.createElement("ul");
+    options.markers.forEach(function (marker) {
+      if (!marker.slug || listedWaters.has(marker.slug)) return;
+      listedWaters.add(marker.slug);
+      var item = document.createElement("li");
+      var link = document.createElement("a");
+      link.href = "./" + marker.slug + ".html";
+      link.textContent = marker.water;
+      item.appendChild(link);
+      guideList.appendChild(item);
+    });
+    guideNavigation.appendChild(guideList);
+    if (container) container.insertAdjacentElement("afterend", guideNavigation);
+
     var map = initMap("map", { center: [43.8, -120.5], zoom: 7 });
+    if (!map) return;
     options.markers.forEach(function (m) {
       var popup = "<strong>" + m.name + "</strong><br><em>" + m.water + "</em><br>" + m.fish + '<br><a href="./' + m.slug + '.html">View details & forecast</a>';
       L.marker([m.lat, m.lng]).addTo(map).bindPopup(popup);
     });
+    if (container) container.setAttribute("aria-label", "Map of Oregon fishing waters and access areas");
   };
 
   window.initDetailMap = function (options) {
-    var pins = options.pins;
+    var pins = options.pins || [];
     var first = pins[0];
-    var map = initMap("map", { center: [first.lat, first.lng], zoom: 11 });
-    pins.forEach(function (p) {
-      L.marker([p.lat, p.lng]).addTo(map).bindPopup("<strong>" + p.name + "</strong>");
-    });
+    var mapContainer = document.getElementById("map");
+    if (!pins.length) {
+      showMapFallback(mapContainer, "Map locations are not available. See the written access notes on this page.");
+      console.error("Water map has no locations.");
+    } else {
+      var map = initMap("map", { center: [first.lat, first.lng], zoom: 11 });
+      if (map) {
+        pins.forEach(function (p) {
+          L.marker([p.lat, p.lng]).addTo(map).bindPopup("<strong>" + p.name + "</strong>");
+        });
+        if (mapContainer) mapContainer.setAttribute("aria-label", "Map of " + (document.querySelector("h1")?.textContent || "water") + " access areas");
+      }
+    }
     var weatherContainer = document.getElementById("weather");
     if (weatherContainer) {
       var lat = parseFloat(weatherContainer.dataset.lat);
@@ -136,7 +206,15 @@
       fetchNwsForecast(lat, lng).then(function (data) {
         renderWeather(weatherContainer, data);
       }).catch(function (err) {
-        weatherContainer.innerHTML = "<p>Weather unavailable. Please try again later.</p>";
+        var message = document.createElement("p");
+        message.append("The forecast is unavailable right now. Check the ");
+        var forecastLink = document.createElement("a");
+        forecastLink.href = "https://www.weather.gov/";
+        forecastLink.target = "_blank";
+        forecastLink.rel = "noopener noreferrer";
+        forecastLink.textContent = "National Weather Service";
+        message.append(forecastLink, " directly or try again later.");
+        weatherContainer.replaceChildren(message);
         console.error(err);
       });
     }

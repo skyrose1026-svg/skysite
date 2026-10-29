@@ -133,6 +133,7 @@ function New-Page {
         @('Fishing Calendar', $basePath + 'fishing-calendar.html'),
         @('Fishing Log', $basePath + 'fishing-log.html'),
         @('Newsletter', $basePath + 'newsletter.html'),
+        @('Suggest a correction', $basePath + 'feedback.html'),
         @('Regulations', 'https://myodfw.com/fishing/regulations')
     )
     $sb = New-Object System.Text.StringBuilder
@@ -143,7 +144,7 @@ function New-Page {
     [void]$sb.Append('<meta name="viewport" content="width=device-width, initial-scale=1">')
     [void]$sb.Append('<title>' + $title + ' | Southern Oregon Angler Guide</title>')
     [void]$sb.Append('<meta name="description" content="' + $description + '">')
-    [void]$sb.Append('<link rel="stylesheet" href="' + $basePath + 'styles.css">')
+    [void]$sb.Append('<link rel="stylesheet" href="' + $basePath + 'styles/styles.css">')
     [void]$sb.Append('</head>')
     [void]$sb.Append('<body>')
     [void]$sb.Append('<header class="site-header"><details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav" aria-label="Main">')
@@ -153,7 +154,7 @@ function New-Page {
         [void]$sb.Append('<a class="' + $cls + '" href="' + $item[1] + '">' + $item[0] + '</a>')
     }
     [void]$sb.Append('</nav></details>')
-    [void]$sb.Append('<form class="site-search" role="search" data-site-search data-index="' + $basePath + 'site-search-index.json" data-root="' + $basePath + '">')
+    [void]$sb.Append('<form class="site-search" role="search" data-site-search data-index="' + $basePath + 'data/site-search-index.json" data-root="' + $basePath + '">')
     [void]$sb.Append('<label for="site-search-input">Search the whole site</label><div class="site-search__controls">')
     [void]$sb.Append('<input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">')
     [void]$sb.Append('<button type="submit">Search</button></div><div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div></form></header>')
@@ -162,7 +163,7 @@ function New-Page {
     [void]$sb.Append('</main>')
     [void]$sb.Append('<footer class="site-footer"><p>Southern Oregon Angler Guide — a student project. Always confirm rules at <a href="https://myodfw.com/fishing/regulations">myodfw.com</a> before you fish.</p></footer>')
     [void]$sb.Append('<script src="' + $basePath + 'map.js"></script>')
-    [void]$sb.Append('<script src="' + $basePath + 'site-search.js" defer></script>')
+    [void]$sb.Append('<script src="' + $basePath + 'scripts/site-search.js" defer></script>')
     [void]$sb.Append('</body></html>')
     return $sb.ToString()
 }

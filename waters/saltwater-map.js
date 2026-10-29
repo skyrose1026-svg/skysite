@@ -9,6 +9,9 @@ const saltwaterLocations = [
 function initializeSaltwaterMap() {
   const container = document.querySelector("#map-saltwater");
   if (!container) return;
+  container.setAttribute("role", "region");
+  container.setAttribute("tabindex", "0");
+  container.setAttribute("aria-label", "Map of Southern Oregon coastal fishing access regions");
   if (typeof L === "undefined") {
     container.textContent = "The coastal map could not load. Use the access list above.";
     console.error("Leaflet did not load; saltwater access map is unavailable.");
@@ -16,10 +19,18 @@ function initializeSaltwaterMap() {
   }
 
   const map = L.map(container).setView([43.1, -124.4], 7);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  const tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 18
-  }).addTo(map);
+  });
+  tiles.once("tileerror", () => {
+    const status = document.createElement("p");
+    status.className = "map-status";
+    status.setAttribute("role", "status");
+    status.textContent = "Map imagery is unavailable. Use the coastal access list above.";
+    container.insertAdjacentElement("afterend", status);
+  });
+  tiles.addTo(map);
 
   saltwaterLocations.forEach((location) => {
     L.marker([location.lat, location.lng])

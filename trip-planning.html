@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trip Planning | Southern Oregon Angler Guide</title>
   <meta name="description" content="Plan a Southern Oregon fishing trip with local water notes, a National Weather Service forecast, and official regulation links.">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./trip-planning.js" defer></script>
+  <link rel="stylesheet" href="./styles/styles.css">
+  <script src="./scripts/trip-planning.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -22,7 +22,7 @@
       <a href="./newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
     </nav></details>
-    <form class="site-search" role="search" data-site-search data-index="./site-search-index.json" data-root="./">
+    <form class="site-search" role="search" data-site-search data-index="./data/site-search-index.json" data-root="./">
       <label for="site-search-input">Search the whole site</label>
       <div class="site-search__controls">
         <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
@@ -53,6 +53,6 @@
   <footer class="site-footer">
     <p>Forecasts are provided by the <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Site water and seasonal notes are informational and may not reflect in-season changes.</p>
   </footer>
-  <script src="./site-search.js" defer></script>
+  <script src="./scripts/site-search.js" defer></script>
 </body>
 </html>

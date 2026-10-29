@@ -24,7 +24,7 @@ function findWaterOption(slug) {
 }
 
 async function loadWaterOptions() {
-  const response = await fetch("./site-search-index.json");
+  const response = await fetch("./data/site-search-index.json");
   if (!response.ok) throw new Error(`Could not load the water guide list (${response.status}).`);
   const documents = await response.json();
   const waters = documents.filter((document) => /^waters\/[^/]+-river\.html$/.test(document.url));

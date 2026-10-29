@@ -1,3 +1,99 @@
+(() => {
+  const searchRoot = document.querySelector("[data-site-search]");
+  const siteRoot = searchRoot?.dataset.root || "./";
+
+  function installDiagnostics() {
+    window.addEventListener("error", (event) => {
+      const target = event.target;
+      if (target instanceof HTMLImageElement) {
+        console.error("[site-monitor] Image failed to load:", target.currentSrc || target.src);
+        if (!target.dataset.fallbackApplied) {
+          target.dataset.fallbackApplied = "true";
+          target.src = `${siteRoot}assets/fishing-scene-fallback.svg`;
+          target.alt = "Illustrative river scene; the original image did not load.";
+        }
+        return;
+      }
+
+      if (target instanceof HTMLScriptElement || target instanceof HTMLLinkElement) {
+        console.error("[site-monitor] Page resource failed to load:", target.href || target.src);
+        return;
+      }
+
+      console.error("[site-monitor] Uncaught page error:", event.error || event.message);
+    }, true);
+
+    window.addEventListener("unhandledrejection", (event) => {
+      console.error("[site-monitor] Unhandled asynchronous error:", event.reason);
+    });
+
+    if (typeof window.fetch !== "function" || window.fetch.siteMonitored) return;
+    const originalFetch = window.fetch.bind(window);
+    const monitoredFetch = async (input, ...options) => {
+      const requestUrl = typeof input === "string" ? input : input.url;
+      let safeUrl = requestUrl;
+      try {
+        const parsedUrl = new URL(requestUrl, window.location.href);
+        safeUrl = `${parsedUrl.origin}${parsedUrl.pathname}`;
+      } catch (error) {
+        console.warn("[site-monitor] Could not normalize a request URL:", error);
+      }
+      try {
+        const response = await originalFetch(input, ...options);
+        if (!response.ok) {
+          console.error(`[site-monitor] Request failed (${response.status}):`, safeUrl);
+        }
+        return response;
+      } catch (error) {
+        console.error("[site-monitor] Request could not be completed:", safeUrl, error);
+        throw error;
+      }
+    };
+    monitoredFetch.siteMonitored = true;
+    window.fetch = monitoredFetch;
+  }
+
+  function addFeedbackNavigation() {
+    const navigation = document.querySelector(".site-nav");
+    if (!navigation) return;
+    const feedbackUrl = new URL(`${siteRoot}feedback.html`, window.location.href).href;
+    if ([...navigation.querySelectorAll("a")].some((link) => link.href === feedbackUrl)) return;
+    const link = document.createElement("a");
+    link.href = `${siteRoot}feedback.html`;
+    link.textContent = "Suggest a correction";
+    navigation.append(link);
+  }
+
+  function addGuideReviewNote() {
+    const rootPath = new URL(siteRoot, window.location.href).pathname;
+    const relativePath = window.location.pathname.slice(rootPath.length).replace(/^\/+/, "");
+    const isGuideDetail = /^(?:fish|waters)\/(?!fish\.html$|waters\.html$)[^/]+\.html$/i.test(relativePath);
+    const main = document.querySelector("main");
+    const heading = main?.querySelector("h1");
+    if (!isGuideDetail || !main || !heading) return;
+
+    const note = document.createElement("aside");
+    note.className = "guide-review-note";
+    note.setAttribute("aria-label", "Guide review and official fishing regulations");
+    const review = document.createElement("p");
+    review.innerHTML = "<strong>Last reviewed: October 28, 2026</strong> — page structure, local references, and official-source links. Species, access, stocking, seasonal, and legal details have not been independently verified for this date.";
+    const regulations = document.createElement("p");
+    regulations.append("Fishing rules and closures can change. Confirm the exact water and date with ");
+    const link = document.createElement("a");
+    link.href = "https://myodfw.com/fishing/regulations";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "current ODFW regulations";
+    regulations.append(link, " before fishing.");
+    note.append(review, regulations);
+    heading.insertAdjacentElement("afterend", note);
+  }
+
+  installDiagnostics();
+  addFeedbackNavigation();
+  addGuideReviewNote();
+})();
+
 const searchRoot = document.querySelector('[data-site-search]');
 
 if (searchRoot) {

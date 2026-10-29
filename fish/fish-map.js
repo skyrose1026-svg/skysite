@@ -1,6 +1,16 @@
 document.querySelectorAll("[data-fish-map]").forEach((container) => {
-  const locations = JSON.parse(container.dataset.pins || "[]");
+  let locations;
+  try {
+    locations = JSON.parse(container.dataset.pins || "[]");
+  } catch (error) {
+    container.textContent = "The map locations could not be read. Use the location list on this page.";
+    console.error("Could not read fish map locations.", error);
+    return;
+  }
+  container.setAttribute("role", "region");
+  container.setAttribute("tabindex", "0");
   if (!locations.length) {
+    container.textContent = "Map locations are not available. Use the location list on this page.";
     console.error("Fish map has no location pins.");
     return;
   }
@@ -10,11 +20,21 @@ document.querySelectorAll("[data-fish-map]").forEach((container) => {
     return;
   }
 
+  container.setAttribute("aria-label", `Map of ${document.querySelector("h1")?.textContent || "fishing"} locations`);
   const map = L.map(container).setView([locations[0].lat, locations[0].lng], 8);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  const tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 18
-  }).addTo(map);
+  });
+  tiles.once("tileerror", () => {
+    if (container.nextElementSibling?.classList.contains("map-status")) return;
+    const status = document.createElement("p");
+    status.className = "map-status";
+    status.setAttribute("role", "status");
+    status.textContent = "Map imagery is unavailable. Use the location list on this page.";
+    container.insertAdjacentElement("afterend", status);
+  });
+  tiles.addTo(map);
 
   locations.forEach((location) => {
     L.marker([location.lat, location.lng])

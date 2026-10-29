@@ -53,7 +53,7 @@ async function loadOptions(path, selector, cssSelector, placeholder) {
 }
 
 async function loadWaterOptions() {
-  const response = await fetch("./site-search-index.json");
+  const response = await fetch("./data/site-search-index.json");
   if (!response.ok) throw new Error(`Could not load the water list (${response.status}).`);
   const documents = await response.json();
   const waters = documents.filter((document) => /^waters\/[^/]+-river\.html$/.test(document.url));
@@ -254,14 +254,14 @@ function renderSavedSetups() {
         showSetupError(error);
       }
     });
-    const addSavedButton = makeElement("button", "shop-brand", "Add to cart");
+    const addSavedButton = makeElement("button", "shop-brand", "Add to checklist");
     addSavedButton.type = "button";
     addSavedButton.addEventListener("click", () => {
       try {
         const missing = setup.productIds.find((productId) => !products.some((product) => product.id === productId));
         if (missing) throw new Error(`Saved setup item "${missing}" is no longer in the catalog.`);
         window.GearStore.addManyToCart(setup.productIds);
-        setupStatus.textContent = `${setup.name} added to your browser-only cart.`;
+        setupStatus.textContent = `${setup.name} added to your browser-only planning checklist.`;
         setupStatus.className = "form-status";
       } catch (error) {
         showSetupError(error);
@@ -361,7 +361,7 @@ saveSetupButton.addEventListener("click", () => {
 addSetupButton.addEventListener("click", () => {
   try {
     window.GearStore.addManyToCart(currentSetup.map((product) => product.id));
-    setupStatus.textContent = "Setup added to your browser-only cart.";
+    setupStatus.textContent = "Setup added to your browser-only planning checklist.";
     setupStatus.className = "form-status";
   } catch (error) {
     showSetupError(error);

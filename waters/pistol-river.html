@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pistol River - Southern Oregon Angler Guide</title>
   <meta name="description" content="A small south coast stream with fall chinook, coho, and winter steelhead. Short and steep - fish it after rain.">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles/styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -22,7 +22,7 @@
       <a href="../newsletter.html">Newsletter</a>
       <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
     </nav></details>
-    <form class="site-search" role="search" data-site-search data-index="../site-search-index.json" data-root="../">
+    <form class="site-search" role="search" data-site-search data-index="../data/site-search-index.json" data-root="../">
       <label for="site-search-input">Search the whole site</label>
       <div class="site-search__controls">
         <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
@@ -109,6 +109,6 @@
   <script>
     initDetailMap({pins: [ { "lng": -124.4, "name": "Pistol River State Park", "lat": 42.2 } ]});
   </script>
-  <script src="../site-search.js" defer></script>
+  <script src="../scripts/site-search.js" defer></script>
 </body>
 </html>
