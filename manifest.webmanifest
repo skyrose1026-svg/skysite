@@ -1,0 +1,18 @@
+{
+  "name": "Southern Oregon Angler Guide",
+  "short_name": "Angler Guide",
+  "description": "Local-first fishing guides and on-the-water field tools.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f3ed",
+  "theme_color": "#203d32",
+  "icons": [
+    {
+      "src": "./assets/angler-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

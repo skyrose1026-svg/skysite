@@ -6,6 +6,7 @@
   <title>Personal Fishing Log | Southern Oregon Angler Guide</title>
   <meta name="description" content="Keep a private fishing log on your own device with catch details, conditions, and notes. Export or delete your entries anytime.">
   <link rel="stylesheet" href="./styles/styles.css">
+  <script src="./scripts/field-store.js" defer></script>
   <script src="./scripts/fishing-log.js" defer></script>
 </head>
 <body>
@@ -34,9 +35,9 @@
   <main>
     <p class="eyebrow">Just for you</p>
     <h1>Personal fishing log</h1>
-    <p>Record a trip or catch for your own reference. Entries are saved only in this browser on this device; they are not sent to the site or synced to an account.</p>
+    <p>Record a catch for your own reference. Entries and optional photos stay in this browser on this device; they are not sent to the site or synced to an account.</p>
     <aside class="gear-note">
-      <strong>Keep locations broad.</strong> Avoid entering exact coordinates, private-property details, or sensitive species locations. Clearing browser data may erase this log, so export a backup if you want to keep it.
+      <strong>Location privacy:</strong> exact GPS is never stored unless you explicitly check the opt-in below. “Friends only” and “fuzzy” are export/display preferences only; this static site has no accounts or sharing service. Clearing browser data may erase this log, so export a backup.
     </aside>
 
     <section class="newsletter-signup" aria-labelledby="log-form-heading">
@@ -45,6 +46,10 @@
         <div class="fishing-log-form__grid">
           <label for="log-date">Date
             <input id="log-date" name="date" type="date" required>
+          </label>
+
+          <label for="log-time">Time
+            <input id="log-time" name="time" type="time">
           </label>
 
           <label for="log-species">Fish species
@@ -104,6 +109,51 @@
             <input id="log-length" name="length" type="number" min="0" max="300" step="0.1">
           </label>
 
+          <label for="log-weight">Weight in pounds (optional)
+            <input id="log-weight" name="weight" type="number" min="0" max="2000" step="0.01">
+          </label>
+
+          <label for="log-line">Line type and test (optional)
+            <input id="log-line" name="lineType" type="text" maxlength="100" placeholder="Fluorocarbon, 8 lb">
+          </label>
+
+          <label for="log-depth">Fishing depth in feet (optional)
+            <input id="log-depth" name="depth" type="number" min="0" max="5000" step="0.1">
+          </label>
+
+          <label for="log-water-temperature">Water temperature °F (optional)
+            <input id="log-water-temperature" name="waterTemperature" type="number" min="0" max="120" step="0.1">
+          </label>
+
+          <label for="log-pressure">Barometric pressure (inHg, optional)
+            <input id="log-pressure" name="barometricPressure" type="number" min="20" max="35" step="0.01">
+          </label>
+
+          <label for="log-privacy">Sharing preference
+            <select id="log-privacy" name="privacy">
+              <option value="private">Private — never include in a share export</option>
+              <option value="friends">Friends only — local label; no sharing service</option>
+              <option value="fuzzy">Fuzzy location — omit exact coordinates from exports</option>
+            </select>
+          </label>
+
+          <div class="field-capture fishing-log-form__wide">
+            <button class="shop-reset" type="button" data-capture-weather>Use location for weather &amp; conditions</button>
+            <p class="form-status" data-environment-status role="status" aria-live="polite">Location is used only after you press this button. Weather is fetched now, not from a historical archive; moon phase follows the logged date and time. Water temperature and pressure depend on available official readings.</p>
+            <label class="field-checkbox" for="log-save-coordinates">
+              <input id="log-save-coordinates" name="saveCoordinates" type="checkbox">
+              I explicitly consent to storing exact GPS coordinates in this private device record
+            </label>
+            <label for="log-gauge">Nearby USGS gauge number (optional)
+              <input id="log-gauge" name="gauge" inputmode="numeric" pattern="[0-9]{8}" maxlength="8" placeholder="e.g. 14361500">
+            </label>
+            <p class="form-status" data-log-gauge-status role="status" aria-live="polite"></p>
+          </div>
+
+          <label class="fishing-log-form__wide" for="log-photo">Catch photo (optional; up to 8 MB)
+            <input id="log-photo" name="photo" type="file" accept="image/*" capture="environment">
+          </label>
+
           <label class="fishing-log-form__wide" for="log-notes">Conditions or notes (optional)
             <textarea id="log-notes" name="notes" rows="3" maxlength="1000" placeholder="Weather, water clarity, what worked, or a trip memory"></textarea>
           </label>
@@ -121,14 +171,20 @@
         </div>
         <div class="log-actions">
           <button class="shop-reset" type="button" data-log-export disabled>Export CSV</button>
+          <button class="shop-reset" type="button" data-log-share-export disabled>Export non-private reports</button>
+          <button class="shop-reset" type="button" data-log-backup>Export full backup</button>
+          <label class="button button--secondary log-import-button" for="log-import">Import backup
+            <input id="log-import" type="file" accept="application/json,.json" data-log-import>
+          </label>
           <button class="shop-reset" type="button" data-log-clear disabled>Clear log</button>
         </div>
       </div>
+      <p class="field-help">“Export non-private reports” excludes Private entries and exact GPS. Friends-only entries are included in the file but this site cannot enforce who receives it; review the file before sharing. Full backups include all records and optional photos.</p>
       <div class="fishing-log-entries" data-log-entries></div>
     </section>
   </main>
   <footer class="site-footer">
-    <p>Your log is local browser data, not a backup. Export it before clearing browser storage or switching devices.</p>
+    <p>Your log is local browser data, not a cloud backup. Full backups can include catch photos and exact GPS you chose to store; keep exported files private.</p>
   </footer>
   <script src="./scripts/site-search.js" defer></script>
 </body>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#203d32">
+  <meta name="description" content="On-the-water field tools: USGS stream gauges, weather, local waypoints, knots, and a private tackle inventory.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="./scripts/field-store.js" defer></script>
+  <script src="./scripts/field-tools.js" defer></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <title>Field Tools | Southern Oregon Angler Guide</title>
+</head>
+<body>
+  <header class="site-header">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav" aria-label="Main">
+      <a href="./index.html">Angler Guide</a>
+      <a href="./fish/fish.html">Fish</a>
+      <a href="./waters/waters.html">Waters</a>
+      <a href="./gear/gear.html">Gear</a>
+      <a href="./setup-builder.html">Setup Builder</a>
+      <a href="./trip-planning.html">Trip Planning</a>
+      <a href="./fishing-calendar.html">Fishing Calendar</a>
+      <a href="./fishing-log.html">Fishing Log</a>
+      <a href="./field-tools.html" aria-current="page">Field Tools</a>
+      <a href="./newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="./data/site-search-index.json" data-root="./">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </header>
+  <main>
+    <p class="eyebrow">On-the-water reference</p>
+    <h1>Field tools</h1>
+    <p class="hero__lede">Check an official stream gauge and forecast, save private waypoints and tackle notes, and use knot instructions without a connection once this page has been cached.</p>
+    <aside class="gear-note">
+      <strong>Offline and privacy limits:</strong> logs, waypoints, inventory, and saved plans stay in this browser. Live gauge/weather data and map tiles need a connection. Map tiles are not cached; topographic, bathymetric, and land-access layers are not bundled. Never rely on this site for navigation, emergency alerts, private-land access, or current regulations.
+    </aside>
+
+    <section class="field-dashboard" aria-labelledby="conditions-heading">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Official live sources when connected</p>
+          <h2 id="conditions-heading">Water &amp; conditions</h2>
+        </div>
+        <button class="button button--primary" type="button" data-refresh-conditions>Refresh conditions</button>
+      </div>
+      <div class="field-form__grid">
+        <label for="gauge-site">USGS monitoring-site number
+          <input id="gauge-site" name="gauge-site" inputmode="numeric" pattern="[0-9]{8}" maxlength="8" value="14361500" aria-describedby="gauge-help">
+        </label>
+        <label for="field-area">Forecast area
+          <select id="field-area" name="field-area">
+            <option value="42.439,-123.328">Grants Pass / Rogue Valley</option>
+            <option value="42.326,-122.876">Medford</option>
+            <option value="42.053,-124.284">Brookings / South Coast</option>
+            <option value="43.217,-123.341">Roseburg / Umpqua</option>
+          </select>
+        </label>
+      </div>
+      <p class="field-help" id="gauge-help">Default: Rogue River at Grants Pass, USGS 14361500. Gauge readings are provisional and can be delayed; check the linked USGS station before making decisions.</p>
+      <p class="form-status" data-conditions-status role="status" aria-live="polite">Live readings load when you request them.</p>
+      <div class="field-card-grid" id="gauge-results" data-gauge-results></div>
+      <div class="field-card-grid" id="weather-results" data-weather-results></div>
+      <div class="alert" id="weather-alerts" data-weather-alerts role="status" aria-live="polite" hidden></div>
+      <section class="field-planner" aria-labelledby="solunar-heading">
+        <h3 id="solunar-heading">Solunar &amp; conditions planner</h3>
+        <div class="field-card-grid" data-bite-planner></div>
+        <p class="field-help">Moon phase is calculated locally. The activity indicator is a simple planning heuristic, not a validated fish forecast, catch guarantee, or substitute for safety and regulation checks.</p>
+      </section>
+    </section>
+
+    <section class="field-map-section" aria-labelledby="waypoints-heading">
+      <p class="eyebrow">Stored on this device</p>
+      <h2 id="waypoints-heading">Map &amp; waypoints</h2>
+      <p>Save public access, ramps, parking, or structure notes for your own trips. Exact coordinates remain in local browser storage and are not uploaded.</p>
+      <div id="field-map" class="map map--full field-map" role="region" aria-label="Map of saved waypoints" tabindex="0">
+        <p class="map-status">The map requires an internet connection and the Leaflet map library. Your waypoint list remains available offline.</p>
+      </div>
+      <p class="form-status" data-map-status role="status" aria-live="polite"></p>
+      <div class="field-source-links">
+        <a href="https://apps.nationalmap.gov/viewer/" target="_blank" rel="noopener noreferrer">USGS topographic maps</a>
+        <a href="https://www.charts.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA nautical charts</a>
+        <a href="https://www.blm.gov/services/geospatial/GISData" target="_blank" rel="noopener noreferrer">BLM geospatial data</a>
+      </div>
+      <p class="field-help">Official topographic, depth-contour, and land-ownership layers are linked for reference but are not incorporated or cached here. Confirm land access with the managing agency.</p>
+      <form class="field-form" id="waypoint-form" data-waypoint-form>
+        <h3>Save a waypoint</h3>
+        <div class="field-form__grid">
+          <label for="waypoint-name">Waypoint name
+            <input id="waypoint-name" name="name" maxlength="80" required placeholder="Public boat ramp">
+          </label>
+          <label for="waypoint-type">Type
+            <select id="waypoint-type" name="type">
+              <option>Public access</option><option>Boat ramp</option><option>Parking</option>
+              <option>Structure</option><option>Drop-off</option><option>Other</option>
+            </select>
+          </label>
+          <label for="waypoint-latitude">Latitude
+            <input id="waypoint-latitude" name="latitude" type="number" min="-90" max="90" step="any" required>
+          </label>
+          <label for="waypoint-longitude">Longitude
+            <input id="waypoint-longitude" name="longitude" type="number" min="-180" max="180" step="any" required>
+          </label>
+          <label class="field-form__wide" for="waypoint-notes">Notes (optional)
+            <textarea id="waypoint-notes" name="notes" rows="2" maxlength="300" placeholder="Public access details only. Do not record private or sensitive locations."></textarea>
+          </label>
+        </div>
+        <button class="button button--primary" type="submit">Save waypoint locally</button>
+      </form>
+      <p class="form-status" data-waypoint-status role="status" aria-live="polite"></p>
+      <div class="field-card-grid" data-waypoint-list></div>
+    </section>
+
+    <section class="field-section" aria-labelledby="tackle-heading">
+      <p class="eyebrow">Personal inventory</p>
+      <h2 id="tackle-heading">Virtual tackle box</h2>
+      <p>Track rods, reels, line changes, and lure collections locally. This inventory does not sync to an account.</p>
+      <form class="field-form" data-tackle-form>
+        <div class="field-form__grid">
+          <label for="tackle-type">Equipment type
+            <select id="tackle-type" name="type"><option>Rod</option><option>Reel</option><option>Line</option><option>Lure</option><option>Terminal tackle</option><option>Other</option></select>
+          </label>
+          <label for="tackle-name">Name / model
+            <input id="tackle-name" name="name" maxlength="120" required>
+          </label>
+          <label for="tackle-line-date">Line spooled / replaced (optional)
+            <input id="tackle-line-date" name="lineDate" type="date">
+          </label>
+          <label for="tackle-quantity">Quantity
+            <input id="tackle-quantity" name="quantity" type="number" min="1" max="999" value="1" required>
+          </label>
+          <label class="field-form__wide" for="tackle-notes">Notes (optional)
+            <textarea id="tackle-notes" name="notes" rows="2" maxlength="300"></textarea>
+          </label>
+        </div>
+        <button class="button button--primary" type="submit">Add to local inventory</button>
+      </form>
+      <p class="form-status" data-tackle-status role="status" aria-live="polite"></p>
+      <div class="field-card-grid" data-tackle-list></div>
+    </section>
+
+    <section class="field-section" aria-labelledby="knots-heading">
+      <p class="eyebrow">Available offline after caching</p>
+      <h2 id="knots-heading">Knot &amp; rigging guide</h2>
+      <label class="field-search" for="knot-search">Search knots by name, line, or use
+        <input id="knot-search" type="search" data-knot-search>
+      </label>
+      <div class="field-card-grid" data-knot-list>
+        <article class="field-card knot-card" data-knot="Palomar braid fluorocarbon monofilament terminal hook swivel">
+          <h3>Palomar knot</h3><p class="eyebrow">Mono · fluorocarbon · braid | hooks, swivels, and lures</p>
+          <ol><li>Double about 6 inches of line and pass the loop through the eye.</li><li>Tie a loose overhand knot with the doubled line.</li><li>Pass the hook or lure through the large loop.</li><li>Moisten, pull both standing line and tag end evenly, then trim.</li></ol>
+          <p class="field-help">Keep the loop open and away from sharp points while tightening.</p>
+        </article>
+        <article class="field-card knot-card" data-knot="Improved clinch monofilament fluorocarbon light terminal hook">
+          <h3>Improved Clinch knot</h3><p class="eyebrow">Mono · fluorocarbon | small hooks and terminal tackle</p>
+          <ol><li>Pass the tag end through the eye and wrap it around the standing line 5–7 times.</li><li>Pass the tag through the small loop beside the eye.</li><li>Pass it back through the larger loop just formed.</li><li>Moisten, pull the standing line to seat the coils, and trim the tag.</li></ol>
+          <p class="field-help">Use fewer wraps with thicker line; check that coils lie neatly before loading.</p>
+        </article>
+        <article class="field-card knot-card" data-knot="Uni knot braid mono fluorocarbon hooks swivels line joining">
+          <h3>Uni knot</h3><p class="eyebrow">Mono · fluorocarbon · braid | hooks, swivels, and line connections</p>
+          <ol><li>Pass the line through the eye and double back to form a loop alongside the standing line.</li><li>Wrap the tag around both parallel lines and through the loop 5–7 times.</li><li>Moisten and pull the tag to snug the coils together.</li><li>Slide the knot down to the eye; pull the standing line firmly and trim.</li></ol>
+          <p class="field-help">For joining two lines, tie a Uni knot with each line and draw the knots together.</p>
+        </article>
+        <article class="field-card knot-card" data-knot="Non-slip loop knot mono fluorocarbon lure movement">
+          <h3>Non-slip loop knot</h3><p class="eyebrow">Mono · fluorocarbon | lures that benefit from free movement</p>
+          <ol><li>Make a loose overhand knot several inches from the tag end.</li><li>Pass the tag through the lure eye, then back through the overhand knot.</li><li>Wrap the tag around the standing line 4–5 times.</li><li>Pass the tag back through the overhand knot the same way it entered.</li><li>Moisten, tighten gradually, and verify the loop stays open at the eye.</li></ol>
+          <p class="field-help">Knot diagrams vary; practice with spare line and test the connection before fishing.</p>
+        </article>
+      </div>
+      <p class="form-status" data-knot-empty role="status" hidden>No knots match that search.</p>
+    </section>
+
+    <section class="field-section" aria-labelledby="identify-heading">
+      <p class="eyebrow">On-device photo preview</p>
+      <h2 id="identify-heading">Fish photo &amp; species lookup</h2>
+      <p>No AI identification model is bundled and no image is uploaded. Use this private preview to compare your photo with the local fish profiles; identification is not a substitute for official regulation checks.</p>
+      <label class="field-search" for="species-photo">Choose or take a fish photo (optional)
+        <input id="species-photo" type="file" accept="image/*" capture="environment" data-species-photo>
+      </label>
+      <img class="species-photo-preview" data-species-preview alt="Selected fish photo preview" hidden>
+      <div class="hero__actions"><a class="button button--primary" href="./fish/fish.html">Browse local fish profiles</a><a class="button button--secondary" href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Check official regulations</a></div>
+      <p class="form-status" data-species-photo-status role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="field-section" aria-labelledby="groups-heading">
+      <p class="eyebrow">Local-first sharing</p>
+      <h2 id="groups-heading">Friends &amp; micro-groups</h2>
+      <p>Group trip plans and catch notes can be stored on this device and moved with the full backup on the Fishing Log page. There is no account, friend feed, authentication, or private-group server here, so entries do not synchronize or become visible to other people automatically.</p>
+      <a class="button button--secondary" href="./trip-planning.html">Open group trip checklist</a>
+      <a class="button button--secondary" href="./fishing-log.html">Manage catches and backups</a>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>USGS and NWS readings may be provisional, delayed, or unavailable. Always follow official alerts, land-manager access information, and current ODFW rules.</p>
+  </footer>
+  <script src="./scripts/site-search.js" defer></script>
+</body>
+</html>

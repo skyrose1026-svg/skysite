@@ -53,15 +53,343 @@
     window.fetch = monitoredFetch;
   }
 
-  function addFeedbackNavigation() {
+  function installGroupedNavigation() {
     const navigation = document.querySelector(".site-nav");
-    if (!navigation) return;
-    const feedbackUrl = new URL(`${siteRoot}feedback.html`, window.location.href).href;
-    if ([...navigation.querySelectorAll("a")].some((link) => link.href === feedbackUrl)) return;
-    const link = document.createElement("a");
-    link.href = `${siteRoot}feedback.html`;
-    link.textContent = "Suggest a correction";
-    navigation.append(link);
+    const menu = navigation?.closest(".site-nav-menu");
+    if (!navigation || !menu) return;
+
+    const groups = [
+      {
+        title: "Explore",
+        children: [
+          {
+            title: "Start here",
+            pages: [["Angler Guide Home", "index.html"]]
+          },
+          {
+            title: "Fish & species guides",
+            pages: [["Fish directory", "fish/fish.html"]],
+            children: [
+              {
+                title: "Freshwater fish",
+                children: [
+                  {
+                    title: "Salmon, trout & whitefish",
+                    pages: [
+                      ["Chinook Salmon", "fish/chinook-salmon.html"],
+                      ["Coho Salmon", "fish/coho-salmon.html"],
+                      ["Coastal Cutthroat Trout", "fish/coastal-cutthroat-trout.html"],
+                      ["Kokanee", "fish/kokanee.html"],
+                      ["Mountain Whitefish", "fish/mountain-whitefish.html"],
+                      ["Rainbow Trout", "fish/rainbow-trout.html"],
+                      ["Steelhead", "fish/steelhead.html"]
+                    ]
+                  },
+                  {
+                    title: "Char",
+                    pages: [
+                      ["Brook Trout", "fish/brook-trout.html"],
+                      ["Bull Trout", "fish/bull-trout.html"],
+                      ["Lake Trout", "fish/lake-trout.html"]
+                    ]
+                  },
+                  {
+                    title: "Bass, sunfish & perch",
+                    pages: [
+                      ["Bluegill", "fish/bluegill.html"],
+                      ["Black Crappie", "fish/black-crappie.html"],
+                      ["Largemouth Bass", "fish/largemouth-bass.html"],
+                      ["Smallmouth Bass", "fish/smallmouth-bass.html"],
+                      ["White Crappie", "fish/white-crappie.html"],
+                      ["Yellow Perch", "fish/yellow-perch.html"]
+                    ]
+                  },
+                  {
+                    title: "Catfish, carp & minnows",
+                    pages: [
+                      ["Brown Bullhead", "fish/brown-bullhead.html"],
+                      ["Channel Catfish", "fish/channel-catfish.html"],
+                      ["Common Carp", "fish/common-carp.html"],
+                      ["Northern Pikeminnow", "fish/northern-pikeminnow.html"]
+                    ]
+                  },
+                  {
+                    title: "Sturgeon",
+                    pages: [["White Sturgeon", "fish/white-sturgeon.html"]]
+                  }
+                ]
+              },
+              {
+                title: "Coastal & saltwater fish",
+                pages: [
+                  ["Black Rockfish", "fish/black-rockfish.html"],
+                  ["Cabezon", "fish/cabezon.html"],
+                  ["Lingcod", "fish/lingcod.html"],
+                  ["Pacific Halibut", "fish/pacific-halibut.html"],
+                  ["Surfperch", "fish/surfperch.html"]
+                ]
+              }
+            ]
+          },
+          {
+            title: "Waters & locations",
+            children: [
+              {
+                title: "All waters",
+                pages: [["Water directory & maps", "waters/waters.html"]]
+              },
+              {
+                title: "Rogue River basin",
+                pages: [
+                  ["Applegate River", "waters/applegate-river.html"],
+                  ["Illinois River", "waters/illinois-river.html"],
+                  ["Rogue River", "waters/rogue-river.html"]
+                ]
+              },
+              {
+                title: "South Coast",
+                pages: [
+                  ["Chetco River", "waters/chetco-river.html"],
+                  ["Elk River", "waters/elk-river.html"],
+                  ["Pistol River", "waters/pistol-river.html"],
+                  ["Sixes River", "waters/sixes-river.html"],
+                  ["Winchuck River", "waters/winchuck-river.html"]
+                ]
+              },
+              {
+                title: "Coos & Umpqua",
+                pages: [
+                  ["Coos River", "waters/coos-river.html"],
+                  ["Coquille River", "waters/coquille-river.html"],
+                  ["Umpqua River", "waters/umpqua-river.html"]
+                ]
+              },
+              {
+                title: "North Coast & Willamette Valley",
+                pages: [
+                  ["Alsea River", "waters/alsea-river.html"],
+                  ["Clackamas River", "waters/clackamas-river.html"],
+                  ["Nehalem River", "waters/nehalem-river.html"],
+                  ["Nestucca River", "waters/nestucca-river.html"],
+                  ["Sandy River", "waters/sandy-river.html"],
+                  ["Siletz River", "waters/siletz-river.html"],
+                  ["Siuslaw River", "waters/siuslaw-river.html"],
+                  ["Trask River", "waters/trask-river.html"],
+                  ["Willamette River", "waters/willamette-river.html"],
+                  ["Wilson River", "waters/wilson-river.html"]
+                ]
+              },
+              {
+                title: "Central Oregon & Cascades",
+                pages: [
+                  ["Crooked River", "waters/crooked-river.html"],
+                  ["Deschutes River", "waters/deschutes-river.html"],
+                  ["Fall River", "waters/fall-river.html"],
+                  ["McKenzie River", "waters/mckenzie-river.html"],
+                  ["Metolius River", "waters/metolius-river.html"],
+                  ["Santiam River", "waters/santiam-river.html"],
+                  ["Williamson River", "waters/williamson-river.html"],
+                  ["Wood River", "waters/wood-river.html"]
+                ]
+              },
+              {
+                title: "Eastern & northeastern Oregon",
+                pages: [
+                  ["Grande Ronde River", "waters/grande-ronde-river.html"],
+                  ["Imnaha River", "waters/imnaha-river.html"],
+                  ["John Day River", "waters/john-day-river.html"],
+                  ["Malheur River", "waters/malheur-river.html"],
+                  ["Owyhee River", "waters/owyhee-river.html"],
+                  ["Powder River", "waters/powder-river.html"],
+                  ["Snake River", "waters/snake-river.html"],
+                  ["Wallowa River", "waters/wallowa-river.html"]
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        title: "Gear & Equipment",
+        children: [
+          {
+            title: "Gear references",
+            pages: [
+              ["Gear Guide", "gear/gear.html"],
+              ["Rods", "gear/rods.html"],
+              ["Reels", "gear/reels.html"],
+              ["Line", "gear/line.html"],
+              ["Lures & Flies", "gear/lures.html"],
+              ["Tackle", "gear/tackle.html"],
+              ["Essentials", "gear/essentials.html"]
+            ]
+          },
+          {
+            title: "Choose & plan gear",
+            pages: [
+              ["Setup Builder", "setup-builder.html"],
+              ["Shop & Brands", "gear/shop.html"],
+              ["Gear Checklist", "gear/cart.html"]
+            ]
+          }
+        ]
+      },
+      {
+        title: "Plan a Trip",
+        children: [
+          {
+            title: "Season & conditions planning",
+            pages: [["Fishing Calendar", "fishing-calendar.html"]]
+          },
+          {
+            title: "Itinerary & group checklist",
+            pages: [["Trip Planner", "trip-planning.html"]]
+          },
+          {
+            title: "Catch records",
+            pages: [["Fishing Log", "fishing-log.html"]]
+          }
+        ]
+      },
+      {
+        title: "Field Tools",
+        children: [
+          {
+            title: "Water & weather",
+            pages: [
+              ["USGS Gauges & Water Conditions", "field-tools.html#conditions-heading"],
+              ["NWS Forecast & Alerts", "field-tools.html#weather-results"],
+              ["Moon & Activity Planner", "field-tools.html#solunar-heading"]
+            ]
+          },
+          {
+            title: "Personal equipment & locations",
+            pages: [
+              ["Map & Waypoints", "field-tools.html#waypoints-heading"],
+              ["Saved Waypoints", "field-tools.html#waypoint-form"],
+              ["Personal Tackle Box", "field-tools.html#tackle-heading"]
+            ]
+          },
+          {
+            title: "Identification & learning",
+            pages: [
+              ["Knots & Rigs", "field-tools.html#knots-heading"],
+              ["Fish Photo Preview", "field-tools.html#identify-heading"]
+            ]
+          }
+        ]
+      },
+      {
+        title: "Community",
+        children: [
+          {
+            title: "Discussions",
+            pages: [["Fishing Forum", "forum.html"]]
+          },
+          {
+            title: "Stories & newsletter",
+            pages: [
+              ["Community Hub", "community.html"],
+              ["Field Notes", "newsletter.html"]
+            ]
+          },
+          {
+            title: "Contribute to the guide",
+            pages: [
+              ["Share Your Catch", "catch-submission.html"],
+              ["Suggest a Correction", "feedback.html"]
+            ]
+          }
+        ]
+      },
+      {
+        title: "Regulations",
+        children: [
+          {
+            title: "Oregon fishing rules",
+            pages: [
+              ["Regulation & Access Checklist", "regulations.html"],
+              ["Current ODFW Regulations", "https://myodfw.com/fishing/regulations"]
+            ]
+          }
+        ]
+      }
+    ];
+    const currentPath = window.location.pathname.replace(/\/+$/, "");
+    const fragment = document.createDocumentFragment();
+    function renderNode(node, { topLevel = false } = {}) {
+      const section = document.createElement("details");
+      section.className = topLevel ? "site-nav__group" : "site-nav__subgroup";
+      const heading = document.createElement("summary");
+      heading.className = topLevel ? "site-nav__heading" : "site-nav__subheading";
+      heading.textContent = node.title;
+      const list = document.createElement("ul");
+      list.className = topLevel ? "site-nav__items" : "site-nav__subitems";
+      let containsCurrentPage = false;
+      for (const [label, href] of node.pages || []) {
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = href.startsWith("https://") ? href : `${siteRoot}${href}`;
+        link.textContent = label;
+        if (href.startsWith("https://")) {
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        }
+        const target = new URL(link.href, window.location.href);
+        if (
+          target.pathname.replace(/\/+$/, "") === currentPath &&
+          (!target.hash || target.hash === window.location.hash)
+        ) {
+          link.setAttribute("aria-current", target.hash ? "location" : "page");
+          containsCurrentPage = true;
+        }
+        item.append(link);
+        list.append(item);
+      }
+      for (const child of node.children || []) {
+        const childNode = renderNode(child);
+        containsCurrentPage = containsCurrentPage || childNode.containsCurrentPage;
+        const item = document.createElement("li");
+        item.append(childNode.element);
+        list.append(item);
+      }
+      section.open = containsCurrentPage;
+      section.append(heading, list);
+      return { element: section, containsCurrentPage };
+    }
+
+    for (const group of groups) {
+      fragment.append(renderNode(group, { topLevel: true }).element);
+    }
+    navigation.replaceChildren(fragment);
+    navigation.dataset.grouped = "true";
+    const summary = menu.querySelector(":scope > summary");
+    summary?.setAttribute("aria-controls", "site-navigation-panel");
+    navigation.id = "site-navigation-panel";
+
+    document.addEventListener("click", (event) => {
+      if (!menu.contains(event.target)) menu.open = false;
+    });
+    menu.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        menu.open = false;
+        summary?.focus();
+      }
+    });
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a")) menu.open = false;
+    });
+  }
+
+  function installOfflineSupport() {
+    if (!("serviceWorker" in navigator) || !window.isSecureContext) return;
+    const appRoot = new URL(siteRoot, window.location.href);
+    const manifest = document.createElement("link");
+    manifest.rel = "manifest";
+    manifest.href = new URL("manifest.webmanifest", appRoot).href;
+    if (!document.querySelector('link[rel="manifest"]')) document.head.append(manifest);
+    navigator.serviceWorker.register(new URL("service-worker.js", appRoot), { scope: appRoot.pathname })
+      .catch((error) => console.error("[offline] Could not register offline support:", error));
   }
 
   function addGuideReviewNote() {
@@ -90,8 +418,9 @@
   }
 
   installDiagnostics();
-  addFeedbackNavigation();
+  installGroupedNavigation();
   addGuideReviewNote();
+  installOfflineSupport();
 })();
 
 const searchRoot = document.querySelector('[data-site-search]');

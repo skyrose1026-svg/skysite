@@ -1,1 +1,4 @@
 /generated-site/
+/data/forum.sqlite3
+/data/forum.sqlite3-shm
+/data/forum.sqlite3-wal

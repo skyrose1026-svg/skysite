@@ -54,10 +54,16 @@ def extract_page(path):
 
 
 def main():
+    site_files = [
+        path
+        for path in ROOT.rglob("*")
+        if path.is_file()
+        and not any(part.startswith(".") or part == "generated-site" for part in path.relative_to(ROOT).parts)
+    ]
     documents = [
         extract_page(path)
-        for path in sorted(ROOT.rglob("*.html"))
-        if not any(part.startswith(".") or part == "generated-site" for part in path.relative_to(ROOT).parts)
+        for path in sorted(site_files)
+        if path.suffix.lower() == ".html"
     ]
 
     products = []
@@ -95,6 +101,20 @@ def main():
     output = ROOT / "data" / "site-search-index.json"
     output.write_text(json.dumps(documents, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     print(f"Wrote {len(documents)} search documents to {output.relative_to(ROOT)}")
+
+    offline_extensions = {".html", ".css", ".js", ".json", ".svg", ".webmanifest"}
+    offline_assets = [
+        "./" + path.relative_to(ROOT).as_posix()
+        for path in sorted(site_files)
+        if path.suffix.lower() in offline_extensions
+        and path.name not in {"service-worker.js"}
+    ]
+    offline_manifest = ROOT / "data" / "offline-assets.json"
+    offline_manifest.write_text(
+        json.dumps(offline_assets, ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+    print(f"Wrote {len(offline_assets)} offline assets to {offline_manifest.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

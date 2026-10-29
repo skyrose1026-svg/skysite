@@ -30,3 +30,18 @@ The gear catalog and browser-only planning cart are not an online store. There i
 Run `python3 tools/check-links.py` to check local references and link hygiene. Add `--external` to request a bounded online check of external links. The external check requires network access and can report temporary rate limits or provider outages.
 
 Frontend diagnostics are written only to the browser console; they are not sent to an analytics or error-tracking service.
+
+## Offline field tools
+
+The fishing log, trips, tackle, waypoints, and saved environmental snapshots use IndexedDB in the visitor's browser; there is no remote database or account sync. Run `python3 tools/build-search-index.py` after changing the site's pages or scripts so it also regenerates `data/offline-assets.json`. Service-worker caching works only over HTTPS or localhost. Live weather and gauge readings, OpenStreetMap tiles, AI identification, and multi-user sharing require internet access or services not configured by this static site. Offline waypoint records remain available, but map tiles are not cached.
+
+## Shared forum
+
+The forum is the first server-backed feature and uses only Python's standard library plus SQLite:
+
+1. Start it from the project root with `python3 tools/forum-server.py`.
+2. Visit `http://localhost:8000/forum.html`. The server serves both the static site and same-origin forum API; do not use a separate static-only server for the forum page.
+3. By default, the server listens only on `127.0.0.1`. To allow devices on a trusted local network, run `python3 tools/forum-server.py --host 0.0.0.0 --port 8000` and visit the host machine's LAN address from those devices.
+4. The SQLite database is created at `data/forum.sqlite3` and is excluded from Git. Back it up while the server is stopped.
+
+The first version uses public, unverified nicknames; visitors can publish and reply without signing in. Posts are not moderated and cannot be removed through the UI. Do not expose this version directly to the public internet: nickname-only posting is not authentication, the in-memory cooldown is only basic spam friction, and HTTP does not encrypt traffic. A public deployment needs HTTPS, authenticated accounts, moderation/removal controls, durable anti-abuse protections, and a backup/retention policy.

@@ -132,6 +132,9 @@ function New-Page {
         @('Trip Planning', $basePath + 'trip-planning.html'),
         @('Fishing Calendar', $basePath + 'fishing-calendar.html'),
         @('Fishing Log', $basePath + 'fishing-log.html'),
+        @('Field Tools', $basePath + 'field-tools.html'),
+        @('Community', $basePath + 'community.html'),
+        @('Forum', $basePath + 'forum.html'),
         @('Newsletter', $basePath + 'newsletter.html'),
         @('Suggest a correction', $basePath + 'feedback.html'),
         @('Regulations', 'https://myodfw.com/fishing/regulations')

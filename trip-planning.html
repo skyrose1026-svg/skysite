@@ -6,7 +6,9 @@
   <title>Trip Planning | Southern Oregon Angler Guide</title>
   <meta name="description" content="Plan a Southern Oregon fishing trip with local water notes, a National Weather Service forecast, and official regulation links.">
   <link rel="stylesheet" href="./styles/styles.css">
+  <script src="./scripts/field-store.js" defer></script>
   <script src="./scripts/trip-planning.js" defer></script>
+  <script src="./scripts/trip-planner-local.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -49,6 +51,34 @@
     <div class="trip-results" data-trip-results></div>
     <p class="gear-note"><strong>Before every trip:</strong> regulations and emergency conditions can change quickly. Confirm the water-specific rules with <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">ODFW regulations</a> and check current local conditions.</p>
     <p><a class="button button--primary" href="./setup-builder.html">Build a gear setup separately</a></p>
+
+    <section class="newsletter-signup" aria-labelledby="group-trip-heading">
+      <p class="eyebrow">Saved on this device</p>
+      <h2 id="group-trip-heading">Group trip checklist</h2>
+      <p>Build a shared-ready itinerary and packing checklist. This is a local planning tool only: collaborators cannot see changes until you export and send a backup yourself. Do not add private locations or personal contact details.</p>
+      <form class="field-form" data-trip-local-form>
+        <div class="field-form__grid">
+          <label for="local-trip-name">Trip name
+            <input id="local-trip-name" name="name" maxlength="100" required placeholder="Saturday on the Rogue">
+          </label>
+          <label for="local-trip-water">Water or broad area
+            <input id="local-trip-water" name="water" maxlength="120" placeholder="Public water name only">
+          </label>
+          <label for="local-trip-date">Planned date
+            <input id="local-trip-date" name="date" type="date">
+          </label>
+          <label for="local-trip-group">Group label (optional)
+            <input id="local-trip-group" name="group" maxlength="80" placeholder="Weekend crew">
+          </label>
+          <label class="field-form__wide" for="local-trip-members">Participant names (optional; kept in this browser)
+            <input id="local-trip-members" name="members" maxlength="250" placeholder="Names separated by commas">
+          </label>
+        </div>
+        <button class="button button--primary" type="submit">Save local trip plan</button>
+      </form>
+      <p class="form-status" data-trip-local-status role="status" aria-live="polite"></p>
+      <div class="local-trip-list" data-local-trip-list></div>
+    </section>
   </main>
   <footer class="site-footer">
     <p>Forecasts are provided by the <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Site water and seasonal notes are informational and may not reflect in-season changes.</p>

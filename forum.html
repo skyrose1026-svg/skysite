@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fishing Forum | Southern Oregon Angler Guide</title>
+  <meta name="description" content="Join local fishing discussions about Southern Oregon waters, catches, gear, and techniques.">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <script src="./scripts/forum.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav" aria-label="Main">
+      <a href="./index.html">Angler Guide</a>
+      <a href="./fish/fish.html">Fish</a>
+      <a href="./waters/waters.html">Waters</a>
+      <a href="./gear/gear.html">Gear</a>
+      <a href="./setup-builder.html">Setup Builder</a>
+      <a href="./trip-planning.html">Trip Planning</a>
+      <a href="./fishing-calendar.html">Fishing Calendar</a>
+      <a href="./fishing-log.html">Fishing Log</a>
+      <a href="./field-tools.html">Field Tools</a>
+      <a href="./forum.html" aria-current="page">Forum</a>
+      <a href="./newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="./data/site-search-index.json" data-root="./">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear…" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </header>
+  <main class="page-shell">
+    <section class="forum-intro">
+      <p class="eyebrow">Local anglers, shared knowledge</p>
+      <h1>Fishing forum</h1>
+      <p class="hero__lede">Ask a question, share a report, compare gear, or trade techniques with other anglers.</p>
+      <p class="forum-notice"><strong>Public nickname forum:</strong> posts are visible to visitors using this server. No accounts or identity verification are used. Keep exact fishing spots, personal details, and sensitive information private. Posts are not moderated in this first version.</p>
+    </section>
+
+    <section class="forum-compose" aria-labelledby="forum-compose-heading">
+      <details data-new-thread>
+        <summary class="button button--primary">Start a discussion</summary>
+        <form class="forum-form" data-thread-form>
+          <h2 id="forum-compose-heading">New discussion</h2>
+          <div class="forum-form__grid">
+            <label for="forum-category">Category
+              <select id="forum-category" name="category" required>
+                <option>General Fishing</option>
+                <option>Reports &amp; Catches</option>
+                <option>Gear &amp; Tackle</option>
+                <option>Techniques &amp; Knots</option>
+                <option>Waters &amp; Regulations</option>
+              </select>
+            </label>
+            <label for="forum-author">Nickname (public)
+              <input id="forum-author" name="author" maxlength="32" required autocomplete="nickname">
+            </label>
+            <label class="forum-form__wide" for="forum-title">Topic title
+              <input id="forum-title" name="title" maxlength="120" required placeholder="What would you like to discuss?">
+            </label>
+            <label class="forum-form__wide" for="forum-body">Message
+              <textarea id="forum-body" name="body" rows="5" maxlength="4000" required placeholder="Add helpful details. Please don't post private locations or personal information."></textarea>
+            </label>
+          </div>
+          <button class="button button--primary" type="submit">Publish discussion</button>
+          <p class="form-status" data-thread-status role="status" aria-live="polite"></p>
+        </form>
+      </details>
+    </section>
+
+    <section class="forum-toolbar" aria-label="Find discussions">
+      <label for="forum-filter">Category
+        <select id="forum-filter" data-forum-category>
+          <option value="">All discussions</option>
+          <option>General Fishing</option>
+          <option>Reports &amp; Catches</option>
+          <option>Gear &amp; Tackle</option>
+          <option>Techniques &amp; Knots</option>
+          <option>Waters &amp; Regulations</option>
+        </select>
+      </label>
+      <label for="forum-search">Search topics
+        <input id="forum-search" type="search" maxlength="100" data-forum-search placeholder="Search title or message">
+      </label>
+      <label for="forum-sort">Sort by
+        <select id="forum-sort" data-forum-sort>
+          <option value="recent">Recent activity</option>
+          <option value="active">Most replies</option>
+        </select>
+      </label>
+      <button class="shop-reset" type="button" data-forum-refresh>Refresh</button>
+    </section>
+    <p class="form-status" data-forum-status role="status" aria-live="polite">Connecting to the shared forum…</p>
+
+    <section class="forum-layout" aria-label="Forum discussions">
+      <aside class="forum-sidebar" aria-labelledby="forum-categories-heading">
+        <h2 id="forum-categories-heading">Categories</h2>
+        <ul data-forum-categories></ul>
+      </aside>
+      <div class="forum-main">
+        <div class="forum-thread-list" data-forum-threads aria-live="polite"></div>
+        <nav class="forum-pagination" aria-label="Discussion list">
+          <p class="field-help">Showing up to 100 discussions, with recent activity first.</p>
+        </nav>
+      </div>
+    </section>
+    <section class="forum-thread-view" data-thread-view aria-live="polite" hidden>
+      <button class="shop-reset" type="button" data-back-to-list>← Back to discussions</button>
+      <div data-thread-detail></div>
+      <form class="forum-form" data-reply-form>
+        <h2>Join the conversation</h2>
+        <label for="forum-reply-author">Nickname (public)
+          <input id="forum-reply-author" name="author" maxlength="32" required autocomplete="nickname">
+        </label>
+        <label for="forum-reply-body">Your reply
+          <textarea id="forum-reply-body" name="body" rows="4" maxlength="4000" required></textarea>
+        </label>
+        <button class="button button--primary" type="submit">Post reply</button>
+        <p class="form-status" data-reply-status role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Forum posts are shared through this server and stored in its local SQLite database. Posts use public nicknames; don't share private details or precise fishing locations.</p>
+  </footer>
+  <script src="./scripts/site-search.js" defer></script>
+</body>
+</html>
