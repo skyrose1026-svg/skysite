@@ -1,5 +1,5 @@
-const SHELL_CACHE = "southern-oregon-angler-shell-v6";
-const PAGE_CACHE = "southern-oregon-angler-pages-v6";
+const SHELL_CACHE = "southern-oregon-angler-shell-v9";
+const PAGE_CACHE = "southern-oregon-angler-pages-v9";
 const OFFLINE_FALLBACK = "./offline.html";
 
 self.addEventListener("install", (event) => {

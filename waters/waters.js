@@ -151,36 +151,49 @@
   }
 
   window.initWatersMap = function (options) {
-    var container = document.getElementById("map");
+    var mapId = options.containerId || "map";
+    var markers = options.markers || [];
+    var container = document.getElementById(mapId);
     var listedWaters = new Set();
-    var guideNavigation = document.createElement("nav");
-    guideNavigation.className = "map-water-guide-list";
-    guideNavigation.setAttribute("aria-labelledby", "map-water-guide-heading");
-    var heading = document.createElement("h2");
-    heading.id = "map-water-guide-heading";
-    heading.textContent = "Browse water guides";
-    guideNavigation.appendChild(heading);
-    var guideList = document.createElement("ul");
-    options.markers.forEach(function (marker) {
-      if (!marker.slug || listedWaters.has(marker.slug)) return;
-      listedWaters.add(marker.slug);
-      var item = document.createElement("li");
-      var link = document.createElement("a");
-      link.href = "./" + marker.slug + ".html";
-      link.textContent = marker.water;
-      item.appendChild(link);
-      guideList.appendChild(item);
-    });
-    guideNavigation.appendChild(guideList);
-    if (container) container.insertAdjacentElement("afterend", guideNavigation);
+    if (options.guideNavigation !== false && container) {
+      var guideNavigation = document.createElement("nav");
+      guideNavigation.className = "map-water-guide-list";
+      guideNavigation.setAttribute("aria-labelledby", "map-water-guide-heading");
+      var heading = document.createElement("h2");
+      heading.id = "map-water-guide-heading";
+      heading.textContent = "Browse water guides";
+      guideNavigation.appendChild(heading);
+      var guideList = document.createElement("ul");
+      markers.forEach(function (marker) {
+        if (!marker.slug || listedWaters.has(marker.slug)) return;
+        listedWaters.add(marker.slug);
+        var item = document.createElement("li");
+        var link = document.createElement("a");
+        link.href = "./" + marker.slug + ".html";
+        link.textContent = marker.water;
+        item.appendChild(link);
+        guideList.appendChild(item);
+      });
+      guideNavigation.appendChild(guideList);
+      container.insertAdjacentElement("afterend", guideNavigation);
+    }
 
-    var map = initMap("map", { center: [43.8, -120.5], zoom: 7 });
+    var map = initMap(mapId, {
+      center: options.center || [43.8, -120.5],
+      zoom: options.zoom || 7
+    });
     if (!map) return;
-    options.markers.forEach(function (m) {
-      var popup = "<strong>" + m.name + "</strong><br><em>" + m.water + "</em><br>" + m.fish + '<br><a href="./' + m.slug + '.html">View details & forecast</a>';
+    markers.forEach(function (m) {
+      var popup = "<strong>" + m.name + "</strong>";
+      if (m.water) popup += "<br><em>" + m.water + "</em>";
+      if (m.fish) popup += "<br>" + m.fish;
+      var href = m.href || (m.slug ? "./" + m.slug + ".html" : options.overviewHref);
+      if (href) popup += '<br><a href="' + href + '">' + (m.linkText || "View water guide") + "</a>";
       L.marker([m.lat, m.lng]).addTo(map).bindPopup(popup);
     });
-    if (container) container.setAttribute("aria-label", "Map of Oregon fishing waters and access areas");
+    if (container) {
+      container.setAttribute("aria-label", options.accessibleLabel || "Map of Oregon fishing waters and access areas");
+    }
   };
 
   window.initDetailMap = function (options) {

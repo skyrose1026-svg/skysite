@@ -3,24 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#203d32">
   <title>Southern Oregon Angler Guide</title>
-  <meta name="description" content="Find the best fish species and most popular fishing waters in Southern Oregon, from the Rogue to the Umpqua and Applegate.">
+  <meta name="description" content="A practical field guide to Southern Oregon fishing waters, fish, gear, trip planning, and offline tools.">
+  <link rel="icon" href="./assets/angler-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="./scripts/homepage.js" defer></script>
 </head>
 <body>
-  <header class="site-header">
-    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav">
-      <a href="./index.html">Angler Guide</a>
-      <a href="./fish/fish.html">Fish</a>
-      <a href="./waters/waters.html">Waters</a>
-      <a href="./gear/gear.html">Gear</a>
-      <a href="./setup-builder.html">Setup Builder</a>
-      <a href="./trip-planning.html">Trip Planning</a>
-      <a href="./fishing-calendar.html">Fishing Calendar</a>
-      <a href="./fishing-log.html">Fishing Log</a>
-      <a href="./newsletter.html">Newsletter</a>
-      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
-    </nav></details>
+  <header class="site-header home-header">
+    <a class="home-brand" href="./index.html" aria-label="Southern Oregon Angler Guide home">
+      <img src="./assets/angler-icon.svg" alt="" width="42" height="42">
+      <span>Southern Oregon<br><strong>Angler Guide</strong></span>
+    </a>
+    <details class="site-nav-menu">
+      <summary>Menu</summary>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="./index.html">Angler Guide</a>
+        <a href="./fish/fish.html">Fish</a>
+        <a href="./waters/waters.html">Waters</a>
+        <a href="./gear/gear.html">Gear</a>
+        <a href="./field-tools.html">Field Tools</a>
+        <a href="./trip-planning.html">Trip Planning</a>
+        <a href="./community.html">Community</a>
+        <a href="./regulations.html">Regulations</a>
+      </nav>
+    </details>
     <form class="site-search" role="search" data-site-search data-index="./data/site-search-index.json" data-root="./">
       <label for="site-search-input">Search the whole site</label>
       <div class="site-search__controls">
@@ -29,251 +38,182 @@
       </div>
       <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
     </form>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
+      <span aria-hidden="true" data-theme-icon>☀</span> <span data-theme-label>Dark mode</span>
+    </button>
   </header>
 
-  <main class="page-shell">
-    <section class="hero">
-      <div class="hero__copy">
-        <p class="eyebrow">Southern Oregon fishing guide</p>
-        <h1>Find the right water for your next Oregon catch.</h1>
-        <p class="hero__lede">From steelhead on the Rogue to bass on the lakes, this guide helps you match the species to the river, season, and gear.</p>
-
-        <div class="hero__actions">
-          <a class="button button--primary" href="./waters/waters.html">Explore waters</a>
-          <a class="button button--secondary" href="./fish/fish.html">Target species</a>
-          <a class="button button--secondary" href="./gear/gear.html">Choose your gear</a>
-          <a class="button button--secondary" href="./setup-builder.html">Build a setup</a>
-          <a class="button button--secondary" href="./trip-planning.html">Plan a trip</a>
-          <a class="button button--secondary" href="./forum.html">Join the forum</a>
+  <main class="page-shell home-main">
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="home-hero__copy">
+        <p class="eyebrow">Southern Oregon fishing</p>
+        <h1 id="home-title">Southern Oregon Angler Guide</h1>
+        <p class="home-hero__lede">Find a species, pick your water, and plan a better day outside.</p>
+        <p class="offline-pill" data-offline-status role="status" aria-live="polite">
+          <span class="offline-pill__dot" aria-hidden="true"></span>
+          <span data-offline-label>Checking offline support…</span>
+        </p>
+        <div class="home-hero__actions">
+          <a class="button button--primary" href="./fish/fish.html">Target species</a>
+          <a class="button button--secondary" href="./waters/waters.html">Find waters</a>
         </div>
-
-        <ul class="hero__stats" aria-label="Fishing guide stats">
-          <li>
-            <strong>26</strong>
-            <span>Fish profiles in this guide</span>
-          </li>
-          <li>
-            <strong>37</strong>
-            <span>Rivers and lakes covered</span>
-          </li>
-          <li>
-            <strong>4</strong>
-            <span>Best seasons</span>
-          </li>
-        </ul>
+        <p class="home-hero__note">Live gauges need internet. Saved pages and notes may work offline.</p>
       </div>
-
-      <figure class="hero__feature">
-        <img src="./assets/images/applegate-river.jpg" alt="Applegate River south of Ruch, Oregon" fetchpriority="high" decoding="async">
-        <figcaption class="photo-credit">Photo: Gary Halvorson, Oregon State Archives. <a href="https://commons.wikimedia.org/wiki/File:Applegate_River_(Jackson_County,_Oregon_scenic_images)_(jacDA0029).jpg" rel="noopener noreferrer">Source and reuse terms</a>; resized for web.</figcaption>
+      <figure class="home-hero__image">
+        <div id="home-water-map" class="map home-water-map" role="region" aria-label="Map of Southern Oregon fishing waters"></div>
+        <figcaption>Southern Oregon fishing waters. Pins show general locations; check maps and current access before your trip.</figcaption>
       </figure>
     </section>
 
-    <section class="section-block">
+    <section class="home-directories" aria-labelledby="directories-heading">
       <div class="section-header">
         <div>
-          <p class="eyebrow">Plan and remember</p>
-          <h2>Tools for your next fishing day</h2>
+          <p class="eyebrow">Plan your day</p>
+          <h2 id="directories-heading">Start with the essentials</h2>
         </div>
       </div>
-      <div class="newsletter-grid">
-        <article class="newsletter-card">
-          <h2>Fishing Calendar</h2>
-          <p>Browse typical seasonal opportunities for each month and open the fish guides for more details.</p>
-          <a href="./fishing-calendar.html">See what to target by month &rarr;</a>
-        </article>
-        <article class="newsletter-card">
-          <h2>Personal Fishing Log</h2>
-          <p>Keep catch, gear, and trip notes privately in this browser. Export your entries whenever you like.</p>
-          <a href="./fishing-log.html">Start a personal log &rarr;</a>
-        </article>
+      <div class="directory-grid">
+        <a class="directory-card" href="./fish/fish.html">
+          <span class="directory-card__eyebrow">01 · Target species</span>
+          <h3>What do you want to catch?</h3>
+          <p>Find local fish, seasons, and tips.</p>
+          <span class="directory-card__link">Browse fish <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="directory-card" href="./waters/waters.html">
+          <span class="directory-card__eyebrow">02 · Choose a water</span>
+          <h3>Where should you fish?</h3>
+          <p>Explore local rivers, lakes, and access.</p>
+          <span class="directory-card__link">Browse waters <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="directory-card" href="./regulations.html">
+          <span class="directory-card__eyebrow">03 · Check the rules</span>
+          <h3>Fishing regulations</h3>
+          <p>Review rules, licenses, and access.</p>
+          <span class="directory-card__link">Check regulations <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="directory-card" href="./trip-planning.html">
+          <span class="directory-card__eyebrow">04 · Get ready</span>
+          <h3>Plan a trip</h3>
+          <p>Build an itinerary and packing list.</p>
+          <span class="directory-card__link">Open trip planner <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="directory-card" href="./community.html">
+          <span class="directory-card__eyebrow">05 · Join the community</span>
+          <h3>Community hub</h3>
+          <p>Visit the forum, share a catch, or suggest a correction.</p>
+          <span class="directory-card__link">Open community <span aria-hidden="true">→</span></span>
+        </a>
       </div>
     </section>
 
-    <section class="section-block stats-strip" aria-label="Oregon fishing stats">
-      <div class="stat-card">
-        <span class="stat-card__label">Fish profiles in this guide</span>
-        <strong>26</strong>
-        <p>Species with dedicated identification and fishing pages.</p>
-      </div>
-      <div class="stat-card">
-        <span class="stat-card__label">River and lake profiles</span>
-        <strong>37</strong>
-        <p>Named waters with access, timing, and species notes.</p>
-      </div>
-      <div class="stat-card stat-card--feature">
-        <span class="stat-card__label">State fish</span>
-        <strong>Chinook Salmon</strong>
-        <p>Oregon’s official state fish.</p>
-      </div>
-    </section>
-
-    <section class="section-block">
+    <section class="home-species" aria-labelledby="species-heading">
       <div class="section-header">
         <div>
-          <p class="eyebrow">Most targeted species</p>
-          <h2>Popular fish to chase in Oregon</h2>
+          <p class="eyebrow">Know what to look for</p>
+          <h2 id="species-heading">Popular local targets</h2>
         </div>
-        <a href="./fish/fish.html" class="text-link">View all species &rarr;</a>
+        <a class="text-link" href="./fish/fish.html">All fish profiles →</a>
       </div>
-
-      <div class="species-grid">
-        <a class="species-card" href="./fish/rainbow-trout.html">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg/500px-Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg" alt="Rainbow trout showing its pink lateral stripe">
-          <div class="species-card__content">
-            <span class="species-card__tag badge badge--trout">Trout</span>
-            <h3>Rainbow Trout</h3>
-            <p>Cold rivers, streams, and spring-fed water.</p>
-          </div>
+      <div class="home-species__grid">
+        <a class="home-species__card" href="./fish/rainbow-trout.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg/500px-Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg" alt="Rainbow trout underwater showing its pink lateral stripe" loading="lazy" decoding="async">
+          <span>Rainbow trout</span>
         </a>
-
-        <a class="species-card" href="./fish/steelhead.html">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Steelhead_trout_or_rainbow_trout_hanging_on_side_of_cabin.jpg/500px-Steelhead_trout_or_rainbow_trout_hanging_on_side_of_cabin.jpg" alt="Steelhead fish with its body and shape clearly visible">
-          <div class="species-card__content">
-            <span class="species-card__tag badge badge--steelhead">Steelhead</span>
-            <h3>Steelhead</h3>
-            <p>Prime river runs and fall swing patterns.</p>
-          </div>
+        <a class="home-species__card" href="./fish/steelhead.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Steelhead_trout_or_rainbow_trout_hanging_on_side_of_cabin.jpg/500px-Steelhead_trout_or_rainbow_trout_hanging_on_side_of_cabin.jpg" alt="Steelhead trout" loading="lazy" decoding="async">
+          <span>Steelhead</span>
         </a>
-
-        <a class="species-card" href="./fish/chinook-salmon.html">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Chinook_Salmon_Adult_Male.jpg/500px-Chinook_Salmon_Adult_Male.jpg" alt="Chinook salmon with its hooked jaw and spawning coloration">
-          <div class="species-card__content">
-            <span class="species-card__tag badge badge--salmon">Salmon</span>
-            <h3>Chinook Salmon</h3>
-            <p>Big-water excitement on the Rogue and coast.</p>
-          </div>
+        <a class="home-species__card" href="./fish/smallmouth-bass.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Smallmouth_Bass_%2849561724026%29.jpg/500px-Smallmouth_Bass_%2849561724026%29.jpg" alt="Smallmouth bass with bronze flanks and dark bars" loading="lazy" decoding="async">
+          <span>Smallmouth bass</span>
         </a>
-
-        <a class="species-card" href="./fish/smallmouth-bass.html">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Smallmouth_Bass_%2849561724026%29.jpg/500px-Smallmouth_Bass_%2849561724026%29.jpg" alt="Smallmouth bass with bronze sides and dark bars">
-          <div class="species-card__content">
-            <span class="species-card__tag badge badge--bass">Bass</span>
-            <h3>Smallmouth Bass</h3>
-            <p>Structure, current seams, and rocky banks.</p>
-          </div>
-        </a>
-
-        <a class="species-card" href="./fish/largemouth-bass.html">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Largemouth_Bass_%28Micropterus_salmoides%29_June_2023_%28cropped%29.jpg/500px-Largemouth_Bass_%28Micropterus_salmoides%29_June_2023_%28cropped%29.jpg" alt="Largemouth bass in clear water with an obvious large mouth">
-          <div class="species-card__content">
-            <span class="species-card__tag badge badge--bass">Bass</span>
-            <h3>Largemouth Bass</h3>
-            <p>Reservoirs, coves, and weed lines.</p>
-          </div>
-        </a>
-
-        <a class="species-card" href="./fish/coastal-cutthroat-trout.html">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Coastal_cutthroat_trout_Puget_Sound.jpg/500px-Coastal_cutthroat_trout_Puget_Sound.jpg" alt="Coastal cutthroat trout with its orange throat slash and speckles">
-          <div class="species-card__content">
-            <span class="species-card__tag badge badge--trout">Trout</span>
-            <h3>Cutthroat Trout</h3>
-            <p>Streams and tributaries with cooler water.</p>
-          </div>
+        <a class="home-species__card" href="./fish/chinook-salmon.html">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Chinook_Salmon_Adult_Male.jpg/500px-Chinook_Salmon_Adult_Male.jpg" alt="Adult male Chinook salmon" loading="lazy" decoding="async">
+          <span>Chinook salmon</span>
         </a>
       </div>
+      <p class="home-species__credit">Fish photos: <a href="https://commons.wikimedia.org/wiki/File:Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg" rel="noopener noreferrer">Rainbow trout</a>, <a href="https://commons.wikimedia.org/wiki/File:Steelhead_trout_or_rainbow_trout_hanging_on_side_of_cabin.jpg" rel="noopener noreferrer">steelhead</a>, <a href="https://commons.wikimedia.org/wiki/File:Smallmouth_Bass_(49561724026).jpg" rel="noopener noreferrer">smallmouth bass</a>, and <a href="https://commons.wikimedia.org/wiki/File:Chinook_Salmon_Adult_Male.jpg" rel="noopener noreferrer">Chinook salmon</a> via Wikimedia Commons.</p>
     </section>
 
-    <section class="section-block">
+    <nav class="home-more-links" aria-label="More fishing tools">
+      <a href="./gear/gear.html">Gear &amp; rigging <span aria-hidden="true">→</span></a>
+      <a href="./fishing-log.html">Private fishing log <span aria-hidden="true">→</span></a>
+      <a href="./field-tools.html">Gauges &amp; field tools <span aria-hidden="true">→</span></a>
+    </nav>
+
+    <section class="home-utilities" aria-labelledby="utilities-heading">
+      <div class="home-utilities__heading">
+        <p class="eyebrow">One-tap field tools</p>
+        <h2 id="utilities-heading">Quick access</h2>
+      </div>
+      <nav class="utility-links" aria-label="Quick field utilities">
+        <a href="https://myodfw.com/fishing/regulations" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">↗</span> ODFW regulation lookup
+        </a>
+        <a href="./field-tools.html#knots-heading">
+          <span aria-hidden="true">⌁</span> Knot &amp; rigging guide
+        </a>
+        <a href="./field-tools.html#solunar-heading">
+          <span aria-hidden="true">◷</span> Solunar bite planner
+        </a>
+      </nav>
+    </section>
+
+    <section class="home-faq" aria-labelledby="faq-heading">
       <div class="section-header">
         <div>
-          <p class="eyebrow">Top destinations</p>
-          <h2>Most popular Southern Oregon fishing spots</h2>
+          <p class="eyebrow">Before you head out</p>
+          <h2 id="faq-heading">Frequently asked questions</h2>
         </div>
-        <a href="./waters/waters.html" class="text-link">Explore all waters &rarr;</a>
+        <p class="home-section-intro">A few quick notes about privacy, offline use, and checking the rules.</p>
       </div>
-
-      <div class="water-grid">
-        <a class="water-card" href="./waters/rogue-river.html">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Rogue_River_Oregon_USA.jpg/960px-Rogue_River_Oregon_USA.jpg" alt="Rogue River in Oregon">
-          <div class="water-card__body">
-            <span class="water-card__tag">Rogue River</span>
-            <h3>Rogue River</h3>
-            <p>Steelhead, salmon, and trout from Grants Pass to Gold Beach.</p>
-          </div>
-        </a>
-
-        <a class="water-card" href="./waters/applegate-river.html">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Applegate_River_%28Jackson_County%2C_Oregon_scenic_images%29_%28jacDA0132%29.jpg" alt="Applegate River in Jackson County, Oregon">
-          <div class="water-card__body">
-            <span class="water-card__tag">Applegate River</span>
-            <h3>Applegate River</h3>
-            <p>Classic trout water with seasonal steelhead and salmon movement.</p>
-          </div>
-        </a>
-
-        <a class="water-card" href="./waters/umpqua-river.html">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Umpqua_River_Pacific_Ocean.jpg/960px-Umpqua_River_Pacific_Ocean.jpg" alt="Umpqua River meeting the Pacific Ocean">
-          <div class="water-card__body">
-            <span class="water-card__tag">Umpqua River</span>
-            <h3>Umpqua River</h3>
-            <p>Big trout and salmon access with riverbank structure and current.</p>
-          </div>
-        </a>
-
-        <a class="water-card" href="./waters/illinois-river.html">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Illinois_River_State_Park_%28Josephine_County%2C_Oregon_scenic_images%29_%28josDA0086%29.jpg" alt="Illinois River at Illinois River State Park in Josephine County, Oregon">
-          <div class="water-card__body">
-            <span class="water-card__tag">Illinois River</span>
-            <h3>Illinois River</h3>
-            <p>Wild river feel, scenic runs, and productive salmon and trout pools.</p>
-          </div>
-        </a>
-      </div>
-      <p class="photo-credit image-credits">Photos: <a href="https://commons.wikimedia.org/wiki/File:Rogue_River_Oregon_USA.jpg">Rogue River, Hamad Darwish (CC BY 2.0)</a>; <a href="https://commons.wikimedia.org/wiki/File:Applegate_River_(Jackson_County,_Oregon_scenic_images)_(jacDA0132).jpg">Applegate River, Gary Halvorson / Oregon State Archives</a>; <a href="https://commons.wikimedia.org/wiki/File:Umpqua_River_Pacific_Ocean.jpg">Umpqua River, Bob Heims / U.S. Army Corps of Engineers (public domain)</a>; <a href="https://commons.wikimedia.org/wiki/File:Illinois_River_State_Park_(Josephine_County,_Oregon_scenic_images)_(josDA0086).jpg">Illinois River, Gary Halvorson / Oregon State Archives</a>.</p>
-    </section>
-
-    <section class="catch">
-      <figure class="catch__photo">
-        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/4803_white_sturgeon_swart_odfw_%284455050144%29.jpg/960px-4803_white_sturgeon_swart_odfw_%284455050144%29.jpg" alt="White sturgeon photographed by Oregon Department of Fish and Wildlife">
-        <div class="catch__badge">Fish of the month</div>
-        <figcaption class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:4803_white_sturgeon_swart_odfw_(4455050144).jpg">Oregon Department of Fish &amp; Wildlife</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>.</figcaption>
-      </figure>
-
-      <div class="catch__content">
-        <p class="eyebrow">Oregon river giant</p>
-        <h2>White Sturgeon</h2>
-        <p>White sturgeon are among Oregon’s largest freshwater fish. These ancient fish inhabit the Columbia River basin, including the Snake River along Oregon’s eastern border.</p>
-        <a class="button button--primary" href="./waters/snake-river.html">Explore Snake River</a>
-      </div>
-    </section>
-
-    <section class="section-block fact-block">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Oregon fish facts</p>
-          <h2>Wild water, unique species</h2>
-        </div>
-      </div>
-
-      <div class="fact-grid">
-        <article class="fact-card">
-          <span class="fact-card__tag">State Fish</span>
-          <h3>Chinook Salmon</h3>
-          <p>Chinook salmon is Oregon’s official state fish and one of the state’s best-known native salmon.</p>
-          <a href="./fish/chinook-salmon.html">See Chinook details &rarr;</a>
-        </article>
-
-        <article class="fact-card">
-          <span class="fact-card__tag">Salmon Run</span>
-          <h3>Spring and fall runs</h3>
-          <p>Southern Oregon is famous for spring and fall salmon runs, especially in the Rogue, Chetco, and Illinois systems.</p>
-          <a href="./waters/rogue-river.html">Explore Rogue River &rarr;</a>
-        </article>
-
-        <article class="fact-card">
-          <span class="fact-card__tag">Native waters</span>
-          <h3>Cold-water heritage</h3>
-          <p>Many Oregon trout and salmon fisheries depend on clean, high-elevation water and healthy stream connectivity.</p>
-          <a href="./fish/fish.html">Browse Oregon species &rarr;</a>
-        </article>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>Are my catch logs private?</summary>
+          <p>Yes. Entries stay in this browser on this device. Keep exported backups private.</p>
+        </details>
+        <details class="faq-item" open>
+          <summary>Do I need cell service on the water to use this site?</summary>
+          <p>Cached pages and saved notes can work offline. Live gauges, forecasts, maps, and forum updates need internet.</p>
+        </details>
+        <details class="faq-item" open>
+          <summary>How do live river gauges work offline?</summary>
+          <p>They don’t update offline. Field Tools may show a saved, possibly outdated snapshot; check USGS for current readings.</p>
+        </details>
+        <details class="faq-item" open>
+          <summary>Do I need a paper fishing license in Oregon?</summary>
+          <p>ODFW offers electronic licensing, but document requirements vary. Check current <a href="https://myodfw.com/fishing/regulations" target="_blank" rel="noopener noreferrer">ODFW rules</a> for your license and tags.</p>
+        </details>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>. <a href="./feedback.html">Suggest a guide correction</a>.</p>
+  <footer class="site-footer home-footer">
+    <div class="home-footer__inner">
+      <div class="home-footer__about">
+        <a class="home-footer__brand" href="./index.html">Southern Oregon Angler Guide</a>
+        <p>Field information is a starting point, not a substitute for official regulations, access permissions, or current safety conditions.</p>
+        <p class="home-footer__copyright">© Southern Oregon Angler Guide</p>
+      </div>
+      <nav class="home-footer__nav" aria-label="Footer navigation">
+        <a href="./waters/waters.html">Waters</a>
+        <a href="./fish/fish.html">Fish profiles</a>
+        <a href="./gear/gear.html">Gear</a>
+        <a href="./field-tools.html">Field tools</a>
+        <a href="./trip-planning.html">Trip planning</a>
+        <a href="./fishing-log.html">Fishing log</a>
+        <a href="./community.html">Community</a>
+        <a href="./regulations.html">Regulations</a>
+      </nav>
+      <div class="home-footer__actions">
+        <p class="cache-status" data-cache-status role="status" aria-live="polite">Checking local cache…</p>
+        <a class="button button--footer" href="./fishing-log.html#log-entries-heading" aria-label="Open the fishing log to export a full local JSON backup">Export local data (JSON)</a>
+      </div>
+    </div>
   </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+  <script src="./waters/waters.js" defer></script>
+  <script src="./scripts/home-water-map.js" defer></script>
   <script src="./scripts/site-search.js" defer></script>
 </body>
 </html>
