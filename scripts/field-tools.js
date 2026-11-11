@@ -203,8 +203,7 @@
         const observations = await getJson(observationsUrl);
         const values = (observations.features || []).map((feature) => feature.properties)
           .filter((item) => Number.isFinite(item.barometricPressure?.value))
-          .sort((left, right) => String(left.timestamp).localeCompare(String(right.timestamp)));
-          .sort((left, right) => (left.timestamp || "").localeCompare(right.timestamp || ""));
+          .sort((left, right) => String(left.timestamp || "").localeCompare(String(right.timestamp || "")));
         if (values.length) {
           const first = values[0].barometricPressure.value;
           const latest = values[values.length - 1].barometricPressure.value;

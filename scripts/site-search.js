@@ -417,10 +417,76 @@
     heading.insertAdjacentElement("afterend", note);
   }
 
+  function installThemeToggle() {
+    const root = document.documentElement;
+    const THEME_KEY = "southern-oregon-angler-theme";
+
+    function updateToggleButton(btn, isDark) {
+      if (!btn) return;
+      btn.setAttribute("aria-pressed", String(isDark));
+      btn.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
+      const icon = btn.querySelector("[data-theme-icon]");
+      const label = btn.querySelector("[data-theme-label]");
+      if (icon) icon.textContent = isDark ? "☾" : "☀";
+      if (label) label.textContent = `${isDark ? "Light" : "Dark"} mode`;
+    }
+
+    function applyTheme(theme) {
+      const isDark = theme === "dark";
+      root.dataset.theme = isDark ? "dark" : "light";
+      document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+        updateToggleButton(btn, isDark);
+      });
+    }
+
+    function ensureThemeToggleInHeader() {
+      const headers = document.querySelectorAll(".site-header");
+      headers.forEach((header) => {
+        if (!header.querySelector("[data-theme-toggle]")) {
+          const btn = document.createElement("button");
+          btn.className = "theme-toggle";
+          btn.type = "button";
+          btn.setAttribute("data-theme-toggle", "");
+          btn.setAttribute("aria-label", "Switch to dark mode");
+          btn.setAttribute("aria-pressed", "false");
+          btn.innerHTML = '<span aria-hidden="true" data-theme-icon>☀</span> <span data-theme-label>Dark mode</span>';
+          header.appendChild(btn);
+        }
+      });
+
+      const isDark = root.dataset.theme === "dark";
+      document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+        updateToggleButton(btn, isDark);
+      });
+    }
+
+    try {
+      const savedTheme = window.localStorage.getItem(THEME_KEY);
+      applyTheme(savedTheme === "dark" ? "dark" : "light");
+    } catch (error) {
+      applyTheme("light");
+    }
+
+    ensureThemeToggleInHeader();
+
+    document.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-theme-toggle]");
+      if (!btn) return;
+      const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+      applyTheme(nextTheme);
+      try {
+        window.localStorage.setItem(THEME_KEY, nextTheme);
+      } catch (error) {
+        console.warn("[theme] Could not save theme preference:", error);
+      }
+    });
+  }
+
   installDiagnostics();
   installGroupedNavigation();
   addGuideReviewNote();
   installOfflineSupport();
+  installThemeToggle();
 })();
 
 const searchRoot = document.querySelector('[data-site-search]');

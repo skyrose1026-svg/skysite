@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wickiup Reservoir - Southern Oregon Angler Guide</title>
+  <meta name="description" content="Second-largest reservoir in Central Oregon, legendary for giant German brown trout, kokanee, and largemouth bass.">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="../gear/gear.html">Gear</a>
+      <a href="../setup-builder.html">Setup Builder</a>
+      <a href="../trip-planning.html">Trip Planning</a>
+      <a href="../fishing-calendar.html">Fishing Calendar</a>
+      <a href="../fishing-log.html">Fishing Log</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="../data/site-search-index.json" data-root="../">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear?" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </header>
+  <main>
+    <h1>Wickiup Reservoir</h1>
+    <p class="region">Central Oregon</p>
+    <p>Second-largest reservoir in Central Oregon, legendary for giant German brown trout, kokanee, and largemouth bass.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Wickiup Dam Boat Ramp</p>
+    </section>
+    <p><a class="button button--primary" href="../trip-planning.html?water=wickiup-reservoir">Plan a trip to this water</a></p>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="43.684" data-lng="-121.698">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+        <a class="badge badge--fish" href="../fish/fish.html">Brown Trout</a>
+        <a class="badge badge--fish" href="../fish/fish.html">Kokanee</a>
+        <a class="badge badge--fish" href="../fish/largemouth-bass.html">Largemouth Bass</a>
+      </div>
+      <div class="fish-grid">
+      <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg/500px-Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      <a class="fish-card" href="../fish/kokanee.html"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Kokanee_Salmon_%28Oncorhynchus_nerka%29_%287114674149%29.jpg/500px-Kokanee_Salmon_%28Oncorhynchus_nerka%29_%287114674149%29.jpg" alt="Kokanee Salmon"><span>Kokanee Salmon</span></a>
+      <a class="fish-card" href="../fish/largemouth-bass.html"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Largemouth_bass_%28Micropterus_salmoides%29.jpg/500px-Largemouth_bass_%28Micropterus_salmoides%29.jpg" alt="Largemouth Bass"><span>Largemouth Bass</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>Season</td><td>Open late April through October 31</td></tr>
+        <tr><td>Brown Trout</td><td>Check special size restrictions and limits for trophy browns</td></tr>
+        <tr><td>Kokanee</td><td>Bonus limits often apply in high-abundance seasons</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>Best water</td><td>Inundated river channels and flats near Gull Point</td></tr>
+        <tr><td>Access</td><td>Wickiup Dam, Gull Point, Reservoir Campground ramps</td></tr>
+        <tr><td>Hazards</td><td>Water levels drop severely in late summer; shallow stumps become boat hazards</td></tr>
+        <tr><td>Seasons</td><td>Kokanee prime May-July; trophy browns spring and fall</td></tr>
+        <tr><td>Gear note</td><td>Trolling flashers and hoochies for kokanee; big minnow plugs for browns</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins:[{name:"Wickiup Dam Boat Ramp",lat:43.684,lng:-121.698},{name:"North Twin Lake Access",lat:43.722,lng:-121.765},{name:"Gull Point Boat Launch",lat:43.704,lng:-121.731}]});
+  </script>
+  <script src="../scripts/site-search.js" defer></script>
+</body>
+</html>

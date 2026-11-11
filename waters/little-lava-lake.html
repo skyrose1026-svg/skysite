@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Little Lava Lake - Southern Oregon Angler Guide</title>
+  <meta name="description" content="The headwater source of the Deschutes River, offering tranquil fishing for brook trout and rainbows in a quiet pine-forest setting.">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+  <header class="site-header">
+    <details class="site-nav-menu"><summary>Menu</summary><nav class="site-nav">
+      <a href="../index.html">Angler Guide</a>
+      <a href="../fish/fish.html">Fish</a>
+      <a href="./waters.html">Waters</a>
+      <a href="../gear/gear.html">Gear</a>
+      <a href="../setup-builder.html">Setup Builder</a>
+      <a href="../trip-planning.html">Trip Planning</a>
+      <a href="../fishing-calendar.html">Fishing Calendar</a>
+      <a href="../fishing-log.html">Fishing Log</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">Regulations</a>
+    </nav></details>
+    <form class="site-search" role="search" data-site-search data-index="../data/site-search-index.json" data-root="../">
+      <label for="site-search-input">Search the whole site</label>
+      <div class="site-search__controls">
+        <input type="search" id="site-search-input" name="q" placeholder="Fish, waters, gear?" autocomplete="off" aria-controls="site-search-results">
+        <button type="submit">Search</button>
+      </div>
+      <div class="site-search__results" id="site-search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </header>
+  <main>
+    <h1>Little Lava Lake</h1>
+    <p class="region">Central Oregon</p>
+    <p>The headwater source of the Deschutes River, offering tranquil fishing for brook trout and rainbows in a quiet pine-forest setting.</p>
+    <section>
+      <h2>Location</h2>
+      <div id="map" class="map map--detail"></div>
+      <p><strong>Primary access:</strong> Little Lava Lake Boat Launch</p>
+    </section>
+    <p><a class="button button--primary" href="../trip-planning.html?water=little-lava-lake">Plan a trip to this water</a></p>
+    <section>
+      <h2>7-Day Weather Forecast</h2>
+      <div class="weather" id="weather" data-lat="43.978" data-lng="-121.758">
+        <p>Loading forecast...</p>
+      </div>
+    </section>
+    <section>
+      <h2>Moon Phase</h2>
+      <div class="moon" id="moon"></div>
+    </section>
+    <section>
+      <h2>Fish You May Find Here</h2>
+      <div class="card__badges">
+        <a class="badge badge--fish" href="../fish/brook-trout.html">Brook Trout</a>
+        <a class="badge badge--fish" href="../fish/rainbow-trout.html">Rainbow Trout</a>
+      </div>
+      <div class="fish-grid">
+      <a class="fish-card" href="../fish/brook-trout.html"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Brook_trout_in_shallow_water.jpg/500px-Brook_trout_in_shallow_water.jpg" alt="Brook Trout"><span>Brook Trout</span></a>
+      <a class="fish-card" href="../fish/rainbow-trout.html"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg/500px-Close_up_of_rainbow_trout_fish_underwater_oncorhynchus_mykiss.jpg" alt="Rainbow Trout"><span>Rainbow Trout</span></a>
+      </div>
+    </section>
+    <section>
+      <h2>Regulations</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Rule</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>Season</td><td>Open late April through October 31</td></tr>
+        <tr><td>Motors</td><td>10 mph speed limit; electric motors preferred</td></tr>
+        <tr><td>Limits</td><td>5 trout per day</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Details</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Info</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>Best water</td><td>Weed lines and the outlet pool where the Deschutes River begins</td></tr>
+        <tr><td>Access</td><td>USFS campground and gravel boat launch</td></tr>
+        <tr><td>Hazards</td><td>Muddy shallows; insect hatches can be intense in June</td></tr>
+        <tr><td>Seasons</td><td>June through September</td></tr>
+        <tr><td>Gear note</td><td>Light spinning tackle with small Panther Martins or casting dry flies from a canoe or kayak</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Weather data via <a href="https://www.weather.gov/" rel="noopener noreferrer">National Weather Service</a>. Fishing info is a guide, not the law: <a href="https://myodfw.com/fishing/regulations" rel="noopener noreferrer">check current ODFW regulations</a>.</p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./waters.js"></script>
+  <script>
+    initDetailMap({pins:[{name:"Little Lava Lake Boat Launch",lat:43.978,lng:-121.758},{name:"Deschutes River Headwaters Outlet",lat:43.975,lng:-121.762}]});
+  </script>
+  <script src="../scripts/site-search.js" defer></script>
+</body>
+</html>

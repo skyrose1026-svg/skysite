@@ -83,29 +83,162 @@
       container.textContent = "Weather forecast unavailable.";
       return;
     }
-    var forecast = document.createElement("div");
-    forecast.className = "weather-current";
-    periods.slice(0, 8).forEach(function (period, index) {
-      var day = document.createElement("div");
-      day.className = "weather-day";
-      var heading = document.createElement("strong");
-      heading.textContent = period.name || (index === 0 ? "Current forecast" : "Forecast");
-      var summary = document.createElement("p");
-      summary.textContent = nwsIconToEmoji(period.shortForecast || "") + " " + (period.temperature === undefined ? "Temperature unavailable" : period.temperature + "°F");
-      var conditions = document.createElement("p");
-      conditions.textContent = period.shortForecast || "Forecast unavailable";
-      var wind = document.createElement("p");
-      wind.textContent = "Wind " + (period.windSpeed || "unavailable");
-      day.append(heading, summary, conditions, wind);
-      if (index > 0) {
-        var chance = period.probabilityOfPrecipitation && period.probabilityOfPrecipitation.value;
-        var rain = document.createElement("p");
-        rain.textContent = "Rain " + (chance === null || chance === undefined ? "unavailable" : chance + "%");
-        day.append(rain);
+
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var availableMonths = [];
+    periods.forEach(function (p) {
+      if (p.startTime) {
+        var mIdx = new Date(p.startTime).getMonth();
+        if (availableMonths.indexOf(mIdx) === -1) availableMonths.push(mIdx);
       }
-      forecast.append(day);
     });
-    container.replaceChildren(forecast);
+
+    var widget = document.createElement("div");
+    widget.className = "apple-weather";
+
+    // Header
+    var header = document.createElement("div");
+    header.className = "apple-weather__header";
+
+    var summaryDiv = document.createElement("div");
+    summaryDiv.className = "apple-weather__summary";
+    var currentP = periods[0];
+    var h3 = document.createElement("h3");
+    h3.textContent = "Local Forecast";
+    var tempNow = document.createElement("div");
+    tempNow.className = "apple-weather__temp-now";
+    tempNow.innerHTML = '<span>' + nwsIconToEmoji(currentP.shortForecast || "") + '</span><span>' + (currentP.temperature === undefined ? "--" : currentP.temperature + "°F") + '</span>';
+    var condNow = document.createElement("p");
+    condNow.className = "apple-weather__condition-now";
+    condNow.textContent = (currentP.name || "Now") + ": " + (currentP.shortForecast || "Clear") + " · Wind " + (currentP.windSpeed || "");
+    summaryDiv.append(h3, tempNow, condNow);
+
+    // Filter controls
+    var filtersDiv = document.createElement("div");
+    filtersDiv.className = "apple-weather__filters";
+
+    var filterLabel = document.createElement("label");
+    filterLabel.className = "apple-weather__filter-label";
+    filterLabel.textContent = "Filter:";
+
+    var selectFilter = document.createElement("select");
+    selectFilter.className = "apple-weather__select";
+    selectFilter.setAttribute("aria-label", "Filter forecast by day or month");
+
+    // "All 7 Days" option
+    var optAll = document.createElement("option");
+    optAll.value = "all";
+    optAll.textContent = "All 7 Days";
+    selectFilter.appendChild(optAll);
+
+    // Group by unique day dates (YYYY-MM-DD)
+    var daysMap = {};
+    periods.forEach(function (p) {
+      var dKey = p.startTime ? p.startTime.slice(0, 10) : p.name;
+      if (!daysMap[dKey]) {
+        daysMap[dKey] = [];
+      }
+      daysMap[dKey].push(p);
+    });
+
+    // Add day options
+    Object.keys(daysMap).forEach(function (dKey) {
+      var opt = document.createElement("option");
+      opt.value = "day:" + dKey;
+      var label = daysMap[dKey][0].name || dKey;
+      if (dKey.length === 10) {
+        var dateObj = new Date(dKey + "T12:00:00");
+        label = dateObj.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+      }
+      opt.textContent = "Day: " + label;
+      selectFilter.appendChild(opt);
+    });
+
+    // Add month options if available
+    availableMonths.forEach(function (mIdx) {
+      var opt = document.createElement("option");
+      opt.value = "month:" + mIdx;
+      opt.textContent = "Month: " + monthNames[mIdx];
+      selectFilter.appendChild(opt);
+    });
+
+    filtersDiv.append(filterLabel, selectFilter);
+    header.append(summaryDiv, filtersDiv);
+
+    // List container
+    var list = document.createElement("div");
+    list.className = "apple-weather__list";
+
+    function updateList() {
+      list.replaceChildren();
+      var filterValue = selectFilter.value;
+      var filtered = periods;
+
+      if (filterValue.startsWith("day:")) {
+        var targetDay = filterValue.slice(4);
+        filtered = periods.filter(function (p) {
+          var dKey = p.startTime ? p.startTime.slice(0, 10) : p.name;
+          return dKey === targetDay;
+        });
+      } else if (filterValue.startsWith("month:")) {
+        var targetMonth = parseInt(filterValue.slice(6), 10);
+        filtered = periods.filter(function (p) {
+          return p.startTime && new Date(p.startTime).getMonth() === targetMonth;
+        });
+      }
+
+      if (filtered.length === 0) {
+        var empty = document.createElement("div");
+        empty.className = "apple-weather__empty";
+        empty.textContent = "No forecast data available for this filter.";
+        list.appendChild(empty);
+        return;
+      }
+
+      filtered.forEach(function (period) {
+        var item = document.createElement("div");
+        item.className = "apple-weather__item";
+
+        var dayName = document.createElement("div");
+        dayName.className = "apple-weather__day-name";
+        dayName.textContent = period.name || "Forecast";
+
+        var icon = document.createElement("div");
+        icon.className = "apple-weather__icon";
+        icon.textContent = nwsIconToEmoji(period.shortForecast || "");
+
+        var details = document.createElement("div");
+        details.className = "apple-weather__details";
+
+        var cond = document.createElement("span");
+        cond.className = "apple-weather__cond";
+        cond.textContent = period.shortForecast || "Forecast unavailable";
+
+        var meta = document.createElement("span");
+        meta.className = "apple-weather__meta";
+        var wind = "Wind " + (period.windSpeed || "calm");
+        var rainChance = "";
+        var chance = period.probabilityOfPrecipitation && period.probabilityOfPrecipitation.value;
+        if (chance !== null && chance !== undefined) {
+          rainChance = " · Rain " + chance + "%";
+        }
+        meta.textContent = wind + rainChance;
+        details.append(cond, meta);
+
+        var tempBar = document.createElement("div");
+        tempBar.className = "apple-weather__temp-bar";
+        tempBar.innerHTML = (period.temperature === undefined ? "--" : period.temperature + "°") + '<small>' + (period.temperatureUnit || "F") + '</small>';
+
+        item.append(dayName, icon, details, tempBar);
+        list.appendChild(item);
+      });
+    }
+
+    selectFilter.addEventListener("change", updateList);
+    updateList();
+
+    widget.append(header, list);
+    container.replaceChildren(widget);
   }
 
   function moonPhase(date) {
@@ -167,9 +300,10 @@
       markers.forEach(function (marker) {
         if (!marker.slug || listedWaters.has(marker.slug)) return;
         listedWaters.add(marker.slug);
+        var basePath = options.basePath !== undefined ? options.basePath : "./";
         var item = document.createElement("li");
         var link = document.createElement("a");
-        link.href = "./" + marker.slug + ".html";
+        link.href = basePath + marker.slug + ".html";
         link.textContent = marker.water;
         item.appendChild(link);
         guideList.appendChild(item);
@@ -187,7 +321,8 @@
       var popup = "<strong>" + m.name + "</strong>";
       if (m.water) popup += "<br><em>" + m.water + "</em>";
       if (m.fish) popup += "<br>" + m.fish;
-      var href = m.href || (m.slug ? "./" + m.slug + ".html" : options.overviewHref);
+      var basePath = options.basePath !== undefined ? options.basePath : "./";
+      var href = m.href || (m.slug ? basePath + m.slug + ".html" : options.overviewHref);
       if (href) popup += '<br><a href="' + href + '">' + (m.linkText || "View water guide") + "</a>";
       L.marker([m.lat, m.lng]).addTo(map).bindPopup(popup);
     });

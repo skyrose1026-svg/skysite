@@ -6,14 +6,9 @@
     return;
   }
 
-  window.initWatersMap({
-    containerId: "home-water-map",
-    guideNavigation: false,
-    center: [42.4, -123.05],
-    zoom: 7.5,
-    accessibleLabel: "Map of Southern Oregon rivers, lakes, and ponds",
-    overviewHref: "./waters/waters.html#stillwater",
-    markers: [
+  const markers = Array.isArray(window.ALL_WATER_MARKERS) && window.ALL_WATER_MARKERS.length > 0
+    ? window.ALL_WATER_MARKERS
+    : [
       { name: "Rogue River", water: "Rogue River", fish: "Salmon, steelhead, trout, and bass", slug: "rogue-river", lat: 42.44, lng: -123.33 },
       { name: "Applegate Lake", water: "Applegate Lake", fish: "Trout and kokanee", href: "./waters/waters.html#stillwater", lat: 42.1, lng: -123.35 },
       { name: "Lost Creek Reservoir", water: "Lost Creek Reservoir", fish: "Rainbow trout", href: "./waters/waters.html#stillwater", lat: 42.735, lng: -122.545 },
@@ -23,6 +18,16 @@
       { name: "Agate Lake", water: "Agate Lake", fish: "Bass and panfish", href: "./waters/waters.html#stillwater", lat: 42.44, lng: -122.83 },
       { name: "Lake Selmac", water: "Lake Selmac", fish: "Bass, bluegill, and crappie", href: "./waters/waters.html#stillwater", lat: 42.18, lng: -123.68 },
       { name: "Expo Pond", water: "Expo Pond", fish: "Trout and warmwater fish", href: "./waters/waters.html#stillwater", lat: 42.335, lng: -122.873 }
-    ]
+    ];
+
+  window.initWatersMap({
+    containerId: "home-water-map",
+    guideNavigation: false,
+    center: [43.8, -120.5],
+    zoom: 7,
+    basePath: "./waters/",
+    accessibleLabel: "Map of Southern Oregon rivers, lakes, and ponds",
+    overviewHref: "./waters/waters.html#stillwater",
+    markers: markers
   });
 })();
